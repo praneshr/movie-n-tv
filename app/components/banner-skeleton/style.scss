@@ -1,0 +1,27 @@
+.text-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  padding: 10% 5%;
+  z-index: 1;
+  .__q {
+    width: 100%;
+  }
+  .title {
+    height: 60px;
+    width: 20%;
+    margin-bottom: 30px;
+  }
+  .description {
+    height: 100px;
+    width: 50%;
+    margin-bottom: 30px;
+  }
+  .button {
+    height: 40px;
+    width: 150px;
+  }
+}

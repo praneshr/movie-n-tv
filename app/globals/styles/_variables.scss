@@ -1,0 +1,57 @@
+$bs-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$bs-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$bs-4: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+$bs-5: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$bs-6: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+@mixin drop-shadow($color, $step) {
+  @if $step == 1 {
+    box-shadow: 0 1px 3px rgba($color, 0.12), 0 1px 2px rgba($color, 0.24);
+  } @else if $step == 2 {
+    box-shadow: 0 3px 6px rgba($color, 0.16), 0 3px 6px rgba($color, 0.23);
+  } @else if $step == 3 {
+    box-shadow: 0 10px 20px rgba($color, 0.19), 0 6px 6px rgba($color, 0.23);
+  } @else if $step == 4 {
+    box-shadow: 0 14px 28px rgba($color, 0.25), 0 10px 10px rgba($color, 0.22);
+  } @else if $step == 4 {
+    box-shadow: 0 19px 38px rgba($color, 0.30), 0 15px 12px rgba($color, 0.22);
+  } @else if $step == "spread" {
+    box-shadow: 0 0 40px 10px rgba($color, 0.15)
+  }
+
+}
+
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-center {
+  @include flex-align-center;
+  @include flex-justify-center;
+}
+
+@mixin diffuse-shadow($color, $amount: 27%) {
+  box-shadow: 0 25px 40px -20px lighten($color, $amount);
+}
+
+@mixin transition($time, $bez: linear) {
+  transition: all $time $bez;
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+$brand-primary: $red400;
+$brand-primary-dark: $red400;
+$font-color: $white;
+$brand-bg: #171717;
+$brand-bg-placeholder: #151515;

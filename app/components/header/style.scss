@@ -1,0 +1,37 @@
+.header {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 15px;
+  color: $white;
+  margin: 0;
+  @include flex-align-center;
+  transition: all 0.1s linear;
+  &.invert {
+    background-color: $brand-bg;
+    @include drop-shadow($black, 2);
+    .search {
+      input {
+        background-color: #212121;
+      }
+    }
+  }
+  .logo {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+  .search {
+    input {
+      background-color: rgba($black, 0.5);
+      border: none;
+    }
+  }
+}

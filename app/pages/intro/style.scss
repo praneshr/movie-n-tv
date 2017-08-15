@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+.intro {
+  text-align: center;
+  margin-top: 50px;
+}
+.heading{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60px;
+  font-weight: 300;
+  margin-bottom: 60px;
+  position: relative;
+  &:after{
+    content: " ";
+    width: 200px;
+    height: 1px;
+    background-color: $grey300;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    bottom: -30px;
+  }
+}

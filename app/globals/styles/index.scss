@@ -1,0 +1,177 @@
+@import "variables.scss";
+@import "colors.scss";
+@import "./bootstrap/index.scss";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Rubik:500,700,900');
+body {
+    font-family: 'Nunito', sans-serif;
+    color: $font-color;
+    background-color: $brand-bg;
+}
+
+.title-font {
+    font-family: 'Rubik', sans-serif;
+}
+
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid $grey300;
+  border-radius: 4px;
+  width: 100%;
+  background-color: $white;
+  @include transition(0.2s);
+  &::-webkit-input-placeholder {
+      color: $grey400;
+  }
+  &::-moz-placeholder {
+      color: $grey400;
+  }
+  &:-ms-input-placeholder {
+      color: $grey400;
+  }
+  &:-moz-placeholder {
+      color: $grey400;
+  }
+  &:focus {
+      border: 1px solid $grey400;
+      outline: none;
+  }
+  &:disabled {
+      background-color: $grey200;
+      color: $grey400;
+      cursor: not-allowed;
+  }
+}
+
+.button-primary {
+  @include flex-center;
+  border: none;
+  border-bottom: 2px solid $brand-primary-dark;
+  background-color: $brand-primary;
+  color: $white;
+  padding: 10px 15px 8px;
+  min-width: 100px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  i {
+    font-weight: 600;
+    font-size: 18px;
+    &:last-child {
+        margin-left: 15px;
+    }
+    &:first-child {
+        margin-right: 10px;
+    }
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    opacity: 1;
+  }
+  &:disabled {
+    background-color: $grey300;
+    border-bottom-color: $grey400;
+    cursor: not-allowed;
+  }
+  &.waiting {
+    opacity: 0.7;
+    pointer-events: none;
+    i {
+      animation-duration: 0.8s !important;
+    }
+  }
+  &.focus {
+    outline: 1px solid;
+  }
+}
+
+.button-primary-delete {
+  @extend .button-primary;
+  border-bottom: 4px solid $red600;
+  background-color: $red400;
+}
+
+.button-outline {
+  @extend .button-primary;
+  border: 2px solid $brand-primary;
+  color: $brand-primary;
+  background-color: $white;
+}
+
+.button-link {
+  @extend .button-primary;
+  background: none;
+  border: none;
+  color: $link-color;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  outline: none;
+}
+
+.link-like {
+  @include flex-align-center;
+  color: $link-color;
+  font-weight: 600;
+  cursor: pointer;
+  i {
+    font-weight: 600;
+    margin: 0 10px;
+  }
+}
+
+.skeleton-placeholder {
+  background-color: #0e0e0e;
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: " ";
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    background-color: $brand-bg;
+    filter: blur(20px);
+    animation: load 1s linear infinite;
+  }
+}
+
+@keyframes load {
+  0% {
+      left: -40px;
+  }
+  50% {
+      left: calc(100% + 40px);
+  }
+  100% {
+      left: calc(100% + 40px);
+  }
+}
+
+@-webkit-keyframes load {
+  0% {
+      left: -40px;
+  }
+  50% {
+      left: calc(100% + 40px);
+  }
+  100% {
+      left: calc(100% + 40px);
+  }
+}
+
+.rating {
+  &.bad {
+    color: $red400;
+  }
+  &.average {
+    color: $yellow600;
+  }
+  &.good {
+    color: $green600;
+  }
+}

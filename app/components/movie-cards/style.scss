@@ -1,0 +1,50 @@
+.card {
+  background-color: $brand-bg;
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+  height: 400px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.01);
+  }
+  .movie-info {
+    position: absolute;
+    bottom: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: $white;
+    padding: 50% 30px 20px;
+    font-weight: 800;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(0,0,0,1) 100%);
+  }
+
+  .with-star {
+    @include flex-align-center;
+  }
+  .star-container {
+    position: relative;
+    width: 20px;
+    height: 46px;
+    margin-right: 10px;
+    .star-icon {
+      font-size: 30px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      &.below {
+        z-index: 0;
+      }
+      &.above {
+        z-index: 1;
+        overflow: hidden;
+      }
+    }
+  }
+  .rating-number {
+    font-size: 18px;
+    font-weight: 400;
+  }
+}

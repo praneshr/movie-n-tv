@@ -1,0 +1,13 @@
+{
+ "presets": ["latest", "react", "stage-0"],
+ "plugins":[
+   "react-hot-loader/babel",
+   "transform-decorators-legacy",
+   [
+    "babel-plugin-webpack-alias",
+    {
+      "config": "./webpack.config.babel.js"
+    }
+  ]
+ ]
+}
