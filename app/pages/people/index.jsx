@@ -7,7 +7,8 @@ import globalStyles from 'global-styles'
 import { imageBase } from '../../APIs/config/'
 import { uiStates, uiActions } from '../../redux-connect'
 import styles from './styles'
-import Details from '../../components/person-details'
+import Details from '../../components/person-details/async'
+import DetailsSkeleton from '../../components/person-details-skeleton'
 
 
 @connect(uiStates, uiActions)
@@ -44,6 +45,10 @@ class People extends Component {
     />
   }
 
+  random(max) {
+    return Math.floor(Math.random() * (max));
+  }
+
   render() {
     const {
       ui: {
@@ -54,14 +59,19 @@ class People extends Component {
       },
     } = this.props
     const personData = person[id]
-
+    const backdrop = personData
+      && (
+        personData.images.profiles.length > 0
+          ? personData.images.profiles[this.random(personData.images.profiles.length)].file_path
+          : personData.profile_path
+      )
     return (
       <div styleName="people">
         <div styleName="banner">
           <div styleName="image-container">
             {
               personData
-              && <img src={`${imageBase}/w92${personData.profile_path}`} alt=""/>
+              && <img src={`${imageBase}/w342${backdrop}`} alt=""/>
             }
           </div>
           <div styleName="fade-out"></div>
@@ -81,7 +91,7 @@ class People extends Component {
               {
                 personData
                   ? <Details data={personData} />
-                  : <span>Loading...</span>
+                  : <DetailsSkeleton />
               }
             </div>
           </div>

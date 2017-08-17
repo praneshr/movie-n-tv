@@ -1,6 +1,6 @@
 .people {
   .banner {
-    height: 40vh;
+    height: 60vh;
     overflow: hidden;
     position: relative;
     .fade-out {
@@ -14,10 +14,11 @@
   }
   .image-container {
     text-align: center;
-    filter: blur(20px);
+    filter: blur(30px);
     img {
       width: 100%;
-      filter: hue-rotate(140deg);
+      position: relative;
+      top: -100px;
     }
   }
   .content {

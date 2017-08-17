@@ -1,7 +1,9 @@
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
 import ReactCSS from 'react-css-modules'
+import { Link } from 'react-router'
 import React, { Component } from 'react'
+import { resolveUrl } from '../../utils'
 import { imageBase } from '../../APIs/config/'
 import styles from './style'
 
@@ -27,7 +29,9 @@ class MovieBanner extends Component {
                 {latest.overview}
               </div>
             </div>
-            <button styleName="button-primary play">Watch Trailer</button>
+            <Link to={resolveUrl(latest)}>
+              <button styleName="button-primary play">Check it out</button>
+            </Link>
           </div>
         </div>
         <ImageProgressive

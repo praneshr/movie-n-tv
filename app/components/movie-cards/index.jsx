@@ -74,15 +74,24 @@ class MovieCards extends Component {
               <div>
                 {title}
               </div>
-              <div styleName={cn('rating', 'with-star', rate(rating))}>
-                <div styleName="star-container">
-                  <span styleName="star-icon below">☆</span>
-                  <span styleName="star-icon above" style={{ width: `${rating * 10}%` }}>★</span>
-                </div>
-                <span styleName="rating-number">
-                  {rating}
-                </span>
+              <div styleName="year">
+                {
+                  result.release_date
+                  && result.release_date.split('-')[0]
+                }
               </div>
+              {
+                result.media_type !== 'person'
+                && <div styleName={cn('rating', 'with-star', rate(rating))}>
+                  <div styleName="star-container">
+                    <span styleName="star-icon below">☆</span>
+                    <span styleName="star-icon above" style={{ width: `${rating * 10}%` }}>★</span>
+                  </div>
+                  <span styleName="rating-number">
+                    {rating.toFixed(1)}
+                  </span>
+                </div>
+              }
             </div>
           </div>
         </div>

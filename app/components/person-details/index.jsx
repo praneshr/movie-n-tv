@@ -3,29 +3,15 @@ import ReactCSS from 'react-css-modules'
 import globalStyles from 'global-styles'
 import truncate from 'lodash/truncate'
 import reactEasyBind from 'react-easy-bind'
-// import cn from 'classnames'
 import { resolveUrl } from '../../utils'
 import styles from './styles'
-// import Genres from '../genres'
-import Images from '../image-grid'
-import MovieCard from '../movie-cards'
+import Images from '../image-grid/async'
+import MovieCard from '../movie-cards/async'
+import Truncate from '../truncate'
 
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 @reactEasyBind
 class PersonDetails extends Component {
-
-  constructor() {
-    super()
-    this.state = {
-      showAll: false,
-    }
-  }
-
-  showAll() {
-    this.setState({
-      showAll: true,
-    })
-  }
 
   compare(a, b) {
     if (a.vote_average > b.vote_average) return -1
@@ -49,22 +35,7 @@ class PersonDetails extends Component {
           </div>
         }
         <div styleName="bio">
-          {
-            this.state.showAll
-              ? data.biography
-              : truncate(data.biography, {
-                length: 800,
-              })
-          }
-          {
-            !this.state.showAll
-            && !(data.biography.length < 800)
-            && <span
-              onClick={this.showAll}
-              styleName="link-primary">
-              Read More
-            </span>
-          }
+          <Truncate limit={800} text={data.biography} />
         </div>
         <div styleName="images">
           <h2>Photos</h2>

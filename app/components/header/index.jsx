@@ -35,6 +35,7 @@ export default class Sample extends Component {
         <div styleName="col-xs-6 search">
           <span onClick={this.handleSearch}>
             <i styleName="nc-icon nc-zoom-split" />
+            <span styleName="hidden-xs search-text">Search</span>
           </span>
         </div>
       </header>

@@ -1,0 +1,25 @@
+.details {
+  .title {
+    width: 80%;
+    height: 6vh;
+    margin: 40px 0 10px;
+  }
+  .other-name {
+    width: 50%;
+    height: 20px;
+    margin-top: 20px;
+  }
+  .bio {
+    margin-top: 70px;
+    height: 200px;
+  }
+  .images {
+    width: 100%;
+    margin-top: 40px;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .bio {
+      margin-top: 50px;
+    }
+  }
+}

@@ -30,6 +30,11 @@
   .search {
     font-size: 20px;
     text-align: right;
-    cursor: pointer;
+    span {
+      cursor: pointer;
+    }
+    .search-text {
+      margin-left: 15px;
+    }
   }
 }

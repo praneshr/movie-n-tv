@@ -65,7 +65,7 @@ class componentName extends Component {
     const pimg = data.map((x, i) => {
       if (i >= limit && !this.state.showAll) return undefined
       return <div styleName="col-xs-6 col-sm-3">
-        <span
+        <div
           styleName="img-container"
           onClick={this.easyBind(this.onClickThumbnail, i)}>
           <ImageProgressive
@@ -73,7 +73,7 @@ class componentName extends Component {
             placeholder={`${imageBase}/w92${x.file_path}`}
             src={`${imageBase}/w500${x.file_path}`}
           />
-        </span>
+        </div>
       </div>
     })
     return (
@@ -81,6 +81,7 @@ class componentName extends Component {
         <div styleName="row">
           {pimg}
           <ReactImages
+            className="light-box"
             onClose={this.onClose}
             onClickThumbnail={this.onClickThumbnail}
             currentImage={this.state.image}

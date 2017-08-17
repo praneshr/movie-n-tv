@@ -53,14 +53,21 @@
       }
     }
   }
+  .year {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: $grey300;
+  }
   .rating-number {
     font-size: 18px;
     font-weight: 400;
   }
   @media all and (min-width: 768px) and (max-width: 1024px) {
-    &.thumbnail,
-    .image {
-      height: 280px;
+    &.thumbnail {
+      .image {
+        height: 280px;
+      }
     }
 
     .movie-info {

@@ -25,7 +25,7 @@ class Movie extends Component {
     } = props
     if (!movies[id]) {
       props.actions.getMovie(id, {
-        append_to_response: 'releases,images,videos,credits,similar',
+        append_to_response: 'releases,images,videos,credits,similar,reviews',
       })
       .then(({ data }) => {
         props.actions.movies({

@@ -19,7 +19,9 @@ import HTML from './html'
 const webpackConfig = _.omit(config.webpack.browser, 'watch')
 const serverConfig = config.server
 const app = express()
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, 'build'), {
+  index: false,
+}))
 if (process.env.NODE_ENV !== 'production') {
   const compiler = webpack(webpackConfig)
 

@@ -6,8 +6,9 @@ import styles from './styles'
 import Genres from '../genres'
 import { rating, resolveUrl } from '../../utils'
 import Cast from '../cast/async'
-import Images from '../image-grid'
-import MovieCard from '../movie-cards'
+import Images from '../image-grid/async'
+import MovieCard from '../movie-cards/async'
+import Reviews from '../reviews'
 
 
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
@@ -50,7 +51,7 @@ class Details extends Component {
         </div>
         <div styleName="rating-container">
           <span styleName={cn('rating', rating(data.vote_average))}>
-            {data.vote_average}
+            {data.vote_average.toFixed(1)}
           </span>
           <span styleName="total">
             / 10
@@ -92,8 +93,12 @@ class Details extends Component {
             limit={7}
             data={data.credits.cast} />
         </div>
+        <div styleName="sub-section">
+          <h2>Reviews</h2>
+          <Reviews data={data.reviews.results} />
+        </div>
         <div styleName="images">
-          <h2>Photos</h2>
+          <h2>Posters & Photos</h2>
           <Images
             limit={5}
             data={data.images.posters} />
@@ -105,7 +110,7 @@ class Details extends Component {
             <MovieCard
               resolveLink={resolveUrl}
               type="thumbnail"
-              limit={5}
+              limit={6}
               results={data.similar.results} />
           </div>
         }

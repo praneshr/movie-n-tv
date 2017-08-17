@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
-import styles from './styles'
 import globalStyles from 'global-styles'
+import styles from './styles'
+import CastSkeleton from '../cast-skeleton'
+import ImgSkeleton from '../image-grid-skeleton'
 
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true})
 class DetailsSkeleton extends Component {
@@ -13,6 +15,14 @@ class DetailsSkeleton extends Component {
         <div styleName="skeleton-placeholder rating-container" />
         <div styleName="skeleton-placeholder genres" />
         <div styleName="skeleton-placeholder description" />
+        <div styleName="sub-section">
+          <h2>Cast</h2>
+          <CastSkeleton count={5}/>
+        </div>
+        <div styleName="sub-section">
+          <h2>Posters & Photos</h2>
+          <ImgSkeleton count={5}/>
+        </div>
       </div>
     )
   }

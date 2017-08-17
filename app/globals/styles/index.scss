@@ -13,6 +13,10 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
+#lightboxBackdrop {
+  background-color: $brand-bg !important;
+}
+
 a {
   text-decoration: none;
   color: $white;
@@ -196,5 +200,13 @@ input[type="password"] {
   }
   &.good {
     color: $green600;
+  }
+}
+
+.sub-section {
+  margin-top: 100px;
+  border-top: 1px solid $grey900;
+  h2 {
+    margin-bottom: 30px;
   }
 }
