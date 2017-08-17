@@ -1,0 +1,12 @@
+.thumbnail {
+  height: 237px;
+  background-size: contain;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.img-container {
+  overflow: hidden;
+}
+#lightboxBackdrop {
+  background-color: $brand-bg !important;
+}

@@ -11,3 +11,4 @@ This file should be a collection of pure async functions.
 export const getSearch = q => () => axios(config.search(q))
 export const getNowPlaying = q => () => axios(config.nowPlaying(q))
 export const getMovie = (id, q) => () => axios(config.movie(id, q))
+export const getPerson = (id, q) => () => axios(config.person(id, q))

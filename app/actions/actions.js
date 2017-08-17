@@ -4,9 +4,11 @@ import actionTypes from './_action-types'
 const nowPlaying = createAction(actionTypes.NOW_PLAYING)
 const movies = createAction(actionTypes.MOVIES)
 const search = createAction(actionTypes.SEARCH)
+const person = createAction(actionTypes.PERSON)
 
 export default {
   nowPlaying,
   movies,
   search,
+  person,
 }

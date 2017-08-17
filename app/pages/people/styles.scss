@@ -1,0 +1,47 @@
+.people {
+  .banner {
+    height: 40vh;
+    overflow: hidden;
+    position: relative;
+    .fade-out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(30, 86, 152, 0) 1%, $brand-bg 100%);
+    }
+  }
+  .image-container {
+    text-align: center;
+    filter: blur(20px);
+    img {
+      width: 100%;
+      filter: hue-rotate(140deg);
+    }
+  }
+  .content {
+    margin-top: 0px;
+  }
+  .poster {
+    margin-top: 0;
+    overflow: hidden;
+    margin-top: -250px;
+  }
+  .poster-img {
+    height: 500px;
+    background-size: contain;
+    background-position: bottom left;
+    &.placeholder {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .content {
+      margin-top: 50px;
+    }
+    .poster-img {
+      height: 400px;
+    }
+  }
+}

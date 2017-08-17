@@ -1,15 +1,40 @@
-import React, { Component } from 'react'
-import { imageBase } from '../../APIs/config/'
-import ImageProgressive from 'react-progressive-bg-image'
-import cn from 'classnames'
-import styles from './style'
 import globalStyles from 'global-styles'
 import ReactCSS from 'react-css-modules'
+import ImageProgressive from 'react-progressive-bg-image'
+import cn from 'classnames'
+import truncate from 'lodash-es/truncate'
 import { Link } from 'react-router'
+import React, { Component } from 'react'
+import reactEasyBind from 'react-easy-bind'
+import { imageBase } from '../../APIs/config/'
+import styles from './style'
+import { rating as rate } from '../../utils'
 
 
 @ReactCSS({ ...styles, ...globalStyles }, { allowMultiple: true })
+@reactEasyBind
 class MovieCards extends Component {
+  constructor() {
+    super()
+    this.state = {
+      showAll: false,
+    }
+  }
+
+  handleShowAll() {
+    this.setState({
+      showAll: true,
+    })
+  }
+
+  resolvePoster(result) {
+    switch (result.media_type) {
+      case 'person':
+        return result.profile_path
+      default:
+        return result.poster_path
+    }
+  }
   rateVoteAverage(vote) {
     if (vote < 5) {
       return 'bad'
@@ -20,30 +45,36 @@ class MovieCards extends Component {
     return 'good'
   }
   render() {
-    const items = this.props.results.map((result, i) => {
+    const {
+      type = 'default',
+      limit,
+      results,
+    } = this.props
+    const items = results.map((result, i) => {
+      if (i >= limit && !this.state.showAll) return undefined
       const rating = result.vote_average
       const link = this.props.resolveLink
         ? this.props.resolveLink(result, i)
         : ''
+      const poster = this.resolvePoster(result)
+      const title = truncate(result.title || result.name, {
+        length: 40,
+      })
       return <Link to={link}>
-        <div styleName="col-sm-12 col-md-4 col-lg-3">
-          <div styleName="card">
-            <div className="image">
+        <div styleName={cn('col-xs-12 col-sm-6 col-md-4', type === 'thumbnail' ? 'col-lg-4' : 'col-lg-3')}>
+          <div styleName={cn('card', type)}>
+            <div>
               <ImageProgressive
-                placeholder={`${imageBase}/w45${result.poster_path}`}
-                src={`${imageBase}/w500${result.poster_path}`}
-                style={{
-                  height: '400px',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center center',
-                }}
+                placeholder={`${imageBase}/w45${poster}`}
+                src={`${imageBase}/w500${poster}`}
+                className={styles.image}
               />
             </div>
             <div styleName="movie-info">
               <div>
-                {result.title}
+                {title}
               </div>
-              <div styleName={cn('rating', 'with-star', this.rateVoteAverage(rating))}>
+              <div styleName={cn('rating', 'with-star', rate(rating))}>
                 <div styleName="star-container">
                   <span styleName="star-icon below">☆</span>
                   <span styleName="star-icon above" style={{ width: `${rating * 10}%` }}>★</span>
@@ -57,9 +88,20 @@ class MovieCards extends Component {
         </div>
       </Link>
     })
-    return <span>
-      {items}
-    </span>
+    return <div>
+      <div styleName="row">
+        {items}
+      </div>
+      {
+        results.length > limit
+        && !this.state.showAll
+        && <button
+          onClick={this.handleShowAll}
+          styleName="button-primary">
+          View all {results.length} movies
+        </button>
+      }
+    </div>
   }
 }
 

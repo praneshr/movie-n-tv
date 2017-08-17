@@ -60,8 +60,8 @@ export default class Movies extends Component {
           }
         </div>
         <div styleName="container list">
-          <h2>Now Running</h2>
           <div styleName="row">
+            <h2>Now Running</h2>
             {
               latest === undefined
                 ? new Array(20).fill(undefined).map(() => <CardSkeleton />)

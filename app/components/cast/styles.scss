@@ -1,0 +1,26 @@
+.cast {
+  .pic-container {
+    width: inherit;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  .person {
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      background-position: center;
+      background-size: cover;
+      border-radius: 10px;
+      background-color: #212121;
+    }
+    .name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .character {
+      margin-top: 10px;
+      color: $grey500;
+      font-weight: 600;
+    }
+  }
+}

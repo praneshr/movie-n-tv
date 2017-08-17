@@ -3,6 +3,7 @@ const actionTypes = [
   'NOW_PLAYING',
   'MOVIES',
   'SEARCH',
+  'PERSON',
 ]
 
 export default actionTypes.reduce((obj, str) => {

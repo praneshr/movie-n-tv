@@ -3,6 +3,7 @@
     height: 60vh;
     background-color: $grey900;
     position: relative;
+    overflow: hidden;
     .fade-out {
       position: absolute;
       top: 0;
@@ -17,6 +18,7 @@
   }
   .poster {
     margin-top: -200px;
+    overflow: hidden;
   }
   .poster-img {
     height: 400px;
@@ -35,7 +37,8 @@
   .movie-banner {
     height: 60vh;
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
+    overflow: hidden;
   }
 
   @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
@@ -56,6 +59,7 @@
     .movie-banner,
     .banner {
       height: 300px;
+      background-position: center center;
     }
     .poster {
       margin-top: -140px;

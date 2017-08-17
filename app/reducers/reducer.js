@@ -7,6 +7,7 @@ const initialState = {
   sample: 'sample',
   movies: { },
   search: { },
+  person: { },
 }
 
 /*
@@ -27,6 +28,11 @@ const reducer = handleActions({
     const existingSearch = { ...state.search }
     const newSearch = { ...existingSearch, ...payload }
     return createState(state, newSearch, 'search')
+  },
+  [actionTypes.PERSON]: (state, { payload }) => {
+    const existingPerson = { ...state.person }
+    const newSearch = { ...existingPerson, ...payload }
+    return createState(state, newSearch, 'person')
   },
 }, initialState)
 

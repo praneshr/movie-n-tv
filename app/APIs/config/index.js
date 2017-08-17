@@ -19,3 +19,6 @@ export const nowPlaying = query =>
 
 export const movie = (id, query) =>
   `${baseUrl}/movie/${id}?${qp(query)}`
+
+export const person = (id, query) =>
+  `${baseUrl}/person/${id}?${qp(query)}`

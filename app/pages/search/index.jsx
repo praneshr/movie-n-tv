@@ -90,21 +90,23 @@ class Search extends Component {
           </div>
           <div styleName="row">
             <div styleName="col-sm-12 data">
-              <div styleName="row">
-                {
-                  query
-                  ? data
-                      ? <Cards
+              {
+                query
+                ? data
+                    ? <div>
+                      <div styleName="stats">
+                        <b>{(data || {}).total_results}</b> results
+                      </div>
+                      <Cards
                         results={data.results}
                         resolveLink={resolveUrl}/>
-                    : new Array(20).fill(undefined).map(() => <CardSkeleton />)
-                  : 'Find anything'
-                }
-              </div>
+                    </div>
+                  : new Array(20).fill(undefined).map(() => <CardSkeleton />)
+                : ''
+              }
             </div>
           </div>
         </div>
-
       </div>
     )
   }

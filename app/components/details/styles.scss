@@ -5,6 +5,15 @@
     font-weight: 800;
     padding: 30px 0 10px;
   }
+  .upcoming {
+    background-color: $green500;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 15px;
+    font-size: 12px;
+  }
   .rating-container {
     font-size: 4vh;
     margin-bottom: 20px;
@@ -50,14 +59,36 @@
       border: 1px solid $grey700;
       padding: 1px 3px;
     }
-    .runtime {
-
-    }
   }
   .description {
     margin-top: 40px;
     color: $grey500;
     font-size: 18px;
+  }
+  .button-container {
+    margin-top: 40px;
+    display: flex;
+    button {
+      margin-right: 20px;
+      padding: 15px 20px;
+      min-width: 150px;
+    }
+  }
+
+  .cast {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  .images {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
   }
 
   @media all and (min-width: 768px) and (max-width: 1024px) {

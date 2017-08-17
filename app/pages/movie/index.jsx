@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
 import { imageBase } from '../../APIs/config/'
 import styles from './styles'
-import Details from '../../components/details'
+import Details from '../../components/details/async'
 import DetailsSkeleton from '../../components/details-skeleton'
 
 
@@ -14,7 +14,7 @@ import DetailsSkeleton from '../../components/details-skeleton'
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Movie extends Component {
 
-  componentDidMount () {
+  fetchData(props) {
     const {
       params: {
         id,
@@ -22,19 +22,40 @@ class Movie extends Component {
       ui: {
         movies,
       },
-    } = this.props
+    } = props
     if (!movies[id]) {
-      this.props.actions.getMovie(id, {
-        append_to_response: 'releases,images,videos,credits',
+      props.actions.getMovie(id, {
+        append_to_response: 'releases,images,videos,credits,similar',
       })
       .then(({ data }) => {
-        this.props.actions.movies({
+        props.actions.movies({
           [id]: data,
         })
       })
     }
+
   }
 
+  componentDidMount () {
+    this.fetchData(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.params.id !== nextProps.params.id) {
+      this.fetchData(nextProps)
+    }
+  }
+
+
+  getleftPane(movieDetails) {
+    return <div>
+      <ImageProgressive
+        className={styles['poster-img']}
+        placeholder={`${imageBase}/w92${movieDetails.poster_path}`}
+        src={`${imageBase}/w500${movieDetails.poster_path}`}
+      />
+    </div>
+  }
 
   render() {
     const {
@@ -65,11 +86,7 @@ class Movie extends Component {
               <div styleName="poster">
                 {
                   movieDetails
-                  ? <ImageProgressive
-                    className={styles['poster-img']}
-                    placeholder={`${imageBase}/w92${movieDetails.poster_path}`}
-                    src={`${imageBase}/w500${movieDetails.poster_path}`}
-                  />
+                  ? this.getleftPane(movieDetails)
                   : <div styleName="skeleton-placeholder poster-img placeholder" />
                 }
               </div>

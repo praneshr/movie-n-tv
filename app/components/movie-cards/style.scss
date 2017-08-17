@@ -3,9 +3,14 @@
   position: relative;
   margin-bottom: 30px;
   overflow: hidden;
-  height: 400px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  &.default {
+    height: 400px;
+  }
+  &.thumbnail {
+    font-size: inherit;
+  }
   &:hover {
     transform: scale(1.01);
   }
@@ -19,6 +24,11 @@
     font-weight: 800;
     width: 100%;
     background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(0,0,0,1) 100%);
+  }
+  .image {
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
   }
 
   .with-star {
@@ -46,5 +56,40 @@
   .rating-number {
     font-size: 18px;
     font-weight: 400;
+  }
+  @media all and (min-width: 768px) and (max-width: 1024px) {
+    &.thumbnail,
+    .image {
+      height: 280px;
+    }
+
+    .movie-info {
+      font-size: 18px;
+    }
+  }
+  @media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    &.thumbnail {
+      height: 380px;
+      .image {
+        height: 380px;
+        background-position: center top;
+      }
+    }
+
+    .movie-info {
+      font-size: 18px;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    &.thumbnail {
+      height: 320px;
+      .image {
+        height: 320px;
+        background-position: center top;
+      }
+    }
+    .movie-info {
+      font-size: 18px;
+    }
   }
 }

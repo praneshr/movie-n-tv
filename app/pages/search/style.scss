@@ -1,11 +1,21 @@
 .search {
-  margin-top: 200px;
+  margin-top: 150px;
   .title {
     font-size: 40px;
     font-weight: 800;
   }
   .data {
-    margin-top: 30px;
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 1px solid $grey900;
+    .stats {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      h2 {
+        margin: 0;
+      }
+    }
   }
   .input-container {
     margin-top: 10px;

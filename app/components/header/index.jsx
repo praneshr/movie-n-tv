@@ -27,20 +27,15 @@ export default class Sample extends Component {
   render() {
     return (
       <header styleName="row header" id="header">
-        <div styleName="col-xs-2 col-sm-6 logo">
+        <div styleName="col-xs-6 logo">
           <Link to="/">
-            <span styleName="hidden-xs">
-              Box Office
-            </span>
-            <span styleName="visible-xs">
-              BO
-            </span>
+            Box Office
           </Link>
         </div>
-        <div styleName="col-xs-10 col-sm-6 search">
-          <div styleName="col-lg-offset-10 col-sm-offset-11 ">
-            <span onClick={this.handleSearch}>Search</span>
-          </div>
+        <div styleName="col-xs-6 search">
+          <span onClick={this.handleSearch}>
+            <i styleName="nc-icon nc-zoom-split" />
+          </span>
         </div>
       </header>
     )

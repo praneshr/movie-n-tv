@@ -5,6 +5,7 @@ import NotFound from './components/not_found/'
 import Movies from './pages/movies'
 import Movie from './pages/movie'
 import Search from './pages/search'
+import People from './pages/people'
 
 export default () => (
   <Router
@@ -23,6 +24,10 @@ export default () => (
       <Route
         path="/search"
         component={Search}
+      />
+      <Route
+        path="/people/:id"
+        component={People}
       />
     </Route>
   </Router>
