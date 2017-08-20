@@ -7,6 +7,7 @@
     "build:watch": "webpack --progress --colors --watch",
     "build": "webpack --progress --colors",
     "start": "node server.js",
+    "postinstall": "yarn run build",
     "start:dev": "nodemon -w server.js server.js",
     "deploy": "NODE_ENV=production yarn run build && yarn start"
   },
