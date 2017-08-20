@@ -1,1 +1,1 @@
-yarn run deploy
+web: npm run deploy
