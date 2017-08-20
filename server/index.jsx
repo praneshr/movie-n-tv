@@ -78,6 +78,6 @@ app.get([
   })
 })
 
-app.listen(serverConfig.port, () => {
+app.listen(process.env.PORT || serverConfig.port, () => {
   console.log(`Listening at http://localhost:${serverConfig.port}/`)
 })
