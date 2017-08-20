@@ -17,6 +17,8 @@ import store from '../app/store'
 import routes from '../app/router'
 import HTML from './html'
 
+console.log(config)
+
 const serverConfig = config.server
 
 const app = express()
