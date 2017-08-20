@@ -13,8 +13,8 @@ class Reviews extends Component {
     const {
       data,
     } = this.props
-    const reviews = data.map((review) => {
-      return <div styleName="col-xs-12 review">
+    const reviews = data.map((review, i) => {
+      return <div styleName="col-xs-12 review" key={i}>
         <div styleName="author"><b>{review.author}</b> says...</div>
         <Truncate limit={400} text={review.content} />
       </div>

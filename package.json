@@ -1,7 +1,7 @@
 {
-  "name": "smart-react-boilerplate",
+  "name": "bx-beta",
   "version": "0.0.1",
-  "description": "Smart React+Redux+Express boilerplate ",
+  "description": "Movie app",
   "main": "index.js",
   "scripts": {
     "build:watch": "webpack --progress --colors --watch",

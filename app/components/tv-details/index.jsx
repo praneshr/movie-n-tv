@@ -25,7 +25,6 @@ class Details extends Component {
       .results
       .filter(x => x.iso_3166_1 === 'US')[0]
     const certificates = certificatefiltered || {}
-    const upcoming = data.status.toLowerCase() !== 'released'
     const start = data.first_air_date
       && data.first_air_date.split('-')[0]
     const end = !data.in_production
@@ -33,10 +32,6 @@ class Details extends Component {
       && data.last_air_date.split('-')[0]
     return (
       <div styleName="details">
-        {
-          upcoming
-          && <div styleName="upcoming">Upcoming</div>
-        }
         <div styleName="title">
           {data.name}
         </div>

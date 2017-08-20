@@ -14,8 +14,8 @@ export default class Genres extends React.Component {
   }
 
   render() {
-    const g = this.props.data.map((g) => {
-      return <span styleName="genre">{g.name}</span>
+    const g = this.props.data.map((g, i) => {
+      return <span styleName="genre" key={i}>{g.name}</span>
     })
     return (
       <div styleName="genres">

@@ -64,7 +64,7 @@ class componentName extends Component {
     })
     const pimg = data.map((x, i) => {
       if (i >= limit && !this.state.showAll) return undefined
-      return <div styleName="col-xs-6 col-sm-3">
+      return <div styleName="col-xs-6 col-sm-3" key={i}>
         <div
           styleName="img-container"
           onClick={this.easyBind(this.onClickThumbnail, i)}>

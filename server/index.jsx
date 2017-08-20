@@ -1,8 +1,6 @@
 import 'babel-register'
-console.log('starting apppp.........')
 import _ from 'lodash'
 import config from 'config'
-console.log('importing config.......')
 import express from 'express'
 import path from 'path'
 import React from 'react'
@@ -18,8 +16,6 @@ import store from '../app/store'
 import routes from '../app/router'
 import HTML from './html'
 
-console.log(config)
-
 const serverConfig = config.get('server')
 
 const app = express()
@@ -31,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'build'), {
 
 if (process.env.NODE_ENV !== 'production') {
   const webpackConfig = _.omit(config.get('webpack.browser'), 'watch')
+  webpackConfig.plugins.reverse().pop()
   const compiler = webpack(webpackConfig)
 
   app.use(wds(compiler, {

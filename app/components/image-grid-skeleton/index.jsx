@@ -16,8 +16,8 @@ class componentName extends Component {
       {
         new Array(count)
           .fill(undefined)
-          .map(() => {
-            return <div styleName="col-xs-6 col-sm-3">
+          .map((el, i) => {
+            return <div styleName="col-xs-6 col-sm-3" key={i}>
               <div styleName="skeleton-placeholder img" />
             </div>
           })

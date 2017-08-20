@@ -15,8 +15,8 @@ class EpisodesListSkeleton extends Component {
 
     const episodes = new Array(count)
       .fill(undefined)
-      .map(() => {
-        return <div styleName="col-xs-12 episode">
+      .map((el, i) => {
+        return <div styleName="col-xs-12 episode" key={i}>
           <div styleName="row">
             <div styleName="col-xs-6 col-md-3">
               <div styleName="skeleton-placeholder still-pic" />

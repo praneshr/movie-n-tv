@@ -101,7 +101,7 @@ class Search extends Component {
                         results={data.results}
                         resolveLink={resolveUrl}/>
                     </div>
-                  : new Array(20).fill(undefined).map(() => <CardSkeleton />)
+                  : new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
                 : ''
               }
             </div>

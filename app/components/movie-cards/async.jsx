@@ -7,7 +7,7 @@ export default asyncComponent({
   LoadingComponent: () => {
     return <span>
       {
-        new Array(20).fill(undefined).map(() => <CardSkeleton />)
+        new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
       }
     </span>
   }

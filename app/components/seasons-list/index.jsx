@@ -41,7 +41,7 @@ class Cast extends Component {
       .reverse()
       .map((data, i) => {
         if (i >= limit && !this.state.showAll) return undefined
-        return <div styleName="col-xs-12 col-md-6 season">
+        return <div styleName="col-xs-12 col-md-6 season" key={i}>
           <div styleName="row">
             <div styleName="col-xs-4 img">
               <Link to={`/tv/${tvId}/seasons/${data.season_number}`}>

@@ -16,8 +16,8 @@ class EpisodesList extends Component {
     const {
       data,
     } = this.props
-    const episodes = data.map((episode) => {
-      return <div styleName="col-xs-12 episode">
+    const episodes = data.map((episode, i) => {
+      return <div styleName="col-xs-12 episode" key={i}>
         <div styleName="row">
           <div styleName="col-xs-12 col-sm-4 col-lg-3">
             <div styleName="pic-container">

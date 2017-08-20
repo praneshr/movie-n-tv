@@ -13,8 +13,8 @@ class CastSkeleton extends Component {
 
     const cast = new Array(count)
       .fill(undefined)
-      .map(() => {
-        return <div styleName="col-xs-12 col-md-6">
+      .map((el, i) => {
+        return <div styleName="col-xs-12 col-md-6" key={i}>
           <div styleName="row">
             <div styleName="col-xs-5">
               <div styleName="skeleton-placeholder profile-pic" />

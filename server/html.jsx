@@ -20,9 +20,7 @@ export default (html) => {
         ${css.join('\n')}
       </head>
       <body>
-        <div id="app">
-        ${html}
-        <div/>
+      <div id="app"><div>${html}</div><div/>
         <script>
           window.webpackManifest=${JSON.stringify(chunkManifest)}
         </script>

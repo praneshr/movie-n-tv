@@ -28,8 +28,8 @@ class PersonDetails extends Component {
             {
               new Array(5)
                 .fill(undefined)
-                .map(() =>
-                  <MovieCardSkeleton type="thumbnail" />,
+                .map((el, i) =>
+                  <MovieCardSkeleton type="thumbnail" key={i}/>,
                 )
             }
           </div>

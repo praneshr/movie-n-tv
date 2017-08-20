@@ -65,7 +65,7 @@ class MovieCards extends Component {
       const title = truncate(result.title || result.name, {
         length: 40,
       })
-      return <Link to={link}>
+      return <Link to={link} key={i}>
         <div styleName={cn('col-xs-12 col-sm-6 col-md-4', type === 'thumbnail' ? 'col-lg-4' : 'col-lg-3')}>
           <div styleName={cn('card', type)}>
             <div>

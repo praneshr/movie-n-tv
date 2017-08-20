@@ -64,7 +64,7 @@ export default class Movies extends Component {
             <h2>In Cinemas</h2>
             {
               latest === undefined
-                ? new Array(20).fill(undefined).map(() => <CardSkeleton />)
+                ? new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
                 : <MovieCards
                   resolveLink={resolveUrl}
                   results={results} />

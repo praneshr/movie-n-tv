@@ -33,7 +33,7 @@ class Cast extends Component {
 
     const cast = data.map((person, i) => {
       if (i >= limit && !this.state.showAll) return undefined
-      return <div styleName="col-xs-12 col-sm-6 person">
+      return <div styleName="col-xs-12 col-sm-6 person" key={i}>
         <div styleName="row">
           <div styleName="col-xs-5 pic-container">
             <Link to={`/people/${person.id}`}>
