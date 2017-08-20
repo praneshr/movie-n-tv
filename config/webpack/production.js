@@ -1,12 +1,12 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HTMLwebpackPlugin from 'html-webpack-plugin'
-import autoprefixer from 'autoprefixer'
-import CWP from 'clean-webpack-plugin'
-import path from 'path'
-import webpack from 'webpack'
-import NameAllModulesPlugin from 'name-all-modules-plugin'
-import ManifestPlugin from 'webpack-manifest-plugin'
-import ChunkManifestPlugin from 'chunk-manifest-webpack-plugin'
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HTMLwebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const CWP = require('clean-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const NameAllModulesPlugin = require('name-all-modules-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 
 const entries = [
   'babel-polyfill',
@@ -23,7 +23,7 @@ const main = new ExtractTextPlugin({
   ignoreOrder: true,
 })
 
-export default {
+module.exports = {
   browser: {
     entry: {
       app: entries,

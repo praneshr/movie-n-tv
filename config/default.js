@@ -1,7 +1,7 @@
-import server from './server/default'
-import webpack from './webpack/default'
+const server = require('./server/default')
+const webpack = require('./webpack/default')
 
-export {
+module.exports = {
   webpack,
   server,
 }

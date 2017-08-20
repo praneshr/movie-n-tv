@@ -1,7 +1,7 @@
-import server from './server/production'
-import webpack from './webpack/production'
+const server = require('./server/production')
+const webpack = require('./webpack/production')
 
-export {
+module.exports = {
   webpack,
   server,
 }

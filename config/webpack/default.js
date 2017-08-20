@@ -1,8 +1,8 @@
-import HTMLwebpackPlugin from 'html-webpack-plugin'
-import autoprefixer from 'autoprefixer'
-import path from 'path'
-import webpack from 'webpack'
-import ManifestPlugin from 'webpack-manifest-plugin'
+const HTMLwebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 const entries = [
   'babel-polyfill',
@@ -11,7 +11,7 @@ const entries = [
   './app/index.jsx',
 ]
 
-export default {
+module.exports = {
   browser: {
     entry: entries,
     resolve: {
