@@ -27,11 +27,6 @@ module.exports = {
   browser: {
     entry: {
       app: entries,
-      core: [
-        'react',
-        'react-dom',
-        'jquery',
-      ],
     },
     module: {
       rules: [
@@ -160,6 +155,56 @@ module.exports = {
     ],
   },
   server: {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          loaders: [
+            {
+              loader: 'babel-loader',
+            },
+          ],
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.css$/,
+          loaders: [
+            'node-style-loader',
+            'css-loader',
+            'postcss-loader',
+          ],
+        },
+        {
+          test: /\.jpe?g$|\.gif$|\.png$|\.ico$|\.svg$/,
+          loader: 'file-loader',
+          options: {
+            publicPath: '/assets/',
+            emitFile: false,
+          },
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf)$/,
+          loader: 'url-loader',
+        },
+        {
+          test: /\.scss$/,
+          loaders: [
+            'css-loader/locals?minimize&modules&sourceMap&importLoaders=1&localIdentName=[hash:base64:5]',
+            'sass-loader',
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [
+                  path.join(process.cwd(), './app/globals/styles/_colors.scss'),
+                  path.join(process.cwd(), './app/globals/styles/_variables.scss'),
+                ],
+              },
+            },
+            'postcss-loader',
+          ],
+        },
+      ],
+    },
     plugins: [
       new CWP(['server.js'], {
         root: path.resolve(__dirname, '../../'),

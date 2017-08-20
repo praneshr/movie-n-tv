@@ -27,12 +27,12 @@ class Cast extends Component {
 
   render() {
     const {
-      data,
+      data: oData,
       limit,
       tvId,
     } = this.props
 
-    const filteredData = data
+    const filteredData = oData
       .slice()
       .filter(x => x.season_number !== 0)
 
@@ -41,50 +41,50 @@ class Cast extends Component {
       .reverse()
       .map((data, i) => {
         if (i >= limit && !this.state.showAll) return undefined
-        return <div styleName="col-xs-12 col-md-6 season" key={i}>
-          <div styleName="row">
-            <div styleName="col-xs-4 img">
-              <Link to={`/tv/${tvId}/seasons/${data.season_number}`}>
+        return <Link to={`/tv/${tvId}/seasons/${data.season_number}`}>
+          <div styleName="col-xs-12 col-md-6 season" key={i}>
+            <div styleName="row">
+              <div styleName="col-xs-4 img">
                 <ImageProgressive
-                  className={styles['poster']}
+                  className={styles.poster}
                   placeholder={`${imageBase}/w45${data.poster_path}`}
                   src={`${imageBase}/w500${data.poster_path}`}
                 />
-              </Link>
-            </div>
-            <div styleName="col-xs-6">
-              <div styleName="season-no">
-                Season {data.season_number}
               </div>
-              {
-                data.air_date
-                && <div styleName="air-date">
-                  {data.air_date.split('-')[0]}
+              <div styleName="col-xs-6">
+                <div styleName="season-no">
+                  Season {data.season_number}
                 </div>
-              }
-              <div styleName="episodes">
-                {data.episode_count} episodes
+                {
+                  data.air_date
+                  && <div styleName="air-date">
+                    {data.air_date.split('-')[0]}
+                  </div>
+                }
+                <div styleName="episodes">
+                  {data.episode_count} episodes
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       })
-      return (
-        <div styleName="seasons">
-          <div styleName="row">
-            {seasons}
-          </div>
-          {
-            filteredData.length > limit
-            && !this.state.showAll
-            && <button
-              onClick={this.handleShowAll}
-              styleName="button-primary">
-              View all {filteredData.length} seasons
-            </button>
-          }
+    return (
+      <div styleName="seasons">
+        <div styleName="row">
+          {seasons}
         </div>
-      )
+        {
+          filteredData.length > limit
+          && !this.state.showAll
+          && <button
+            onClick={this.handleShowAll}
+            styleName="button-primary">
+            View all {filteredData.length} seasons
+          </button>
+        }
+      </div>
+    )
   }
 }
 

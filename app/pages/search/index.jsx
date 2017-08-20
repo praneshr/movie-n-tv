@@ -83,7 +83,7 @@ class Search extends Component {
                     ref={el => (this.search = el)}
                     defaultValue={query}
                     type="text"
-                    placeholder="Find Movies, TV Shoes, and more..." />
+                    placeholder="Find Movies, TV Shows, and more..." />
                 </form>
               </div>
             </div>

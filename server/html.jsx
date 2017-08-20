@@ -14,6 +14,7 @@ export default (html) => {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta name="theme-color" content="#171717" />
         <title>Movie App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />

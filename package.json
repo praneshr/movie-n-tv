@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build:watch": "webpack --progress --colors --watch",
-    "build": "webpack --progress --colors",
-    "start": "node server.js",
-    "postinstall": "yarn run build",
-    "start:dev": "nodemon -w server.js server.js",
-    "deploy": "NODE_ENV=production yarn run build && yarn start"
+    "build": "NODE_ENV=production webpack --progress --colors",
+    "start": "NODE_ENV=production node server.js",
+    "start:dev": "node server.js",
+    "start:dev:watch": "nodemon -w server.js server.js",
+    "deploy:production": "now -e NODE_ENV=production --public"
   },
   "repository": {
     "type": "git",
