@@ -4,10 +4,11 @@ import _ from 'lodash'
 import config from 'config'
 import express from 'express'
 import path from 'path'
+import React from 'react'
 import wds from 'webpack-dev-middleware'
 import webpack from 'webpack'
 import whm from 'webpack-hot-middleware'
-import React from 'react'
+import compression from 'compression'
 import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
@@ -16,13 +17,17 @@ import store from '../app/store'
 import routes from '../app/router'
 import HTML from './html'
 
-const webpackConfig = _.omit(config.webpack.browser, 'watch')
 const serverConfig = config.server
+
 const app = express()
+
+app.use(compression())
 app.use(express.static(path.join(__dirname, 'build'), {
   index: false,
 }))
+
 if (process.env.NODE_ENV !== 'production') {
+  const webpackConfig = _.omit(config.webpack.browser, 'watch')
   const compiler = webpack(webpackConfig)
 
   app.use(wds(compiler, {
@@ -31,6 +36,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   app.use(whm(compiler))
 }
+
 
 app.get([
   '/',
