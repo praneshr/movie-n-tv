@@ -49,12 +49,17 @@ class MovieCards extends Component {
       type = 'default',
       limit,
       results,
+      force,
     } = this.props
     const items = results.map((result, i) => {
       if (i >= limit && !this.state.showAll) return undefined
       const rating = result.vote_average
       const link = this.props.resolveLink
-        ? this.props.resolveLink(result, i)
+        ? this.props.resolveLink(
+          force
+            ? Object.assign({}, result, { media_type: force })
+            : result,
+        )
         : ''
       const poster = this.resolvePoster(result)
       const title = truncate(result.title || result.name, {

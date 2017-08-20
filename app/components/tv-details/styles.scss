@@ -1,0 +1,112 @@
+.details {
+	.title {
+    font-size: 6vh;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 30px 0 10px;
+  }
+  .upcoming {
+    background-color: $green500;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 15px;
+    font-size: 12px;
+  }
+  .rating-container {
+    font-size: 4vh;
+    margin-bottom: 20px;
+    font-weight: 800;
+    .total {
+      font-size: 18px;
+      margin-left: 5px;
+      font-weight: 400;
+    }
+    .votes {
+      color: $grey400;
+      font-size: 14px;
+      font-weight: 400;
+      margin-left: 20px;
+    }
+  }
+  .cert-runtime {
+    margin-bottom: 20px;
+    color: $grey700;
+    span {
+      margin-right: 30px;
+      position: relative;
+      &:last-child {
+        margin-right: 0;
+        &:after {
+          content: none;
+        }
+      }
+      &:after {
+        content: " ";
+        width: 5px;
+        height: 5px;
+        background-color: $grey800;
+        position: absolute;
+        border-radius: 50%;
+        right: -20px;
+        top: 50%;
+        margin-top: -2.5px;
+      }
+    }
+    .cert {
+      font-weight: 600;
+      border-radius: 4px;
+      border: 1px solid $grey700;
+      padding: 1px 3px;
+    }
+  }
+  .description {
+    margin-top: 40px;
+    color: $grey500;
+    font-size: 18px;
+  }
+  .button-container {
+    margin-top: 40px;
+    display: flex;
+    button {
+      margin-right: 20px;
+      padding: 15px 20px;
+      min-width: 150px;
+    }
+  }
+
+  .cast {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  .images {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media all and (min-width: 768px) and (max-width: 1024px) {
+    .title {
+      font-size: 36px;
+    }
+    .rating-container {
+      font-size: 30px;
+    }
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .title {
+      font-size: 32px;
+    }
+    .rating-container {
+      font-size: 26px;
+    }
+  }
+}

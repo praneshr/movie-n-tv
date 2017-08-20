@@ -1,0 +1,27 @@
+.seasons {
+  .season {
+    .img {
+      margin-bottom: 30px;
+      overflow: hidden;
+      width: 134px;
+    }
+    .poster {
+      height: 150px;
+
+      background-position: center left;
+      background-size: contain;
+    }
+    .season-no {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .episodes {
+      margin-top: 15px;
+      color: $grey600;
+    }
+    .air-date {
+      margin-top: 5px;
+      color: $grey800;
+    }
+  }
+}

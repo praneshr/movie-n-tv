@@ -1,0 +1,89 @@
+.details {
+	.title {
+    font-size: 6vh;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 30px 0 10px;
+  }
+  .parent {
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .cert-runtime {
+    margin-bottom: 20px;
+    color: $grey700;
+    span {
+      margin-right: 30px;
+      position: relative;
+      &:last-child {
+        &:after {
+          content: none;
+        }
+      }
+      &:after {
+        content: " ";
+        width: 5px;
+        height: 5px;
+        background-color: $grey800;
+        position: absolute;
+        border-radius: 50%;
+        right: -20px;
+        top: 50%;
+        margin-top: -2.5px;
+      }
+    }
+  }
+  .description {
+    margin-top: 30px;
+    color: $grey500;
+    font-size: 18px;
+  }
+  .button-container {
+    margin-top: 40px;
+    display: flex;
+    button {
+      margin-right: 20px;
+      padding: 15px 20px;
+      min-width: 150px;
+    }
+  }
+
+  .cast {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  .images {
+    margin-top: 100px;
+    border-top: 1px solid $grey900;
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media all and (min-width: 768px) and (max-width: 1024px) {
+    .title {
+      font-size: 36px;
+    }
+    .rating-container {
+      font-size: 30px;
+    }
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .title {
+      font-size: 32px;
+    }
+    .rating-container {
+      font-size: 26px;
+    }
+  }
+}

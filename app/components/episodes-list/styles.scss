@@ -1,0 +1,64 @@
+.episodes {
+  .pic-container {
+    overflow: hidden;
+  }
+  .episode {
+    margin-bottom: 60px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .still-pic {
+      height: 100px;
+      background-position: center;
+      background-size: cover;
+      background-color: #212121;
+    }
+    .name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .overview {
+      margin-top: 10px;
+      color: $grey500;
+    }
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      .pic-container {
+        margin-bottom: 30px;
+      }
+      .episode {
+        margin-bottom: 1px solid $grey300;
+        padding-bottom: 20px;
+      }
+      .still-pic {
+        height: 200px;
+      }
+    }
+    @media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+      .still-pic {
+        height: 100px;
+      }
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .episode {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #1e1e1e;
+      padding-bottom: 30px;
+      &:last-child {
+        padding-bottom: 0;
+        border: none;
+      }
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .episode {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #1e1e1e;
+      padding-bottom: 20px;
+      &:last-child {
+        padding-bottom: 0;
+        border: none;
+      }
+    }
+  }
+}

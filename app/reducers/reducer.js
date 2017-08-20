@@ -8,6 +8,8 @@ const initialState = {
   movies: { },
   search: { },
   person: { },
+  tv: { },
+  season: { },
 }
 
 /*
@@ -33,6 +35,16 @@ const reducer = handleActions({
     const existingPerson = { ...state.person }
     const newSearch = { ...existingPerson, ...payload }
     return createState(state, newSearch, 'person')
+  },
+  [actionTypes.TV]: (state, { payload }) => {
+    const existingTv = { ...state.person }
+    const newSearch = { ...existingTv, ...payload }
+    return createState(state, newSearch, 'tv')
+  },
+  [actionTypes.SEASON]: (state, { payload }) => {
+    const existingSeason = { ...state.person }
+    const newSearch = { ...existingSeason, ...payload }
+    return createState(state, newSearch, 'season')
   },
 }, initialState)
 

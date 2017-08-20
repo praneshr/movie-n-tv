@@ -60,6 +60,7 @@ class People extends Component {
     } = this.props
     const personData = person[id]
     const backdrop = personData
+      && personData.images
       && (
         personData.images.profiles.length > 0
           ? personData.images.profiles[this.random(personData.images.profiles.length)].file_path

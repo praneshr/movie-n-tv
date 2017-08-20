@@ -32,7 +32,14 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(whm(compiler))
 }
 
-app.get(['/', '/movies', '/movies/*', '/search', '/people/*'], (req, res) => {
+app.get([
+  '/',
+  '/movies',
+  '/movies/*',
+  '/search',
+  '/people/*',
+  '/tv/*',
+], (req, res) => {
   match({ routes: routes(), location: req.url }, (err, redirectLocation, renderProps) => {
     if (err) {
       return res.status(500).send(err.message);

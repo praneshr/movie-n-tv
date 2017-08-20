@@ -22,3 +22,9 @@ export const movie = (id, query) =>
 
 export const person = (id, query) =>
   `${baseUrl}/person/${id}?${qp(query)}`
+
+export const tv = (id, query) =>
+  `${baseUrl}/tv/${id}?${qp(query)}`
+
+export const season = (id, seasonId, query) =>
+  `${baseUrl}/tv/${id}/season/${seasonId}?${qp(query)}`

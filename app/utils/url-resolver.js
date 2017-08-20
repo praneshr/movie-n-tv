@@ -1,11 +1,14 @@
+const encode = (str) => {
+  return btoa(unescape(encodeURIComponent(str)))
+}
 const resolveUrl = (result) => {
   switch (result.media_type) {
     case 'tv':
-      return ''
+      return `/tv/${result.id}/${encode(result.name)}`
     case 'person':
       return `/people/${result.id}`
     default:
-      return `/movies/${result.id}/${btoa(unescape(encodeURIComponent(result.title || '')))}`
+      return `/movies/${result.id}/${encode(result.title || '')}`
   }
 }
 

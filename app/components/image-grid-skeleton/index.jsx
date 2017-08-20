@@ -12,7 +12,7 @@ class componentName extends Component {
     const {
       count = 1,
     } = this.props
-    return <div>
+    return <div styleName="row">
       {
         new Array(count)
           .fill(undefined)

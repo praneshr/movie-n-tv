@@ -1,0 +1,29 @@
+.episodes {
+  .pic-container {
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+  .episode {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .still-pic {
+      height: 100px;
+      background-position: center;
+      background-size: cover;
+    }
+    .name {
+      font-size: 18px;
+      font-weight: 600;
+      height: 20px;
+      width: 60%;
+    }
+    .overview {
+      margin-top: 10px;
+      color: $grey500;
+      height: 40px;
+      width: 40%;
+    }
+  }
+}

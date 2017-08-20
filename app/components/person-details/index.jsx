@@ -41,7 +41,7 @@ class PersonDetails extends Component {
           <h2>Photos</h2>
           <Images
             limit={10}
-            data={data.images.profiles} />
+            data={data.images ? data.images.profiles : []} />
         </div>
         <div styleName="images">
           <h2>Appears in</h2>

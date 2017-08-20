@@ -6,6 +6,8 @@ import Movies from './pages/movies'
 import Movie from './pages/movie'
 import Search from './pages/search'
 import People from './pages/people'
+import Tv from './pages/tv'
+import Episodes from './pages/tv-episodes'
 
 export default () => (
   <Router
@@ -20,6 +22,14 @@ export default () => (
       <Route
         path="movies/:id/:name"
         component={Movie}
+      />
+      <Route
+        path="tv/:id/:name"
+        component={Tv}
+      />
+      <Route
+        path="tv/:id/seasons/:seasonId"
+        component={Episodes}
       />
       <Route
         path="/search"
