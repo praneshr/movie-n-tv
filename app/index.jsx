@@ -5,6 +5,14 @@ import ReactDOM from 'react-dom'
 import Router from './router'
 import store from './store'
 
+const registerSW = () => {
+  if ('serviceWorker' in navigator) {
+    navigator
+      .serviceWorker
+      .register('/assets/service-worker.js');
+  }
+}
+
 const DefaultStore = store()
 
 const renderNode = document.getElementById('app')
@@ -31,4 +39,5 @@ const renderPage = () => {
   renderIntoDOM(Router)
 }
 
+registerSW()
 export default renderPage()

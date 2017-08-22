@@ -7,6 +7,7 @@ const webpack = require('webpack')
 const NameAllModulesPlugin = require('name-all-modules-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 
 const entries = [
   './app/index.jsx',
@@ -141,7 +142,6 @@ module.exports = {
         },
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
-      new webpack.optimize.DedupePlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.LoaderOptionsPlugin({
         options: {
@@ -154,6 +154,14 @@ module.exports = {
           ],
           context: path.resolve(__dirname, '../../'),
         },
+      }),
+      new SWPrecacheWebpackPlugin({
+        cacheId: 'harlequin',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: '/offline',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/],
       }),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),
