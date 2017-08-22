@@ -4,6 +4,7 @@ const config = {
   assets: {
     js: [
       'manifest',
+      'vendor',
       'app',
     ],
     css: [

@@ -7,7 +7,7 @@ export default (html) => {
     return `<link rel="stylesheet" href="/assets/${manifest[`${k}.css`]}"></link>`
   })
   const js = config.server.assets.js.map((k) => {
-    return `<script src="/assets/${manifest[`${k}.js`]}"></script>`
+    return `<script src="/assets/${manifest[`${k}.js`]}" defer></script>`
   })
   return (`
     <!doctype html>
@@ -21,7 +21,7 @@ export default (html) => {
         ${css.join('\n')}
       </head>
       <body>
-      <div id="app"><div>${html}</div><div/>
+      <div id="app">${html}<div/>
         <script>
           window.webpackManifest=${JSON.stringify(chunkManifest)}
         </script>

@@ -3,3 +3,4 @@ build
 server.js
 *.server.js
 *.log
+stats.json

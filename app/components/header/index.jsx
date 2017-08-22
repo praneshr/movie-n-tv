@@ -3,21 +3,23 @@ import { browserHistory, Link } from 'react-router'
 import reactStyles from 'react-css-modules'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
-import $ from 'jquery'
 import style from './style'
 
 @reactStyles({ ...globalStyles, ...style }, { allowMultiple: true })
 @reactEasyBind
 export default class Sample extends Component {
-  componentDidMount () {
-    $(window).scroll(() => {
-      const scrollTop = $(document).scrollTop()
-      if (scrollTop > 99) {
-        $('#header').addClass(style.invert)
-      } else {
-        $('#header').removeClass(style.invert)
+  componentDidMount() {
+    document.onscroll = () => {
+      const scrollTop = (window.pageYOffset !== undefined)
+        ? window.pageYOffset
+        : (document.documentElement || document.body.parentNode || document.body).scrollTop
+      const hasInvert = this.header.classList.contains(style.invert)
+      if (scrollTop > 99 && !hasInvert) {
+        this.header.classList.add(style.invert)
+      } else if (scrollTop < 99 && hasInvert) {
+        this.header.classList.remove(style.invert)
       }
-    })
+    }
   }
 
   handleSearch(e) {
@@ -26,7 +28,7 @@ export default class Sample extends Component {
 
   render() {
     return (
-      <header styleName="row header" id="header">
+      <header styleName="row header" ref={(el) => { this.header = el }}>
         <div styleName="col-xs-6 logo">
           <Link to="/">
             Box Office

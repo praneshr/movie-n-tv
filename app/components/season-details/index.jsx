@@ -5,7 +5,6 @@ import globalStyles from 'global-styles'
 import styles from './styles'
 import { resolveUrl } from '../../utils'
 import Episodes from '../episodes-list'
-import Images from '../image-grid/async'
 import Seasons from '../seasons-list'
 import Genres from '../genres'
 

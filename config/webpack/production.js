@@ -9,7 +9,6 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 
 const entries = [
-  'babel-polyfill',
   './app/index.jsx',
 ]
 const vendor = new ExtractTextPlugin({
@@ -26,8 +25,14 @@ const main = new ExtractTextPlugin({
 module.exports = {
   browser: {
     entry: {
+      vendor: [
+        'react',
+        'react-dom',
+        'react-router',
+      ],
       app: entries,
     },
+    devtool: false,
     module: {
       rules: [
         {
@@ -98,7 +103,7 @@ module.exports = {
         return chunk.modules.map(m => path.relative(m.context, m.request)).join('_')
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'common',
+        name: 'vendor',
         minChunks: Infinity,
       }),
       new webpack.optimize.CommonsChunkPlugin({
@@ -136,6 +141,7 @@ module.exports = {
         },
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
+      new webpack.optimize.DedupePlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.LoaderOptionsPlugin({
         options: {

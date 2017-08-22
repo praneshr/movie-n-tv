@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:watch": "webpack --progress --colors --watch",
+    "build:stats": "webpack --profile --json > stats.json",
     "build": "NODE_ENV=production webpack --progress --colors",
     "start": "NODE_ENV=production node server.js",
     "start:dev": "node server.js",
@@ -60,10 +61,14 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "babel-register": "^6.18.0",
+    "bootstrap-sass": "^3.3.7",
+    "classnames": "^2.2.5",
     "compression": "^1.7.0",
+    "config": "^1.24.0",
     "express": "^4.14.0",
-    "lodash": "^4.17.2",
     "jquery": "^3.1.1",
+    "lodash": "^4.17.2",
     "lodash-es": "^4.17.4",
     "qs": "^6.5.0",
     "react": "^15.6.1",
@@ -78,14 +83,10 @@
     "react-progressive-image": "^0.1.2",
     "react-progressive-image-loading": "^3.0.1",
     "react-redux": "^4.4.6",
-    "babel-register": "^6.18.0",
-    "bootstrap-sass": "^3.3.7",
-    "classnames": "^2.2.5",
-    "config": "^1.24.0",
-    "styled-components": "^2.1.2",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
     "redux-actions": "^1.1.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "styled-components": "^2.1.2"
   }
 }

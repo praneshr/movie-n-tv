@@ -1,7 +1,6 @@
 import { Redirect, Route, Router, browserHistory } from 'react-router'
 import React from 'react'
 import Layout from './layout'
-import NotFound from './components/not_found/'
 import Movies from './pages/movies'
 import Movie from './pages/movie'
 import Search from './pages/search'

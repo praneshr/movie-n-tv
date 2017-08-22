@@ -7,10 +7,6 @@ import styles from './styles'
 export default class Genres extends React.Component {
   static propTypes = {
     data: React.PropTypes.array,
-  };
-
-  constructor(props) {
-    super(props);
   }
 
   render() {

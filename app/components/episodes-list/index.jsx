@@ -3,7 +3,6 @@ import ReactCSS from 'react-css-modules'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
-import { Link } from 'react-router'
 import Truncate from '../truncate'
 
 import styles from './styles'

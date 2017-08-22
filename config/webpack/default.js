@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer')
 const path = require('path')
 const webpack = require('webpack')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 
 const entries = [
   'babel-polyfill',
@@ -84,9 +85,9 @@ module.exports = {
       new ManifestPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
+      new ChunkManifestPlugin({
+        filename: 'chunk-manifest.json',
+        manifestVariable: 'webpackManifest',
       }),
       new webpack.LoaderOptionsPlugin({
         options: {

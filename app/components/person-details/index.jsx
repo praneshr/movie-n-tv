@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
 import globalStyles from 'global-styles'
-import truncate from 'lodash/truncate'
 import reactEasyBind from 'react-easy-bind'
 import { resolveUrl } from '../../utils'
 import styles from './styles'
