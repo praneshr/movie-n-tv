@@ -157,11 +157,12 @@ module.exports = {
       }),
       new SWPrecacheWebpackPlugin({
         cacheId: 'harlequin',
-        dontCacheBustUrlsMatching: /\.\w{8}\./,
-        filename: 'service-worker.js',
-        minify: true,
+        filename: '../service-worker.js',
+        // minify: true,
+        directoryIndex: '/',
+        dontCacheBustUrlsMatching: /./,
         navigateFallback: '/offline',
-        staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/],
+        staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/, /service-worker.js$/],
       }),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),

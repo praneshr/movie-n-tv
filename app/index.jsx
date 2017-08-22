@@ -7,9 +7,7 @@ import store from './store'
 
 const registerSW = () => {
   if ('serviceWorker' in navigator) {
-    navigator
-      .serviceWorker
-      .register('/assets/service-worker.js');
+    navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
   }
 }
 
