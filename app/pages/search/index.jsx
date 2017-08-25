@@ -1,5 +1,6 @@
 import globalStyles from 'global-styles'
 import ReactCSS from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import reactEasyBind from 'react-easy-bind'
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
@@ -12,6 +13,7 @@ import CardSkeleton from '../../components/card-skeleton'
 
 
 @connect(uiStates, uiActions)
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 @reactEasyBind
 class Search extends Component {

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 import Router from './router'
 import store from './store'
+import WithStyles from './with-style-context'
 
 const registerSW = () => {
   if ('serviceWorker' in navigator) {
@@ -19,7 +20,9 @@ const renderIntoDOM = (Node) => {
   ReactDOM.render(
     <Provider store={DefaultStore}>
       <AppContainer>
-        <Node />
+        <WithStyles onInsertCss={styles => styles._insertCss &&  styles._insertCss()}>
+          <Node />
+        </WithStyles>
       </AppContainer>
     </Provider>,
     renderNode,
@@ -39,10 +42,4 @@ const renderPage = () => {
 
 registerSW()
 
-// mark first paint
-if (requestAnimationFrame) {
-  requestAnimationFrame(() => {
-    performance.mark('first_paint')
-  })
-}
 export default renderPage()

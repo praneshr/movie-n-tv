@@ -126,7 +126,7 @@ module.exports = {
         {
           test: /\.css$/,
           loaders: [
-            'node-style-loader',
+            'isomorphic-style-loader',
             'css-loader',
             'postcss-loader',
           ],
@@ -146,7 +146,8 @@ module.exports = {
         {
           test: /\.scss$/,
           loaders: [
-            'css-loader/locals?minimize&modules&sourceMap&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+            'isomorphic-style-loader',
+            'css-loader?minimize&modules&sourceMap&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
             'sass-loader',
             {
               loader: 'sass-resources-loader',

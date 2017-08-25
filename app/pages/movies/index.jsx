@@ -1,5 +1,6 @@
 import globalStyles from 'global-styles'
 import reactStyles from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
@@ -12,6 +13,7 @@ import MovieBanner from '../../components/movie-banner/async'
 
 
 @connect(uiStates, uiActions)
+@withStyles(style)
 @reactStyles({ ...style, ...globalStyles }, { allowMultiple: true })
 export default class Movies extends Component {
 

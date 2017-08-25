@@ -8,6 +8,7 @@ const NameAllModulesPlugin = require('name-all-modules-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const entries = [
   './app/index.jsx',
@@ -22,6 +23,21 @@ const main = new ExtractTextPlugin({
   allChunks: true,
   ignoreOrder: true,
 })
+
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    minimize: true,
+    importLoaders: 1,
+    localIdentName: '[hash:base64:5]',
+  },
+}
+
+const fileLoader = {
+  test: /\.(woff|woff2|eot|ttf|png|ico|svg|gif|jpe?g)$/,
+  loader: 'file-loader',
+}
 
 module.exports = {
   browser: {
@@ -53,7 +69,7 @@ module.exports = {
           loaders: main.extract({
             fallbackLoader: 'style-loader',
             loader: [
-              'css-loader?modules&minimize&importLoaders=1&localIdentName=[hash:base64:5]',
+              cssLoader,
               'sass-loader',
               {
                 loader: 'sass-resources-loader',
@@ -68,14 +84,7 @@ module.exports = {
             ],
           }),
         },
-        {
-          test: /\.jpe?g$|\.gif$|\.png$|\.ico$|\.svg$/,
-          loader: 'file-loader',
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf)$/,
-          loader: 'url-loader',
-        },
+        fileLoader,
         {
           test: /\.jsx?$/,
           loader: 'babel-loader',
@@ -158,12 +167,22 @@ module.exports = {
       new SWPrecacheWebpackPlugin({
         cacheId: 'harlequin',
         filename: '../service-worker.js',
-        // minify: true,
+        minify: true,
         directoryIndex: '/',
         dontCacheBustUrlsMatching: /./,
         navigateFallback: '/offline',
         staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/, /service-worker.js$/],
       }),
+      new CopyWebpackPlugin([
+        {
+          from: './app/globals/assets/icons/',
+          to: './icons',
+        },
+        {
+          from: './app/app_manifest.json',
+          to: './',
+        },
+      ]),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),
       }),
@@ -184,27 +203,17 @@ module.exports = {
         {
           test: /\.css$/,
           loaders: [
-            'node-style-loader',
+            'isomorphic-style-loader',
             'css-loader',
             'postcss-loader',
           ],
         },
-        {
-          test: /\.jpe?g$|\.gif$|\.png$|\.ico$|\.svg$/,
-          loader: 'file-loader',
-          options: {
-            publicPath: '/assets/',
-            emitFile: false,
-          },
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf)$/,
-          loader: 'url-loader',
-        },
+        { ...fileLoader, ...{ options: { emitFile: false } } },
         {
           test: /\.scss$/,
           loaders: [
-            'css-loader/locals?minimize&modules&sourceMap&importLoaders=1&localIdentName=[hash:base64:5]',
+            'isomorphic-style-loader',
+            cssLoader,
             'sass-loader',
             {
               loader: 'sass-resources-loader',

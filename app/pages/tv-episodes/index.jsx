@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
 import { connect } from 'react-redux'
@@ -11,6 +12,7 @@ import DetailsSkeleton from '../../components/season-details-skeleton'
 
 
 @connect(uiStates, uiActions)
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Movie extends Component {
 

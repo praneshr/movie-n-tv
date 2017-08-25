@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ImageProgressive from 'react-progressive-bg-image'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ReactCSS from 'react-css-modules'
 import globalStyles from 'global-styles'
 
@@ -12,6 +13,7 @@ import DetailsSkeleton from '../../components/person-details-skeleton'
 
 
 @connect(uiStates, uiActions)
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class People extends Component {
 

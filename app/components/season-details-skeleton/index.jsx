@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
 import styles from './styles'
 import EpisodeSkeleton from '../episodes-list-skeleton'
 import CastSkeleton from '../cast-skeleton'
 
-@ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true})
+@withStyles(styles)
+@ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class DetailsSkeleton extends Component {
   render () {
     return (

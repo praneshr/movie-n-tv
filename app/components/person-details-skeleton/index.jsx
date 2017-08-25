@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
 import styles from './styles'
 import MovieCardSkeleton from '../card-skeleton'
 import ImagesSkeleton from '../image-grid-skeleton'
 
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 @reactEasyBind
 class PersonDetails extends Component {

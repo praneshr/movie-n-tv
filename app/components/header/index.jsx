@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 import reactStyles from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
 import style from './style'
 
+@withStyles(style)
 @reactStyles({ ...globalStyles, ...style }, { allowMultiple: true })
 @reactEasyBind
 export default class Sample extends Component {

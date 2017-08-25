@@ -12,6 +12,7 @@ import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
+import WithStyles from '../app/with-style-context'
 import store from '../app/store'
 import routes from '../app/router'
 import HTML from './html'
@@ -36,15 +37,10 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(whm(compiler))
 } else {
   app.use(express.static(path.join(__dirname, 'build'), {
-    maxAge: Infinity,
     etag: false,
     index: false,
-    setHeaders: (res) => {
-      res.setHeader('Cache-Control', 'public,max-age=31556952000, immutable')
-    },
   }))
 }
-
 
 app.get([
   '/',
@@ -68,15 +64,20 @@ app.get([
     //         items: [{id:0,text:"Initial State To do Item",editItem:false,completed:false}]
     //     }
     // }
+
+    const css = []
+
     const content = renderToString(
       <Provider store={store()}>
         <AppContainer>
-          <RouterContext {...renderProps} />
+          <WithStyles onInsertCss={styles => css.push(styles._getCss())}>
+            <RouterContext {...renderProps} />
+          </WithStyles>
         </AppContainer>
       </Provider>,
     )
 
-    const str = HTML(content)
+    const str = HTML(content, css)
 
     // store = createStore(allReducers,initialState)
     // initialState = store.getState() //JSON.stringify(store.getState())
