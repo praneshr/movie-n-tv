@@ -38,4 +38,11 @@ const renderPage = () => {
 }
 
 registerSW()
+
+// mark first paint
+if (requestAnimationFrame) {
+  requestAnimationFrame(() => {
+    performance.mark('first_paint')
+  })
+}
 export default renderPage()

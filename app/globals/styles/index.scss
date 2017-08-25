@@ -1,16 +1,13 @@
 @import "variables.scss";
 @import "colors.scss";
+@import "common.scss";
 @import "./bootstrap/index.scss";
 @import "./nucleo/nucleo.scss";
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900|Rubik:500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900');
 body {
     font-family: 'Nunito', sans-serif;
     color: $font-color;
     background-color: $brand-bg;
-}
-
-.title-font {
-    font-family: 'Rubik', sans-serif;
 }
 
 #lightboxBackdrop {
@@ -80,7 +77,6 @@ input[type="password"] {
   font-weight: 600;
   letter-spacing: 0.01em;
   i {
-    font-weight: 600;
     font-size: 20px;
     &:last-child {
         margin-left: 15px;
@@ -200,13 +196,5 @@ input[type="password"] {
   }
   &.good {
     color: $green600;
-  }
-}
-
-.sub-section {
-  margin-top: 100px;
-  border-top: 1px solid $grey900;
-  h2 {
-    margin-bottom: 30px;
   }
 }

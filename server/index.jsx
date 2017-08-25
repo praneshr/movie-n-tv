@@ -20,12 +20,11 @@ const serverConfig = config.get('server')
 
 const app = express()
 
+app.disable('x-powered-by')
 app.use(compression())
-app.use(express.static(path.join(__dirname, 'build'), {
-  index: false,
-}))
 
 if (process.env.NODE_ENV !== 'production') {
+  app.use(express.static(path.join(__dirname, 'build')))
   const webpackConfig = _.omit(config.get('webpack.browser'), 'watch')
   webpackConfig.plugins.reverse().pop()
   const compiler = webpack(webpackConfig)
@@ -35,6 +34,15 @@ if (process.env.NODE_ENV !== 'production') {
   }))
 
   app.use(whm(compiler))
+} else {
+  app.use(express.static(path.join(__dirname, 'build'), {
+    maxAge: Infinity,
+    etag: false,
+    index: false,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'public,max-age=31556952000, immutable')
+    },
+  }))
 }
 
 

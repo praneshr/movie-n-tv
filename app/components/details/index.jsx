@@ -87,26 +87,38 @@ class Details extends Component {
             </button>
           </a>
         </div>
-        <div styleName="cast">
-          <h2>Cast</h2>
+        <div styleName="sub-section cast">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-multiple-11"></i>
+            <h2>Cast</h2>
+          </div>
           <Cast
-            limit={7}
+            limit={8}
             data={data.credits.cast} />
         </div>
-        <div styleName="sub-section">
-          <h2>Reviews</h2>
+        <div styleName="sub-section reviews">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-chat-round-content"></i>
+            <h2>Reviews</h2>
+          </div>
           <Reviews data={data.reviews.results} />
         </div>
-        <div styleName="images">
-          <h2>Posters & Photos</h2>
+        <div styleName="sub-section images">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-album-2"></i>
+            <h2>Posters & Photos</h2>
+          </div>
           <Images
-            limit={5}
+            limit={4}
             data={data.images.posters} />
         </div>
         {
           data.similar.results.length > 0
-          && <div styleName="images">
-            <h2>Similar Movies</h2>
+          && <div styleName="sub-section similar">
+            <div styleName="sub-heading-with-icon">
+              <i styleName="nc-icon nc-copy"></i>
+              <h2>Similar Movies</h2>
+            </div>
             <MovieCard
               resolveLink={resolveUrl}
               type="thumbnail"

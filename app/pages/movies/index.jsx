@@ -61,7 +61,10 @@ export default class Movies extends Component {
         </div>
         <div styleName="container list">
           <div styleName="row">
-            <h2>In Cinemas</h2>
+            <div styleName="sub-heading-with-icon heading">
+              <i styleName="nc-icon nc-video-66"></i>
+              <h2>In Cinemas</h2>
+            </div>
             {
               latest === undefined
                 ? new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)

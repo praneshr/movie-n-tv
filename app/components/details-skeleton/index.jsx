@@ -17,11 +17,11 @@ class DetailsSkeleton extends Component {
         <div styleName="skeleton-placeholder description" />
         <div styleName="sub-section">
           <h2>Cast</h2>
-          <CastSkeleton count={5}/>
+          <CastSkeleton count={8}/>
         </div>
         <div styleName="sub-section">
           <h2>Posters & Photos</h2>
-          <ImgSkeleton count={5}/>
+          <ImgSkeleton count={4}/>
         </div>
       </div>
     )

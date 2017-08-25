@@ -53,19 +53,15 @@
     }
   }
 
-  .cast {
-    margin-top: 100px;
-    border-top: 1px solid $grey900;
-    h2 {
-      margin-bottom: 30px;
+  .seasons {
+    i {
+      color: $brand-seasons;
     }
   }
 
-  .images {
-    margin-top: 100px;
-    border-top: 1px solid $grey900;
-    h2 {
-      margin-bottom: 30px;
+  .episodes {
+    i {
+      color: $brand-episodes;
     }
   }
 

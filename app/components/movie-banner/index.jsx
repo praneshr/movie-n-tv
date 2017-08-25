@@ -30,13 +30,16 @@ class MovieBanner extends Component {
               </div>
             </div>
             <Link to={resolveUrl(latest)}>
-              <button styleName="button-primary play">Check it out</button>
+              <button styleName="button-primary play">
+                <span>Check it out</span>
+                <i styleName="nc-icon nc-tail-triangle-right"></i>
+              </button>
             </Link>
           </div>
         </div>
         <ImageProgressive
           placeholder={`${imageBase}/w45${latest.backdrop_path}`}
-          src={`${imageBase}/original${latest.backdrop_path}`}
+          src={`${imageBase}/w1280${latest.backdrop_path}`}
           style={{
             height: '100vh',
             backgroundSize: 'cover',

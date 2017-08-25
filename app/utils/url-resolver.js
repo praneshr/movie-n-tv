@@ -1,6 +1,5 @@
-const encode = (str) => {
-  return btoa(unescape(encodeURIComponent(str)))
-}
+import { encode } from './'
+
 const resolveUrl = (result) => {
   switch (result.media_type) {
     case 'tv':

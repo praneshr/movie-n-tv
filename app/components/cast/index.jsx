@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
+import LazyLoad from 'react-lazyload'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
@@ -37,11 +38,17 @@ class Cast extends Component {
         <div styleName="row">
           <div styleName="col-xs-5 pic-container">
             <Link to={`/people/${person.id}`}>
-              <ImageProgressive
-                className={styles['profile-pic']}
-                placeholder={`${imageBase}/w45${person.profile_path}`}
-                src={`${imageBase}/w185${person.profile_path}`}
-              />
+              <LazyLoad
+                height={100}
+                once
+                offset={100}
+                placeholder={<div styleName="profile-pic" />}>
+                <ImageProgressive
+                  className={styles['profile-pic']}
+                  placeholder={`${imageBase}/w45${person.profile_path}`}
+                  src={`${imageBase}/w185${person.profile_path}`}
+                />
+              </LazyLoad>
             </Link>
           </div>
           <div styleName="col-xs-7">

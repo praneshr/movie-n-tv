@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
+import LazyLoad from 'react-lazyload'
 import reactEasyBind from 'react-easy-bind'
 import Truncate from '../truncate'
 
@@ -21,18 +22,30 @@ class EpisodesList extends Component {
           <div styleName="col-xs-12 col-sm-4 col-lg-3">
             <div styleName="pic-container">
               <div styleName="hidden-xs hidden-sm">
-                <ImageProgressive
-                  className={styles['still-pic']}
-                  placeholder={`${imageBase}/w45${episode.still_path}`}
-                  src={`${imageBase}/w300${episode.still_path}`}
-                />
+                <LazyLoad
+                  offset={100}
+                  placeholder={<div styleName="still-pic" />}
+                  once
+                >
+                  <ImageProgressive
+                    className={styles['still-pic']}
+                    placeholder={`${imageBase}/w45${episode.still_path}`}
+                    src={`${imageBase}/w300${episode.still_path}`}
+                  />
+                </LazyLoad>
               </div>
               <div styleName="visible-xs visible-sm">
-                <ImageProgressive
-                  className={styles['still-pic']}
-                  placeholder={`${imageBase}/w45${episode.still_path}`}
-                  src={`${imageBase}/w780${episode.still_path}`}
-                />
+                <LazyLoad
+                  offset={100}
+                  placeholder={<div styleName="still-pic" />}
+                  once
+                >
+                  <ImageProgressive
+                    className={styles['still-pic']}
+                    placeholder={`${imageBase}/w45${episode.still_path}`}
+                    src={`${imageBase}/w780${episode.still_path}`}
+                  />
+                </LazyLoad>
               </div>
             </div>
           </div>

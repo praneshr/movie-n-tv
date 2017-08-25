@@ -3,6 +3,7 @@ import ReactCSS from 'react-css-modules'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
+import LazyLoad from 'react-lazyload'
 import { Link } from 'react-router'
 
 import styles from './styles'
@@ -45,11 +46,17 @@ class Cast extends Component {
           <div styleName="col-xs-12 col-md-6 season" key={i}>
             <div styleName="row">
               <div styleName="col-xs-4 img">
-                <ImageProgressive
-                  className={styles.poster}
-                  placeholder={`${imageBase}/w45${data.poster_path}`}
-                  src={`${imageBase}/w500${data.poster_path}`}
-                />
+                <LazyLoad
+                  offset={100}
+                  placeholder={<div styleName="poster" />}
+                  once
+                >
+                  <ImageProgressive
+                    className={styles.poster}
+                    placeholder={`${imageBase}/w45${data.poster_path}`}
+                    src={`${imageBase}/w500${data.poster_path}`}
+                  />
+                </LazyLoad>
               </div>
               <div styleName="col-xs-6">
                 <div styleName="season-no">

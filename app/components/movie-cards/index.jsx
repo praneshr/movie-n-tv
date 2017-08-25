@@ -2,6 +2,7 @@ import globalStyles from 'global-styles'
 import ReactCSS from 'react-css-modules'
 import ImageProgressive from 'react-progressive-bg-image'
 import cn from 'classnames'
+import LazyLoad from 'react-lazyload'
 import truncate from 'lodash-es/truncate'
 import { Link } from 'react-router'
 import React, { Component } from 'react'
@@ -69,11 +70,17 @@ class MovieCards extends Component {
         <div styleName={cn('col-xs-12 col-sm-6 col-md-4', type === 'thumbnail' ? 'col-lg-4' : 'col-lg-3')}>
           <div styleName={cn('card', type)}>
             <div>
-              <ImageProgressive
-                placeholder={`${imageBase}/w45${poster}`}
-                src={`${imageBase}/w500${poster}`}
-                className={styles.image}
-              />
+              <LazyLoad
+                offset={100}
+                placeholder={<div styleName="image" />}
+                once
+              >
+                <ImageProgressive
+                  placeholder={`${imageBase}/w45${poster}`}
+                  src={`${imageBase}/w500${poster}`}
+                  className={styles.image}
+                />
+              </LazyLoad>
             </div>
             <div styleName="movie-info">
               <div>

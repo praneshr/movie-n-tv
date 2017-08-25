@@ -8,18 +8,13 @@
     padding: 30px;
     border-radius: 8px;
     position: relative;
-    h2 {
+    .heading {
       margin: 0 0 50px 0;
-      font-weight: 800;
-      position: relative;
-      &:before {
-        content: "";
-        height: 5px;
-        width: 50px;
-        background-color: $brand-primary;
-        position: absolute;
-        left: 0;
-        bottom: -15px;
+      i {
+        color: $brand-movies;
+      }
+      h2 {
+        margin: 0;
       }
     }
   }

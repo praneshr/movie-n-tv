@@ -90,29 +90,41 @@ class Details extends Component {
             </button>
           </a>
         </div>
-        <div styleName="sub-section">
-          <h2>Seasons</h2>
+        <div styleName="sub-section seasons">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-player-19"></i>
+            <h2>Seasons</h2>
+          </div>
           <Seasons
             limit={4}
             tvId={data.id}
             data={data.seasons} />
         </div>
-        <div styleName="cast">
-          <h2>Top Cast</h2>
+        <div styleName="sub-section cast">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-multiple-11"></i>
+            <h2>Top Cast</h2>
+          </div>
           <Cast
-            limit={7}
+            limit={8}
             data={data.credits.cast} />
         </div>
-        <div styleName="images">
-          <h2>Posters & Photos</h2>
+        <div styleName="sub-section images">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-album-2"></i>
+            <h2>Posters & Photos</h2>
+          </div>
           <Images
-            limit={5}
+            limit={4}
             data={data.images.posters} />
         </div>
         {
           data.recommendations.results.length > 0
-          && <div styleName="images">
-            <h2>Recommended</h2>
+          && <div styleName="sub-section reco">
+            <div styleName="sub-heading-with-icon">
+              <i styleName="nc-icon nc-like-2"></i>
+              <h2>Recommended</h2>
+            </div>
             <MovieCard
               force="tv"
               resolveLink={resolveUrl}

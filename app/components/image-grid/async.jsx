@@ -4,5 +4,5 @@ import Skeleton from '../image-grid-skeleton'
 
 export default asyncComponent({
   resolve: () => import(/* webpackChunkName: "image-grid" */ './index'),
-  LoadingComponent: () => <Skeleton count={5} />,
+  LoadingComponent: () => <Skeleton count={4} />,
 })

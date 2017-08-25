@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactImages from 'react-images'
+import LazyLoad from 'react-lazyload'
 import ImageProgressive from 'react-progressive-bg-image'
 import reactEasyBind from 'react-easy-bind'
 import ReactCSS from 'react-css-modules'
@@ -68,11 +69,17 @@ class componentName extends Component {
         <div
           styleName="img-container"
           onClick={this.easyBind(this.onClickThumbnail, i)}>
-          <ImageProgressive
-            className={styles.thumbnail}
-            placeholder={`${imageBase}/w92${x.file_path}`}
-            src={`${imageBase}/w500${x.file_path}`}
-          />
+          <LazyLoad
+            placeholder={<div styleName="thumbnail" />}
+            offset={100}
+            once
+          >
+            <ImageProgressive
+              className={styles.thumbnail}
+              placeholder={`${imageBase}/w45${x.file_path}`}
+              src={`${imageBase}/w342${x.file_path}`}
+            />
+          </LazyLoad>
         </div>
       </div>
     })

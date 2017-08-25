@@ -76,19 +76,33 @@
     }
   }
 
+  .seasons {
+    i {
+      color: $brand-seasons;
+    }
+  }
+
   .cast {
-    margin-top: 100px;
-    border-top: 1px solid $grey900;
-    h2 {
-      margin-bottom: 30px;
+    i {
+      color: $brand-cast;
     }
   }
 
   .images {
-    margin-top: 100px;
-    border-top: 1px solid $grey900;
-    h2 {
-      margin-bottom: 30px;
+    i {
+      color: $brand-photos;
+    }
+  }
+
+  .similar {
+    i {
+      color: $brand-similar;
+    }
+  }
+
+  .reco {
+    i {
+      color: $brand-reco;
     }
   }
 

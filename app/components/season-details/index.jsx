@@ -63,14 +63,20 @@ class Details extends Component {
             </a>
           </div>
         }
-        <div styleName="sub-section">
-          <h2>Episodes</h2>
+        <div styleName="sub-section episodes">
+          <div styleName="sub-heading-with-icon">
+            <i styleName="nc-icon nc-player-48"></i>
+            <h2>Episodes</h2>
+          </div>
           <Episodes data={data.episodes} />
         </div>
         {
           otherSeasons.length > 0
-          && <div styleName="sub-section">
-            <h2>Other Seasons</h2>
+          && <div styleName="sub-section seasons">
+            <div styleName="sub-heading-with-icon">
+              <i styleName="nc-icon nc-player-19"></i>
+              <h2>Other Seasons</h2>
+            </div>
             <Seasons
               tvId={tvData.id}
               data={otherSeasons}
