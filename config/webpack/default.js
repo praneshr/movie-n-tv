@@ -3,7 +3,6 @@ const autoprefixer = require('autoprefixer')
 const path = require('path')
 const webpack = require('webpack')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 
 const entries = [
   'babel-polyfill',
@@ -78,17 +77,13 @@ module.exports = {
     plugins: [
       // Have the html-webpack-plugin as the first plugin else dev build will break
       new HTMLwebpackPlugin({
-        filename: '../index.html',
-        template: path.join(process.cwd(), './app/views/index.ejs'),
+        filename: '../index.hbs',
+        template: './app/views/index.hbs',
         inject: false,
       }),
       new ManifestPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new ChunkManifestPlugin({
-        filename: 'chunk-manifest.json',
-        manifestVariable: 'webpackManifest',
-      }),
       new webpack.LoaderOptionsPlugin({
         options: {
           resolve: {},

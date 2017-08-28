@@ -24,7 +24,9 @@ export default class Movies extends Component {
 
   componentDidMount() {
     if (!this.props.ui.nowPlaying) {
-      this.props.actions.getNowPlaying()
+      this.props.actions.getNowPlaying({
+        region: 'US',
+      })
       .then(({ data }) => {
         this.props.actions.nowPlaying(data)
       })

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="theme-color" content="#212121" />
+    <link rel="manifest" href="/assets/app_manifest.json" />
+    <title>Movie App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <style id="critical">
+      \{{{criticalCSS}}}
+    </style>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:400,700,800,900" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700,800,900" /></noscript>
+    {{#each htmlWebpackPlugin.files.css}}
+    <link rel=preload href={{this}} as=style onload="this.rel='stylesheet'" />
+    <noscript><link rel=stylesheet href={{this}} /></noscript>
+    {{/each}}
+  </head>
+  <body>
+    <div id="app">\{{{html}}}</div>
+    {{#each htmlWebpackPlugin.files.js}}
+    <script src={{this}} defer=defer></script>
+    {{/each}}
+  </body>
+</html>

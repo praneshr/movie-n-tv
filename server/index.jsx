@@ -7,6 +7,7 @@ import React from 'react'
 import wds from 'webpack-dev-middleware'
 import webpack from 'webpack'
 import whm from 'webpack-hot-middleware'
+import exphbs from 'express-handlebars'
 import compression from 'compression'
 import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
@@ -15,7 +16,6 @@ import { AppContainer } from 'react-hot-loader'
 import WithStyles from '../app/with-style-context'
 import store from '../app/store'
 import routes from '../app/router'
-import HTML from './html'
 
 const serverConfig = config.get('server')
 
@@ -23,6 +23,9 @@ const app = express()
 
 app.disable('x-powered-by')
 app.use(compression())
+app.engine('.hbs', exphbs({ extname: '.hbs' }))
+app.set('view engine', '.hbs')
+app.set('views', './build')
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(express.static(path.join(__dirname, 'build')))
@@ -77,13 +80,14 @@ app.get([
       </Provider>,
     )
 
-    const str = HTML(content, css)
-
     // store = createStore(allReducers,initialState)
     // initialState = store.getState() //JSON.stringify(store.getState())
     // if (renderProps) {
     // }
-    return res.send(str)
+    return res.render('index', {
+      criticalCSS: css.join(''),
+      html: content,
+    })
   })
 })
 

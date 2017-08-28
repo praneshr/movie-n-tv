@@ -6,9 +6,9 @@ const path = require('path')
 const webpack = require('webpack')
 const NameAllModulesPlugin = require('name-all-modules-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const entries = [
   './app/index.jsx',
@@ -90,6 +90,10 @@ module.exports = {
           loader: 'babel-loader',
           exclude: /node_modules/,
         },
+        {
+          test: /\.hbs$/,
+          loader: 'handlebars-loader',
+        },
       ],
     },
     output: {
@@ -102,8 +106,15 @@ module.exports = {
       vendor,
       main,
       new HTMLwebpackPlugin({
-        filename: '../index.html',
-        template: './app/views/index.ejs',
+        filename: '../index.hbs',
+        template: './app/views/index.hbs',
+        inject: false,
+        minify: {
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          removeEmptyAttributes: true,
+          removeComments: true,
+        },
       }),
       new webpack.NamedModulesPlugin(),
       new webpack.NamedChunksPlugin((chunk) => {
@@ -118,13 +129,11 @@ module.exports = {
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'manifest',
+        minChunks: Infinity,
       }),
+      new FaviconsWebpackPlugin(path.join(process.cwd(), './app/globals/assets/logo.png')),
       new NameAllModulesPlugin(),
       new ManifestPlugin(),
-      new ChunkManifestPlugin({
-        filename: 'chunk-manifest.json',
-        manifestVariable: 'webpackManifest',
-      }),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify('production'),
@@ -171,7 +180,13 @@ module.exports = {
         directoryIndex: '/',
         dontCacheBustUrlsMatching: /./,
         navigateFallback: '/offline',
-        staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/, /service-worker.js$/],
+        staticFileGlobsIgnorePatterns: [
+          /\.map$/,
+          /\.html$/,
+          /service-worker.js$/,
+          /\.hbs$/,
+          /icons-*/,
+        ],
       }),
       new CopyWebpackPlugin([
         {
