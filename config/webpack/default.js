@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const ManifestPlugin = require('webpack-manifest-plugin')
 
 const entries = [
-  'babel-polyfill',
   'react-hot-loader/patch',
   'webpack-hot-middleware/client',
   './app/index.jsx',
@@ -65,6 +64,10 @@ module.exports = {
           test: /\.jsx?$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
+        },
+        {
+          test: /\.hbs$/,
+          loader: 'handlebars-loader',
         },
       ],
     },
@@ -161,8 +164,8 @@ module.exports = {
     output: {
       path: path.resolve('./'),
       filename: 'server.js',
-      libraryTarget: 'commonjs2',
       publicPath: '/assets/',
+      libraryTarget: 'commonjs2',
     },
     plugins: [
       new webpack.LoaderOptionsPlugin({

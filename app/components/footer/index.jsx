@@ -1,15 +1,35 @@
 import React from 'react'
 import reactStyles from 'react-css-modules'
-
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import tmdb from 'global-assets/tmdb.svg'
+import globalStyles from 'global-styles'
 import styles from './style'
 
-@reactStyles(styles)
+
+@withStyles({ ...styles, ...globalStyles })
+@reactStyles({ ...styles, ...globalStyles }, { allowMultiple: true })
 export default class Footer extends React.Component {
 
   render() {
     return (
-      <div styleName="footer">
-      </div>
+      <footer styleName="footer">
+        <div styleName="container">
+          <div styleName="row content">
+            <div styleName="col-xs-6">
+              <div styleName="copy">
+                &copy; 2017 Pranesh Ravi
+              </div>
+            </div>
+            <div styleName="col-xs-6">
+              <div styleName="powered-by">
+                <a href="https://themoviedb.org" target="_blank" rel="noopener noreferrer">
+                  <img src={tmdb} alt="powered-by" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     );
   }
 }

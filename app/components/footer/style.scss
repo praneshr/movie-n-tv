@@ -1,4 +1,15 @@
 .footer {
-  height: 300px;
-  background-color: $brand-bg;
+  padding: 20px 0;
+  background-color: $brand-bg-placeholder;
+  margin-top: 30px;
+  .content {
+    @include flex-align-center;
+  }
+  .copy {
+    font-weight: 600;
+  }
+  .powered-by {
+    width: 100px;
+    float: right;
+  }
 }

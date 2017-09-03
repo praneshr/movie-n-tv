@@ -6,11 +6,11 @@
   "scripts": {
     "build:watch": "webpack --progress --colors --watch",
     "build:stats": "webpack --profile --json > stats.json",
-    "build": "NODE_ENV=production webpack --progress --colors",
-    "start": "NODE_ENV=production node server.js",
+    "build": "webpack --progress --colors",
+    "start": "node server.js",
     "start:dev": "node server.js",
     "start:dev:watch": "nodemon -w server.js server.js",
-    "deploy:production": "now -e NODE_ENV=production --public"
+    "deploy": "now --public --docker"
   },
   "repository": {
     "type": "git",
