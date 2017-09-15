@@ -26,6 +26,10 @@
       font-size: 20px;
     }
   }
+  .button-container {
+    @include flex-center;
+    justify-content: space-between;
+  }
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) {
   .search {

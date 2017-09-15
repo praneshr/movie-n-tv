@@ -3,7 +3,7 @@ import ReactCSS from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import reactEasyBind from 'react-easy-bind'
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import { connect } from 'react-redux'
 import { resolveUrl } from '../../utils'
 import { uiStates, uiActions } from '../../redux-connect'
@@ -28,11 +28,19 @@ class Search extends Component {
     this.fetchData(nextProps)
   }
 
-  onSubmit(e) {
-    const val = this.search.value
-    if (val) {
-      browserHistory.push(`/search?query=${val}&page=1`)
+  onChange(e) {
+    if(this.id) {
+      window.clearTimeout(this.id)
     }
+    const val = e.target.value
+    this.id = window.setTimeout(() => {
+      if (val) {
+        browserHistory.push(`/search?query=${val}&page=1`)
+      }
+    }, 800);
+  }
+
+  onSubmit(e) {
     this.search.blur()
     e.preventDefault()
   }
@@ -49,11 +57,11 @@ class Search extends Component {
     const defaultQueries = {
       search_type: 'ngram',
     }
-    if (!search[query.query || ''] && query.query) {
+    if (!search[`${query.query}__${query.page}` || ''] && query.query && query.page) {
       props.actions.getSearch({ ...defaultQueries, ...query })
       .then(({ data }) => {
         props.actions.search({
-          [query.query]: data,
+          [`${query.query}__${query.page}`]: data,
         })
       })
     }
@@ -67,10 +75,11 @@ class Search extends Component {
       location: {
         query: {
           query = '',
+          page = 1,
         },
       },
     } = this.props
-    const data = search[query]
+    const data = search[`${query}__${page}`]
     return (
       <div styleName="search">
         <div styleName="container">
@@ -82,6 +91,7 @@ class Search extends Component {
               <div styleName="input-container">
                 <form onSubmit={this.onSubmit}>
                   <input
+                    onChange={this.onChange}
                     ref={el => (this.search = el)}
                     defaultValue={query}
                     type="text"
@@ -101,7 +111,33 @@ class Search extends Component {
                       </div>
                       <Cards
                         results={data.results}
-                        resolveLink={resolveUrl}/>
+                        resolveLink={resolveUrl} />
+                      <div>
+                        <div styleName="button-container">
+                          {
+                            page > 1
+                            && <div className="back">
+                              <Link to={`/search?query=${query}&page=${parseInt(page, 10) - 1}`}>
+                                <button styleName="button-primary">
+                                  <i styleName="nc-icon nc-tail-triangle-left"></i>
+                                  <span styleName="hidden-xs hidden-sm">Back</span>
+                                </button>
+                              </Link>
+                            </div>
+                          }
+                          {
+                            page < data.total_pages
+                            && <div className="next">
+                              <Link to={`/search?query=${query}&page=${parseInt(page, 10) + 1}`}>
+                                <button styleName="button-primary">
+                                  <i styleName="nc-icon nc-tail-triangle-right"></i>
+                                  <span styleName="hidden-xs hidden-sm">Next</span>
+                                </button>
+                              </Link>
+                            </div>
+                          }
+                        </div>
+                      </div>
                     </div>
                   : new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
                 : ''
