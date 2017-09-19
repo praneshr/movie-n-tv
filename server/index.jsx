@@ -43,8 +43,12 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(whm(compiler))
 } else {
   app.use(express.static(path.join(__dirname, 'build'), {
+    maxAge: Infinity,
     etag: false,
     index: false,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'public,max-age=31556952000, immutable')
+    },
   }))
 }
 
