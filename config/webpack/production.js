@@ -179,7 +179,11 @@ module.exports = {
         minify: true,
         directoryIndex: '/',
         dontCacheBustUrlsMatching: /./,
-        navigateFallback: '/offline',
+        navigateFallback: '/',
+        mergeStaticsConfig: true,
+        dynamicUrlToDependencies: {
+          '/': ['./app/views/index.hbs'],
+        },
         staticFileGlobsIgnorePatterns: [
           /\.map$/,
           /\.html$/,

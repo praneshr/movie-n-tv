@@ -46,6 +46,8 @@ const reducer = handleActions({
     const newSearch = { ...existingSeason, ...payload }
     return createState(state, newSearch, 'season')
   },
+  [actionTypes.OFFLINE]: (state, { payload }) =>
+    createState(state, payload, 'offline'),
 }, initialState)
 
 export default reducer

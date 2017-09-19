@@ -7,6 +7,7 @@ const search = createAction(actionTypes.SEARCH)
 const person = createAction(actionTypes.PERSON)
 const tv = createAction(actionTypes.TV)
 const season = createAction(actionTypes.SEASON)
+const offline = createAction(actionTypes.OFFLINE)
 
 export default {
   nowPlaying,
@@ -15,4 +16,5 @@ export default {
   person,
   tv,
   season,
+  offline,
 }

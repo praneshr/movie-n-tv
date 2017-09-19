@@ -22,7 +22,10 @@ const serverConfig = config.get('server')
 const app = express()
 
 app.disable('x-powered-by')
-app.use(compression())
+app.use(compression({
+  threshold: 0,
+  filter: () => true,
+}))
 app.engine('.hbs', exphbs({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
 app.set('views', './build')

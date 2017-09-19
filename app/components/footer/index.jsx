@@ -1,5 +1,6 @@
 import React from 'react'
 import reactStyles from 'react-css-modules'
+import LazyLoad from 'react-lazyload'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import tmdb from 'global-assets/tmdb.svg'
 import globalStyles from 'global-styles'
@@ -23,7 +24,12 @@ export default class Footer extends React.Component {
             <div styleName="col-xs-6">
               <div styleName="powered-by">
                 <a href="https://themoviedb.org" target="_blank" rel="noopener noreferrer">
-                  <img src={tmdb} alt="powered-by" />
+                  <LazyLoad
+                    placeholder={<div styleName="image" />}
+                    once
+                  >
+                    <img src={tmdb} alt="powered-by" />
+                  </LazyLoad>
                 </a>
               </div>
             </div>

@@ -2375,6 +2375,10 @@ express-handlebars@^3.0.0:
     object.assign "^4.0.3"
     promise "^7.0.0"
 
+express-stream@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/express-stream/-/express-stream-0.8.0.tgz#07aede4be246c450981bf3a27597bb05f6cbe12f"
+
 express@^4.13.3, express@^4.14.0:
   version "4.15.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.4.tgz#032e2253489cf8fce02666beca3d11ed7a2daed1"

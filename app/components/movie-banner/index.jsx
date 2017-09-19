@@ -39,7 +39,7 @@ class MovieBanner extends Component {
         </div>
         <ImageProgressive
           placeholder={`${imageBase}/w45${latest.backdrop_path}`}
-          src={`${imageBase}/w1280${latest.backdrop_path}`}
+          src={`${imageBase}/${window.innerWidth < 700 ? 'w780' : 'original'}${latest.backdrop_path}`}
           style={{
             height: '100vh',
             backgroundSize: 'cover',

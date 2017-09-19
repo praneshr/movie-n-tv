@@ -77,7 +77,7 @@ class Movie extends Component {
             && <ImageProgressive
               className={styles['movie-banner']}
               placeholder={`${imageBase}/w45${movieDetails.backdrop_path}`}
-              src={`${imageBase}/original${movieDetails.backdrop_path}`}
+              src={`${imageBase}/${window.innerWidth < 700 ? 'w780' : 'original'}${movieDetails.backdrop_path}`}
             />
           }
           <div styleName="fade-out" />
