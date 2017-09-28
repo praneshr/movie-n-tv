@@ -10,7 +10,8 @@
     "start": "node server.js",
     "start:dev": "node server.js",
     "start:dev:watch": "nodemon -w server.js server.js",
-    "deploy": "now --public --docker"
+    "deploy": "now --public --docker",
+    "test": "echo"
   },
   "repository": {
     "type": "git",

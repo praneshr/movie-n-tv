@@ -1,0 +1,4 @@
+language: node_js
+script:
+  - npm i -g now-pipeline
+  - now-pipeline --alias bx.now.sh
