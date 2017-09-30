@@ -9,6 +9,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const S3Plugin = require('webpack-s3-plugin')
 
 const entries = [
   './app/index.jsx',
@@ -100,7 +101,7 @@ module.exports = {
       path: path.resolve('./build/assets/'),
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
-      publicPath: '/assets/',
+      publicPath: '//d2pgf1t6llmies.cloudfront.net/',
     },
     plugins: [
       vendor,
@@ -202,6 +203,17 @@ module.exports = {
           to: './',
         },
       ]),
+      new S3Plugin({
+        exclude: /.*\.(html|hbs|map)/,
+        s3Options: {
+          accessKeyId: process.env.ACCESS_KEY,
+          secretAccessKey: process.env.SECRET_KEY,
+        },
+        s3UploadOptions: {
+          Bucket: 'harlequin-prod',
+          CacheControl: 'max-age=31556952000, immutable',
+        },
+      }),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),
       }),

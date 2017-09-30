@@ -11,6 +11,10 @@ RUN NODE_ENV=default yarn install
 
 COPY . /app
 
+RUN export NODE_ENV=$NODE_ENV
+RUN export ACCESS_KEY=$ACCESS_KEY
+RUN export SECRET_KEY=$SECRET_KEY
+
 RUN yarn run build
 
 EXPOSE 3000
