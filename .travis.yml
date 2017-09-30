@@ -3,5 +3,5 @@ node_js:
 - '8'
 install: false
 script:
-  - npm i -g now-pipeline
-  - now-pipeline --alias bx.now.sh
+  - npm i -g now
+  - now -t $NOW_TOKEN --public --docker
