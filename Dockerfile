@@ -2,8 +2,6 @@ FROM node:8.4.0
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-ENV NODE_ENV production
-
 WORKDIR /app
 
 ADD package.json /app

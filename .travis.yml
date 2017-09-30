@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '8'
-install: false
+install: true
 script:
   - npm i -g now
-  - now -t $NOW_TOKEN --public --docker
+  - now -t $NOW_TOKEN --alias $NOW_ALIAS -e NODE_ENV=$NODE_ENV -e ACCESS_KEY=$ACCESS_KEY -e SECRET_KEY=$SECRET_KEY --public --docker
