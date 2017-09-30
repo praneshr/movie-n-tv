@@ -1,18 +1,11 @@
-FROM node:8.4.0
+FROM node:8.2-alpine
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+ENV NODE_ENV production
+
+EXPOSE 3000
 
 WORKDIR /app
 
-ADD package.json /app
-ADD yarn.lock /app
-
-RUN NODE_ENV=default yarn install
-
-COPY . /app
-
-RUN NODE_ENV=production ACCESS_KEY=$ACCESS_KEY SECRET_KEY=$SECRET_KEY yarn run build
-
-EXPOSE 3000
+ADD . /app
 
 CMD node server.js

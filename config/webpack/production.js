@@ -10,6 +10,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const S3Plugin = require('webpack-s3-plugin')
+const mimeTypes = require('mime-types')
 
 const entries = [
   './app/index.jsx',
@@ -212,6 +213,7 @@ module.exports = {
         s3UploadOptions: {
           Bucket: 'harlequin-prod',
           CacheControl: 'max-age=31556952000, immutable',
+          ContentType: fileName => mimeTypes.lookup(fileName),
         },
       }),
       new CWP(['build'], {
