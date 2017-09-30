@@ -1,0 +1,26 @@
+- pipeline: "Movie App"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "master"
+  actions:
+  - action: "Build & Deploy Staging"
+    type: "BUILD"
+    docker_image_name: "library/node"
+    docker_image_tag: "latest"
+    execute_commands:
+    - "NODE_ENV=default yarn install"
+    - "yarn run build"
+    - "npm i -g --unsafe-perm now"
+    - "now -t $NOW_TOKEN --public --docker -d"
+  - action: "Success Email"
+    type: "EMAIL"
+    title: "${execution.pipeline.name} - Run ${execution.id} (Passed)"
+    content: "Pipeline Passed"
+    send_as_html: true
+    recipients: "praneshpranesh@gmail.com"
+  - action: "Failure Email"
+    type: "EMAIL"
+    trigger_time: "ON_FAILURE"
+    title: "${execution.pipeline.name} - Run ${execution.id} (Failed)"
+    content: "Pipeline Failed"
+    send_as_html: true
+    recipients: "praneshpranesh@gmail.com"
