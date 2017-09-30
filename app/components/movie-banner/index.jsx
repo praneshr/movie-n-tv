@@ -18,9 +18,6 @@ class MovieBanner extends Component {
       <div>
         <div styleName="text-content">
           <div>
-            <div styleName="type">
-              In Cinemas
-            </div>
             <div styleName="title">
               {latest.title}
             </div>

@@ -25,7 +25,7 @@ export default class Footer extends React.Component {
               <div styleName="powered-by">
                 <a href="https://themoviedb.org" target="_blank" rel="noopener noreferrer">
                   <LazyLoad
-                    placeholder={<div styleName="image" />}
+                    placeholder={<div styleName="image">Powered By</div>}
                     once
                   >
                     <img src={tmdb} alt="powered-by" />
