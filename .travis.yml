@@ -4,4 +4,4 @@ node_js:
 install: true
 script:
   - npm i -g now
-  - now -t $NOW_TOKEN -e NODE_ENV -e ACCESS_KEY -e SECRET_KEY --public --docker
+  - now -t $NOW_TOKEN -e NODE_ENV -e ACCESS_KEY -e SECRET_KEY --public --npm
