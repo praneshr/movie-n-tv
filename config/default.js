@@ -1,7 +1,12 @@
-const server = require('./server/default')
-const webpack = require('./webpack/default')
-
-module.exports = {
-  webpack,
-  server,
+const config = {
+  host: 'localhost',
+  port: 3000,
+  assets: {
+    css: [],
+    js: [
+      'main',
+    ],
+  },
 }
+
+module.exports = config

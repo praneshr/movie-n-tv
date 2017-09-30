@@ -6,4 +6,4 @@ script:
   - NODE_ENV=default yarn install
   - yarn run build
   - npm i -g now
-  - now -t $NOW_TOKEN --public --docker
+  - now -t $NOW_TOKEN --public --docker -d

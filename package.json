@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Movie app",
   "main": "index.js",
-  "now": {
-    "alias": "bx-test.now.sh"
-  },
   "scripts": {
     "build:watch": "webpack --progress --colors --watch",
     "build:stats": "webpack --profile --json > stats.json",
@@ -28,14 +25,8 @@
   "homepage": "https://github.com/praneshr/smart-react-boilerplate#readme",
   "devDependencies": {
     "autoprefixer": "^6.5.3",
-    "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.8",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-webpack-alias": "^2.1.2",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "clean-webpack-plugin": "^0.1.14",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.0",
@@ -70,6 +61,12 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-plugin-webpack-alias": "^2.1.2",
+    "babel-core": "^6.18.2",
     "babel-register": "^6.18.0",
     "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",

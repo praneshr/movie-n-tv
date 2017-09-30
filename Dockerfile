@@ -2,10 +2,14 @@ FROM node:8.2-alpine
 
 ENV NODE_ENV production
 
-EXPOSE 3000
-
 WORKDIR /app
 
-ADD . /app
+COPY . /app
+
+RUN ls
+
+RUN yarn install
+
+EXPOSE 3000
 
 CMD node server.js

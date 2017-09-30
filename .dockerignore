@@ -1,6 +1,5 @@
 node_modules
-build
-server.js
-*.server.js
 *.log
 stats.json
+app
+server

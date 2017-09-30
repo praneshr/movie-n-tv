@@ -205,7 +205,7 @@ module.exports = {
         },
       ]),
       new S3Plugin({
-        exclude: /.*\.(html|hbs|map)/,
+        exclude: /.*\.(html|hbs|map|cache)/,
         s3Options: {
           accessKeyId: process.env.ACCESS_KEY,
           secretAccessKey: process.env.SECRET_KEY,
@@ -241,7 +241,7 @@ module.exports = {
             'postcss-loader',
           ],
         },
-        { ...fileLoader, ...{ options: { emitFile: false } } },
+        Object.assign({}, fileLoader, { options: { emitFile: false } }),
         {
           test: /\.scss$/,
           loaders: [

@@ -4,9 +4,6 @@ import config from 'config'
 import express from 'express'
 import path from 'path'
 import React from 'react'
-import wds from 'webpack-dev-middleware'
-import webpack from 'webpack'
-import whm from 'webpack-hot-middleware'
 import exphbs from 'express-handlebars'
 import compression from 'compression'
 import { match, RouterContext } from 'react-router'
@@ -16,8 +13,6 @@ import { AppContainer } from 'react-hot-loader'
 import WithStyles from '../app/with-style-context'
 import store from '../app/store'
 import routes from '../app/router'
-
-const serverConfig = config.get('server')
 
 const app = express()
 
@@ -31,8 +26,12 @@ app.set('view engine', '.hbs')
 app.set('views', './build')
 
 if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack')
+  const wds = require('webpack-dev-middleware')
+  const whm = require('webpack-hot-middleware')
+  const wconfig = require('../config/webpack/default.js')
   app.use(express.static(path.join(__dirname, 'build')))
-  const webpackConfig = _.omit(config.get('webpack.browser'), 'watch')
+  const webpackConfig = _.omit(wconfig, 'watch')
   webpackConfig.plugins.reverse().pop()
   const compiler = webpack(webpackConfig)
 
@@ -98,6 +97,6 @@ app.get([
   })
 })
 
-app.listen(process.env.PORT || serverConfig.port, () => {
-  console.log(`Listening at http://localhost:${serverConfig.port}/`)
+app.listen(process.env.PORT || config.port, () => {
+  console.log(`Listening at http://localhost:${config.port}/`)
 })

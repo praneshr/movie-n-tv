@@ -6,7 +6,7 @@
    [
     "babel-plugin-webpack-alias",
     {
-      "config": "./webpack.config.babel.js"
+      "config": "./webpack.config.js"
     }
   ]
  ]
