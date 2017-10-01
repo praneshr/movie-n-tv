@@ -19,12 +19,12 @@ const checkStatus = async () => {
     throw new Error(`Deployment failed for ${latestDeployment.name} at ${latestDeployment.url}`)
   }
   if (latestDeployment.state !== 'READY') {
-    console.log(`Deploying ${latestDeployment.name} at ${latestDeployment.url}`)
-    sleep(5)
+    console.log(`[WAITING]: Deploying ${latestDeployment.name} at ${latestDeployment.url}`)
+    sleep(30)
     checkStatus()
       .catch(err => console.error(err))
   } else {
-    console.log(`Deployed ${latestDeployment.name} at ${latestDeployment.url}`)
+    console.log(`\n[DONE]: Deployed ${latestDeployment.name} at ${latestDeployment.url}`)
   }
   return null
 }
