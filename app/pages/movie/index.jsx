@@ -85,12 +85,24 @@ class Movie extends Component {
         {
           movieDetails
           && <Helmet title={`${movieDetails.title} - Box Office`}>
+            <meta name="description" content={movieDetails.overview} />
             <meta content={`${imageBase}/w500${movieDetails.poster_path}`} property="og:image" />
             <meta content="Box Office" property="og:site_name" />
             <meta content="object" property="og:type" />
             <meta content={movieDetails.title} property="og:title" />
             <meta content={`https://bx.now.sh/movies/${id}`} property="og:url" />
             <meta content={movieDetails.overview} property="og:description" />
+
+            <meta name="twitter:card" value="summary_large_image" />
+            <meta name="twitter:site" value="@pranesh_ravi" />
+            <meta name="twitter:creator" value="@pranesh_ravi" />
+            <meta name="twitter:title" content={movieDetails.title} />
+            <meta name="twitter:description" content={movieDetails.overview} />
+            <meta name="twitter:image" content={`${imageBase}/w500${movieDetails.poster_path}`} />
+            <meta name="twitter:label1" content="Rating" />
+            <meta name="twitter:value1" content={`${movieDetails.vote_average.toFixed(1)}/10`} />
+            <meta name="twitter:label2" content="Year" />
+            <meta name="twitter:value2" content={`${movieDetails.release_date.split('-')[0]}`} />
           </Helmet>
         }
         <div styleName="banner">

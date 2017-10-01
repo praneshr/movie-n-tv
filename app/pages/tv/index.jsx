@@ -91,6 +91,17 @@ class Movie extends Component {
             <meta content={tvDetails.name} property="og:title" />
             <meta content={`https://bx.now.sh/tv/${id}`} property="og:url" />
             <meta content={tvDetails.overview} property="og:description" />
+
+            <meta name="twitter:card" value="summary_large_image" />
+            <meta name="twitter:site" value="@pranesh_ravi" />
+            <meta name="twitter:creator" value="@pranesh_ravi" />
+            <meta name="twitter:title" content={tvDetails.name} />
+            <meta name="twitter:description" content={tvDetails.overview} />
+            <meta name="twitter:image" content={`${imageBase}/w500${tvDetails.poster_path}`} />
+            <meta name="twitter:label1" content="Rating" />
+            <meta name="twitter:value1" content={`${tvDetails.vote_average.toFixed(1)}/10`} />
+            <meta name="twitter:label2" content="Year" />
+            <meta name="twitter:value2" content={`${tvDetails.release_date.split('-')[0]}`} />
           </Helmet>
         }
         <div styleName="banner">

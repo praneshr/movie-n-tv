@@ -78,10 +78,6 @@ app.get([
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
 
-    const userAgent = req.get('User-Agent')
-    if (userAgent.includes('bot')) {
-
-    }
     const data = await seo(renderProps.location.pathname, renderProps.params)
 
     const css = []
@@ -99,13 +95,14 @@ app.get([
       </Provider>,
     )
     const helmet = Helmet.renderStatic()
+    const regex = / data-react-helmet="true"/g
 
     return res.render('index', {
       criticalCSS: css.join(''),
       html: content,
       init,
-      helmetTitle: helmet.title.toString(),
-      helmetMeta: helmet.meta.toString(),
+      helmetTitle: helmet.title.toString().replace(regex, ''),
+      helmetMeta: helmet.meta.toString().replace(regex, ''),
     })
   })
 })

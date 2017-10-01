@@ -61,7 +61,7 @@ export default class Movies extends Component {
         <Helmet>
           <title>Box Office - Movies, Tv Shows, Celebrities and more</title>
           <meta name="author" content="Pranesh Ravi" />
-          <meta name="description" content="Lorem ipsum" />
+          <meta name="description" content="New Movies In Theaters" />
 
           <meta content={logo} property="og:image" />
           <meta content="Box Office" property="og:site_name" />
@@ -69,6 +69,13 @@ export default class Movies extends Component {
           <meta content="Movies" property="og:title" />
           <meta content="https://bx.now.sh/movies" property="og:url" />
           <meta content="New Movies In Theaters" property="og:description" />
+
+          <meta name="twitter:card" value="summary_large_image" />
+          <meta name="twitter:site" value="@pranesh_ravi" />
+          <meta name="twitter:creator" value="@pranesh_ravi" />
+          <meta name="twitter:title" content="Movies" />
+          <meta name="twitter:description" content="New Movies In Theaters" />
+          <meta name="twitter:image" content={logo} />
         </Helmet>
         <div styleName="banner">
           <MovieBanner latest={banner} />

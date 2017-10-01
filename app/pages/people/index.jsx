@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import truncate from 'lodash-es/truncate'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import ImageProgressive from 'react-progressive-bg-image'
@@ -89,7 +90,14 @@ class People extends Component {
             <meta content="object" property="og:type" />
             <meta content={personData.name} property="og:title" />
             <meta content={`https://bx.now.sh/people/${id}`} property="og:url" />
-            <meta content={personData.biography} property="og:description" />
+            <meta content={truncate(personData.biography, { length: 150 })} property="og:description" />
+
+            <meta name="twitter:card" value="summary_large_image" />
+            <meta name="twitter:site" value="@pranesh_ravi" />
+            <meta name="twitter:creator" value="@pranesh_ravi" />
+            <meta name="twitter:title" content={personData.title} />
+            <meta name="twitter:description" content={truncate(personData.biography, { length: 150 })} />
+            <meta name="twitter:image" content={`${imageBase}/w500${personData.profile_path}`} />
           </Helmet>
         }
         <div styleName="banner">
