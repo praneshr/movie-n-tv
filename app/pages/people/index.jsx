@@ -87,7 +87,7 @@ class People extends Component {
             <meta content={`${imageBase}/w500${personData.profile_path}`} property="og:image" />
             <meta content="Box Office" property="og:site_name" />
             <meta content="object" property="og:type" />
-            <meta content="People" property="og:title" />
+            <meta content={personData.name} property="og:title" />
             <meta content={`https://bx.now.sh/people/${id}`} property="og:url" />
             <meta content={personData.biography} property="og:description" />
           </Helmet>

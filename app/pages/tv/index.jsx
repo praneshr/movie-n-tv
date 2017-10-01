@@ -88,7 +88,7 @@ class Movie extends Component {
             <meta content={`${imageBase}/w500${tvDetails.poster_path}`} property="og:image" />
             <meta content="Box Office" property="og:site_name" />
             <meta content="object" property="og:type" />
-            <meta content="Tv Show" property="og:title" />
+            <meta content={tvDetails.name} property="og:title" />
             <meta content={`https://bx.now.sh/tv/${id}`} property="og:url" />
             <meta content={tvDetails.overview} property="og:description" />
           </Helmet>
