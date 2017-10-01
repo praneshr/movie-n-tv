@@ -16,12 +16,13 @@ const checkStatus = async () => {
   const sortedDeployments = deployments.sort((a, b) => b.created - a.created)
   const latestDeployment = sortedDeployments[0]
   if (['BUILD_ERROR', 'DEPLOYMENT_ERROR'].includes(latestDeployment.state)) {
-    return new Error(`Deployment failed for ${latestDeployment.name} at ${latestDeployment.url}`)
+    throw new Error(`Deployment failed for ${latestDeployment.name} at ${latestDeployment.url}`)
   }
   if (latestDeployment.state !== 'READY') {
     console.log(`Deploying ${latestDeployment.name} at ${latestDeployment.url}`)
     sleep(5)
     checkStatus()
+      .catch(err => console.error(err))
   } else {
     console.log(`Deployed ${latestDeployment.name} at ${latestDeployment.url}`)
   }
@@ -29,3 +30,4 @@ const checkStatus = async () => {
 }
 
 checkStatus()
+  .catch(err => console.error(err))
