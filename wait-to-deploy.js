@@ -22,8 +22,10 @@ const checkStatus = async () => {
     console.log(`Deploying ${latestDeployment.name} at ${latestDeployment.url}`)
     sleep(5)
     checkStatus()
+  } else {
+    console.log(`Deployed ${latestDeployment.name} at ${latestDeployment.url}`)
   }
-  return console.log(`Deployed ${latestDeployment.name} at ${latestDeployment.url}`)
+  return null
 }
 
 checkStatus()
