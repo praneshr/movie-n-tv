@@ -1,8 +1,10 @@
 const store = {
-  nowPlaying: {
-    results: [],
-  },
   offline: false,
+  movies: { },
+  search: { },
+  person: { },
+  tv: { },
+  season: { },
 }
 
 export default store

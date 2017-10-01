@@ -1,12 +1,10 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
 
 import reducers from '../reducers/'
 
 export default function configureStore() {
-  const store = createStore(reducers, compose(
-    applyMiddleware(thunk),
-  ))
+  const store = createStore(reducers, window.init, applyMiddleware(thunk))
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept('../reducers/', () => {
       /* eslint global-require: 0 */

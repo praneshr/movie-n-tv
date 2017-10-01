@@ -48,6 +48,6 @@ const reducer = handleActions({
   },
   [actionTypes.OFFLINE]: (state, { payload }) =>
     createState(state, payload, 'offline'),
-}, initialState)
+}, {})
 
 export default reducer

@@ -6,7 +6,7 @@
   left: 0;
   z-index: 10;
   color: $white;
-  margin: 0;
+  margin: 0 !important;
   @include flex-align-center;
   transition: all 0.1s linear;
   &.invert {

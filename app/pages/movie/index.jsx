@@ -3,6 +3,7 @@ import ReactCSS from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ImageProgressive from 'react-progressive-bg-image'
 import globalStyles from 'global-styles'
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
 import { imageBase } from '../../APIs/config/'
@@ -63,6 +64,7 @@ class Movie extends Component {
     const {
       params: {
         id,
+        name,
       },
       ui: {
         movies,
@@ -71,6 +73,20 @@ class Movie extends Component {
     const movieDetails = movies[id]
     return (
       <div styleName="movie-detail">
+        <Helmet>
+          <title>{name}</title>
+        </Helmet>
+        {
+          movieDetails
+          && <Helmet>
+            <meta content={`${imageBase}/w500${movieDetails.poster_path}`} property="og:image" />
+            <meta content="Box Office" property="og:site_name" />
+            <meta content="object" property="og:type" />
+            <meta content="Movies" property="og:title" />
+            <meta content={`https://bx.now.sh/${id}/${name}`} property="og:url" />
+            <meta content={movieDetails.overview} property="og:description" />
+          </Helmet>
+        }
         <div styleName="banner">
           {
             movieDetails

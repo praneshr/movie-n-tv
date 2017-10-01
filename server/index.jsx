@@ -4,15 +4,24 @@ import config from 'config'
 import express from 'express'
 import path from 'path'
 import React from 'react'
+import Helmet from 'react-helmet'
 import exphbs from 'express-handlebars'
 import compression from 'compression'
+import thunk from 'redux-thunk'
+import { applyMiddleware, createStore } from 'redux'
 import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
+import reducers from '../app/reducers'
 import WithStyles from '../app/with-style-context'
-import store from '../app/store'
 import routes from '../app/router'
+import latestMovies from './get-latest-movies'
+import initialStore from '../app/store/initial-store'
+
+let movies = {}
+
+latestMovies(movies)
 
 const app = express()
 
@@ -32,11 +41,11 @@ if (process.env.NODE_ENV !== 'production') {
   const wconfig = require('../config/webpack/default.js')
   app.use(express.static(path.join(__dirname, 'build')))
   const webpackConfig = _.omit(wconfig, 'watch')
-  webpackConfig.plugins.reverse().pop()
-  const compiler = webpack(webpackConfig)
+  webpackConfig.browser.plugins.reverse().pop()
+  const compiler = webpack(webpackConfig.browser)
 
   app.use(wds(compiler, {
-    publicPath: webpackConfig.output.publicPath,
+    publicPath: webpackConfig.browser.output.publicPath,
   }))
 
   app.use(whm(compiler))
@@ -75,9 +84,12 @@ app.get([
     // }
 
     const css = []
+    const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] } }
+    const init = JSON.stringify(runTimeStore)
+    const store = createStore(reducers, runTimeStore, applyMiddleware(thunk))
 
     const content = renderToString(
-      <Provider store={store()}>
+      <Provider store={store}>
         <AppContainer>
           <WithStyles onInsertCss={styles => css.push(styles._getCss())}>
             <RouterContext {...renderProps} />
@@ -85,14 +97,14 @@ app.get([
         </AppContainer>
       </Provider>,
     )
+    const helmet = Helmet.renderStatic()
 
-    // store = createStore(allReducers,initialState)
-    // initialState = store.getState() //JSON.stringify(store.getState())
-    // if (renderProps) {
-    // }
     return res.render('index', {
       criticalCSS: css.join(''),
       html: content,
+      init,
+      helmetTitle: helmet.title.toString(),
+      helmetMeta: helmet.meta.toString(),
     })
   })
 })

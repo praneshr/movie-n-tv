@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    \{{{helmetTitle}}}
+    \{{{helmetMeta}}}
     <meta charSet="utf-8" />
     <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#151515">
     <link rel="manifest" href="/assets/app_manifest.json" />
-    <title>Movie App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <style id="critical">
@@ -27,5 +30,6 @@
     {{#each htmlWebpackPlugin.files.js}}
     <script src={{this}} defer=defer></script>
     {{/each}}
+    <script>window.init = \{{{init}}}</script>
   </body>
 </html>

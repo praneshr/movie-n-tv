@@ -7,7 +7,7 @@ import store from './store'
 import WithStyles from './with-style-context'
 
 const registerSW = () => {
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
     navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
   }
 }

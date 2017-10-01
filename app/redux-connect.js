@@ -3,7 +3,7 @@ import { actions } from './actions'
 import { APIs } from './APIs/'
 
 const uiStates = states => ({
-  ui: states.reducer,
+  ui: states,
 })
 
 const uiActions = dispatch => ({
