@@ -19,11 +19,11 @@ export default () => (
         component={Movies}
       />
       <Route
-        path="movies/:id/:name"
+        path="movies/:id"
         component={Movie}
       />
       <Route
-        path="tv/:id/:name"
+        path="tv/:id"
         component={Tv}
       />
       <Route

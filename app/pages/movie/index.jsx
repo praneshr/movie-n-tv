@@ -17,6 +17,13 @@ import DetailsSkeleton from '../../components/details-skeleton'
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Movie extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      mounted: false,
+    }
+  }
+
   fetchData(props) {
     const {
       params: {
@@ -39,7 +46,10 @@ class Movie extends Component {
 
   }
 
-  componentDidMount () {
+  componentDidMount() {
+    this.setState({
+      mounted: true,
+    })
     this.fetchData(this.props)
   }
 
@@ -64,7 +74,6 @@ class Movie extends Component {
     const {
       params: {
         id,
-        name,
       },
       ui: {
         movies,
@@ -73,27 +82,25 @@ class Movie extends Component {
     const movieDetails = movies[id]
     return (
       <div styleName="movie-detail">
-        <Helmet>
-          <title>{name}</title>
-        </Helmet>
         {
           movieDetails
-          && <Helmet>
+          && <Helmet title={`${movieDetails.title} - Box Office`}>
             <meta content={`${imageBase}/w500${movieDetails.poster_path}`} property="og:image" />
             <meta content="Box Office" property="og:site_name" />
             <meta content="object" property="og:type" />
-            <meta content="Movies" property="og:title" />
-            <meta content={`https://bx.now.sh/${id}/${name}`} property="og:url" />
+            <meta content="Movie" property="og:title" />
+            <meta content={`https://bx.now.sh/movies/${id}`} property="og:url" />
             <meta content={movieDetails.overview} property="og:description" />
           </Helmet>
         }
         <div styleName="banner">
           {
             movieDetails
+            && this.state.mounted
             && <ImageProgressive
               className={styles['movie-banner']}
               placeholder={`${imageBase}/w45${movieDetails.backdrop_path}`}
-              src={`${imageBase}/${window.innerWidth < 700 ? 'w780' : 'original'}${movieDetails.backdrop_path}`}
+              src={`${imageBase}/original${movieDetails.backdrop_path}`}
             />
           }
           <div styleName="fade-out" />
@@ -103,7 +110,7 @@ class Movie extends Component {
             <div styleName="col-md-4 col-xs-8">
               <div styleName="poster">
                 {
-                  movieDetails
+                  (movieDetails && this.state.mounted)
                   ? this.getleftPane(movieDetails)
                   : <div styleName="skeleton-placeholder poster-img placeholder" />
                 }
@@ -111,7 +118,7 @@ class Movie extends Component {
             </div>
             <div styleName="col-md-8 col-xs-12">
               {
-                movieDetails
+                (movieDetails && this.state.mounted)
                   ? <Details data={movieDetails} />
                   : <DetailsSkeleton />
               }

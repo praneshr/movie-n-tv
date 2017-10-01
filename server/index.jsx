@@ -1,4 +1,5 @@
 import 'babel-register'
+import 'babel-polyfill'
 import _ from 'lodash'
 import config from 'config'
 import express from 'express'
@@ -18,6 +19,7 @@ import WithStyles from '../app/with-style-context'
 import routes from '../app/router'
 import latestMovies from './get-latest-movies'
 import initialStore from '../app/store/initial-store'
+import seo from './get-seo-data'
 
 let movies = {}
 
@@ -68,23 +70,22 @@ app.get([
   '/people/*',
   '/tv/*',
 ], (req, res) => {
-  match({ routes: routes(), location: req.url }, (err, redirectLocation, renderProps) => {
+  match({ routes: routes(), location: req.url }, async (err, redirectLocation, renderProps) => {
     if (err) {
       return res.status(500).send(err.message);
     }
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
-    // let markup,
-    // store,
-    // initialState = {todoReducer:
-    //     {
-    //         items: [{id:0,text:"Initial State To do Item",editItem:false,completed:false}]
-    //     }
-    // }
+
+    const userAgent = req.get('User-Agent')
+    if (userAgent.includes('bot')) {
+
+    }
+    const data = await seo(renderProps.location.pathname, renderProps.params)
 
     const css = []
-    const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] } }
+    const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] }, ...data }
     const init = JSON.stringify(runTimeStore)
     const store = createStore(reducers, runTimeStore, applyMiddleware(thunk))
 

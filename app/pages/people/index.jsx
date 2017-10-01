@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 import ImageProgressive from 'react-progressive-bg-image'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ReactCSS from 'react-css-modules'
@@ -17,7 +18,17 @@ import DetailsSkeleton from '../../components/person-details-skeleton'
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class People extends Component {
 
-  componentDidMount () {
+  constructor() {
+    super()
+    this.state = {
+      mounted: false,
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      mounted: true,
+    })
     const {
       params: {
         id,
@@ -70,10 +81,22 @@ class People extends Component {
       )
     return (
       <div styleName="people">
+        {
+          personData
+          && <Helmet title={`${personData.name} - Box Office`}>
+            <meta content={`${imageBase}/w500${personData.profile_path}`} property="og:image" />
+            <meta content="Box Office" property="og:site_name" />
+            <meta content="object" property="og:type" />
+            <meta content="People" property="og:title" />
+            <meta content={`https://bx.now.sh/people/${id}`} property="og:url" />
+            <meta content={personData.biography} property="og:description" />
+          </Helmet>
+        }
         <div styleName="banner">
           <div styleName="image-container">
             {
               personData
+              && this.state.mounted
               && <img src={`${imageBase}/w342${backdrop}`} alt=""/>
             }
           </div>
@@ -84,7 +107,7 @@ class People extends Component {
             <div styleName="col-md-4 col-xs-9">
               <div styleName="poster">
                 {
-                  personData
+                  (personData && this.state.mounted)
                   ? this.getleftPane(personData)
                   : <div styleName="skeleton-placeholder poster-img placeholder" />
                 }
@@ -92,7 +115,7 @@ class People extends Component {
             </div>
             <div styleName="col-md-8 col-xs-12">
               {
-                personData
+                (personData && this.state.mounted)
                   ? <Details data={personData} />
                   : <DetailsSkeleton />
               }
