@@ -6,8 +6,6 @@ WORKDIR /app
 
 COPY . /app
 
-RUN ls
-
 RUN yarn install
 
 EXPOSE 3000
