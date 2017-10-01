@@ -6,11 +6,11 @@ const path = require('path')
 const webpack = require('webpack')
 const NameAllModulesPlugin = require('name-all-modules-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const S3Plugin = require('webpack-s3-plugin')
 const mimeTypes = require('mime-types')
+const OfflinePlugin = require('offline-plugin')
 
 const entries = [
   './app/index.jsx',
@@ -102,7 +102,7 @@ module.exports = {
       path: path.resolve('./build/assets/'),
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
-      publicPath: '//d2pgf1t6llmies.cloudfront.net/',
+      publicPath: 'https://d2pgf1t6llmies.cloudfront.net/',
     },
     plugins: [
       vendor,
@@ -175,24 +175,30 @@ module.exports = {
           context: path.resolve(__dirname, '../../'),
         },
       }),
-      new SWPrecacheWebpackPlugin({
-        cacheId: 'harlequin',
-        filename: '../service-worker.js',
-        minify: true,
-        directoryIndex: '/',
-        dontCacheBustUrlsMatching: /./,
-        navigateFallback: '/',
-        mergeStaticsConfig: true,
-        dynamicUrlToDependencies: {
-          '/': ['./app/views/index.hbs'],
+      new OfflinePlugin({
+        caches: {
+          main: [
+            '*.js',
+            '*.css',
+          ],
         },
-        staticFileGlobsIgnorePatterns: [
-          /\.map$/,
-          /\.html$/,
-          /service-worker.js$/,
-          /\.hbs$/,
-          /icons-*/,
+        cacheMaps: [
+          {
+            match: requestUrl => new URL(requestUrl.pathname, location),
+            requestTypes: ['cross-origin', 'navigate'],
+          },
         ],
+        version: () => { },
+        externals: ['/', '/movies'],
+        ServiceWorker: {
+          output: '../sw.js',
+          scope: '/',
+          cacheName: 'harlequin',
+          navigateFallback: '/',
+          publicPath: '/sw.js',
+          minify: true,
+        },
+        AppCache: false,
       }),
       new CopyWebpackPlugin([
         {
@@ -205,7 +211,7 @@ module.exports = {
         },
       ]),
       new S3Plugin({
-        exclude: /.*\.(html|hbs|map|cache)/,
+        exclude: /.*\.(html|hbs|map|cache)|sw.js/,
         s3Options: {
           accessKeyId: process.env.ACCESS_KEY,
           secretAccessKey: process.env.SECRET_KEY,

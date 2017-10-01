@@ -1,3 +1,4 @@
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import React from 'react'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
@@ -6,11 +7,7 @@ import Router from './router'
 import store from './store'
 import WithStyles from './with-style-context'
 
-const registerSW = () => {
-  if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-    navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
-  }
-}
+OfflinePluginRuntime.install();
 
 const DefaultStore = store()
 
@@ -39,7 +36,5 @@ const renderPage = () => {
   }
   renderIntoDOM(Router)
 }
-
-registerSW()
 
 export default renderPage()
