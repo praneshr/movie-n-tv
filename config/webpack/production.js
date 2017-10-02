@@ -185,7 +185,8 @@ module.exports = {
         },
         cacheMaps: [
           {
-            match: requestUrl => new URL(requestUrl.pathname, location),
+            match: /(d2pgf1t6llmies.cloudfront.net\/).*/g,
+            to: url => `/${url.split('/')[1]}`,
             requestTypes: ['cross-origin', 'navigate'],
           },
         ],
