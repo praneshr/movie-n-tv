@@ -16,7 +16,7 @@ const DefaultStore = store()
 const renderNode = document.getElementById('app')
 
 const renderIntoDOM = (Node) => {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <Provider store={DefaultStore}>
       <AppContainer>
         <WithStyles onInsertCss={styles => styles._insertCss &&  styles._insertCss()}>

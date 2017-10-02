@@ -1,7 +1,7 @@
 import reactStyles from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../redux-connect'
 import styles from './style'
@@ -43,9 +43,4 @@ export default class Root extends Component {
       </div>
     )
   }
-}
-
-Root.propTypes = {
-  children: PropTypes.element.isRequired,
-  actions: PropTypes.shape(),
 }

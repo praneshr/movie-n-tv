@@ -5,9 +5,6 @@ import styles from './styles'
 
 @ReactCSS({ ...styles }, { allowMultiple: true })
 export default class Genres extends React.Component {
-  static propTypes = {
-    data: React.PropTypes.array,
-  }
 
   render() {
     const g = this.props.data.map((g, i) => {
