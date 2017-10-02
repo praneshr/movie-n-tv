@@ -31,7 +31,7 @@
   <body>
     <div id="app">\{{{html}}}</div>
     {{#each htmlWebpackPlugin.files.js}}
-    <script src={{this}} defer=defer></script>
+    <script src={{this}} defer=defer crossorigin=anonymous></script>
     {{/each}}
     <script>window.init = \{{{init}}}</script>
   </body>
