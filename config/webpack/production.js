@@ -181,6 +181,7 @@ module.exports = {
           main: [
             '*.js',
             '*.css',
+            '/',
           ],
         },
         cacheMaps: [
@@ -191,14 +192,12 @@ module.exports = {
           },
         ],
         version: () => { },
-        externals: ['/', '/movies'],
         ServiceWorker: {
           output: '../sw.js',
           scope: '/',
           cacheName: 'harlequin',
           navigateFallback: '/',
           publicPath: '/sw.js',
-          minify: true,
         },
         AppCache: false,
       }),
