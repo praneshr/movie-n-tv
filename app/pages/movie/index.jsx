@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
 import { imageBase } from '../../APIs/config/'
 import styles from './styles'
-import Details from '../../components/details/async'
+import Details from '../../components/details'
 import DetailsSkeleton from '../../components/details-skeleton'
 
 
@@ -130,7 +130,7 @@ class Movie extends Component {
             </div>
             <div styleName="col-md-8 col-xs-12">
               {
-                (movieDetails && this.state.mounted)
+                movieDetails
                   ? <Details data={movieDetails} />
                   : <DetailsSkeleton />
               }

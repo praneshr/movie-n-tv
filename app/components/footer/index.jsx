@@ -7,7 +7,7 @@ import globalStyles from 'global-styles'
 import styles from './style'
 
 
-@withStyles({ ...styles, ...globalStyles })
+@withStyles(styles)
 @reactStyles({ ...styles, ...globalStyles }, { allowMultiple: true })
 export default class Footer extends React.Component {
 

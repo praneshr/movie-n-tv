@@ -22,6 +22,7 @@ import initialStore from '../app/store/initial-store'
 import seo from './get-seo-data'
 
 let movies = {}
+let cssCache = {}
 
 latestMovies(movies)
 
@@ -85,8 +86,11 @@ app.get([
       console.error(e)
       console.warn('Returing empty HTML...')
     }
+    const reqpath = req.url
 
-    const css = []
+    const cssCached = cssCache[reqpath] !== undefined
+
+    const css = new Set()
     const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] }, ...data }
     const init = JSON.stringify(runTimeStore)
     const store = createStore(reducers, runTimeStore, applyMiddleware(thunk))
@@ -94,21 +98,23 @@ app.get([
     const content = renderToString(
       <Provider store={store}>
         <AppContainer>
-          <WithStyles onInsertCss={styles => css.push(styles._getCss())}>
+          <WithStyles onInsertCss={styles => !cssCached && css.add(styles._getCss())}>
             <RouterContext {...renderProps} />
           </WithStyles>
         </AppContainer>
       </Provider>,
     )
     const helmet = Helmet.renderStatic()
-    const regex = / data-react-helmet="true"/g
+    if (!cssCached) {
+      cssCache[reqpath] = [...css].join('')
+    }
 
     return res.render('index', {
-      criticalCSS: css.join(''),
+      criticalCSS: cssCache[reqpath],
       html: content,
       init,
-      helmetTitle: helmet.title.toString().replace(regex, ''),
-      helmetMeta: helmet.meta.toString().replace(regex, ''),
+      helmetTitle: helmet.title,
+      helmetMeta: helmet.meta,
     })
   })
 })

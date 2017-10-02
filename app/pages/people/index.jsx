@@ -10,7 +10,7 @@ import globalStyles from 'global-styles'
 import { imageBase } from '../../APIs/config/'
 import { uiStates, uiActions } from '../../redux-connect'
 import styles from './styles'
-import Details from '../../components/person-details/async'
+import Details from '../../components/person-details'
 import DetailsSkeleton from '../../components/person-details-skeleton'
 
 
@@ -123,7 +123,7 @@ class People extends Component {
             </div>
             <div styleName="col-md-8 col-xs-12">
               {
-                (personData && this.state.mounted)
+                personData
                   ? <Details data={personData} />
                   : <DetailsSkeleton />
               }
