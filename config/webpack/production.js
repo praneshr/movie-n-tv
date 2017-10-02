@@ -182,6 +182,7 @@ module.exports = {
             '*.js',
             '*.css',
             '/',
+            '/movies',
           ],
         },
         cacheMaps: [
@@ -198,7 +199,7 @@ module.exports = {
           output: '../sw.js',
           scope: '/',
           cacheName: 'harlequin',
-          navigateFallback: '/',
+          navigateFallbackURL: '/',
           publicPath: '/sw.js',
           minify: true,
         },
