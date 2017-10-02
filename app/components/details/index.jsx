@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
 import globalStyles from 'global-styles'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import cn from 'classnames'
 import styles from './styles'
 import Genres from '../genres'
@@ -10,7 +11,7 @@ import Images from '../image-grid/async'
 import MovieCard from '../movie-cards/async'
 import Reviews from '../reviews'
 
-
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Details extends Component {
 
