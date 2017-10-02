@@ -8,10 +8,8 @@ import { uiStates, uiActions } from '../../redux-connect'
 import { resolveUrl } from '../../utils'
 import style from './style'
 import CardSkeleton from '../../components/card-skeleton'
-import BannerSkeleton from '../../components/banner-skeleton'
 import MovieCards from '../../components/movie-cards/async'
 import MovieBanner from '../../components/movie-banner/'
-import logo from '../../globals/assets/logo.png'
 
 
 @connect(uiStates, uiActions)
@@ -63,7 +61,7 @@ export default class Movies extends Component {
           <meta name="author" content="Pranesh Ravi" />
           <meta name="description" content="New Movies In Theaters" />
 
-          <meta content={logo} property="og:image" />
+          <meta content="https://d2pgf1t6llmies.cloudfront.net/logo.png" property="og:image" />
           <meta content="Box Office" property="og:site_name" />
           <meta content="object" property="og:type" />
           <meta content="Movies" property="og:title" />
@@ -75,7 +73,7 @@ export default class Movies extends Component {
           <meta name="twitter:creator" value="@pranesh_ravi" />
           <meta name="twitter:title" content="Movies" />
           <meta name="twitter:description" content="New Movies In Theaters" />
-          <meta name="twitter:image" content={logo} />
+          <meta name="twitter:image" content="https://d2pgf1t6llmies.cloudfront.net/logo.png" />
         </Helmet>
         <div styleName="banner">
           <MovieBanner latest={banner} />

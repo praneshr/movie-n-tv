@@ -187,7 +187,9 @@ module.exports = {
         cacheMaps: [
           {
             match: /(d2pgf1t6llmies.cloudfront.net\/).*/g,
-            to: url => `/${url.split('/')[1]}`,
+            to: function (url) {
+              return '/' + url.split('/')[1]
+            },
             requestTypes: ['cross-origin', 'navigate'],
           },
         ],
@@ -198,6 +200,7 @@ module.exports = {
           cacheName: 'harlequin',
           navigateFallback: '/',
           publicPath: '/sw.js',
+          minify: true,
         },
         AppCache: false,
       }),
@@ -209,6 +212,10 @@ module.exports = {
         {
           from: './app/app_manifest.json',
           to: './',
+        },
+        {
+          from: './app/globals/assets/logo.png',
+          to: './logo.png',
         },
       ]),
       new S3Plugin({
