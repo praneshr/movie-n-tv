@@ -77,8 +77,14 @@ app.get([
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
+    let data = {}
 
-    const data = await seo(renderProps.location.pathname, renderProps.params)
+    try {
+      data = await seo(renderProps.location.pathname, renderProps.params)
+    } catch (e) {
+      console.error(e)
+      console.warn('Returing empty HTML...')
+    }
 
     const css = []
     const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] }, ...data }

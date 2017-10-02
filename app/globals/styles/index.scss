@@ -3,6 +3,12 @@
 @import "common.scss";
 @import "./bootstrap/index.scss";
 @import "./nucleo/nucleo.scss";
+
+@font-face {
+  font-family: 'Nervis';
+  src: url('./fonts/nevis.ttf') format('truetype'),
+}
+
 body {
     font-family: 'Nunito', sans-serif;
     color: $font-color;

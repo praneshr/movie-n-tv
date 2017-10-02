@@ -11,7 +11,7 @@ import { imageBase } from '../../APIs/config/'
 
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 @reactEasyBind
-class Cast extends Component {
+class SeasonList extends Component {
 
   constructor() {
     super()
@@ -42,7 +42,7 @@ class Cast extends Component {
       .reverse()
       .map((data, i) => {
         if (i >= limit && !this.state.showAll) return undefined
-        return <Link to={`/tv/${tvId}/seasons/${data.season_number}`}>
+        return <Link to={`/tv/${tvId}/seasons/${data.season_number}`} key={i}>
           <div styleName="col-xs-12 col-md-6 season" key={i}>
             <div styleName="row">
               <div styleName="col-xs-4 img">
@@ -95,4 +95,4 @@ class Cast extends Component {
   }
 }
 
-export default Cast
+export default SeasonList

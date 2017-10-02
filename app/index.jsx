@@ -7,7 +7,9 @@ import Router from './router'
 import store from './store'
 import WithStyles from './with-style-context'
 
-OfflinePluginRuntime.install();
+if (process.env.NODE_ENV === 'production') {
+  OfflinePluginRuntime.install()
+}
 
 const DefaultStore = store()
 

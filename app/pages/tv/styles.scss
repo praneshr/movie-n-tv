@@ -1,7 +1,7 @@
 .tv-detail {
   .banner {
     height: 60vh;
-    background-color: $grey900;
+    background-color: $black;
     position: relative;
     overflow: hidden;
     .fade-out {
@@ -18,12 +18,13 @@
   }
   .poster {
     margin-top: -200px;
-    overflow: hidden;
   }
   .poster-img {
     height: 400px;
     background-size: contain;
     background-position: center left;
+    filter: drop-shadow( -5px -5px 5px #080808 );
+    -webkit-filter: drop-shadow( 0px 0px 10px #080808 );
     &.placeholder {
       width: 260px;
     }

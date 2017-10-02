@@ -100,8 +100,6 @@ class Movie extends Component {
             <meta name="twitter:image" content={`${imageBase}/w500${tvDetails.poster_path}`} />
             <meta name="twitter:label1" content="Rating" />
             <meta name="twitter:value1" content={`${tvDetails.vote_average.toFixed(1)}/10`} />
-            <meta name="twitter:label2" content="Year" />
-            <meta name="twitter:value2" content={`${tvDetails.release_date.split('-')[0]}`} />
           </Helmet>
         }
         <div styleName="banner">
