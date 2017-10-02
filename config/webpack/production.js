@@ -103,6 +103,7 @@ module.exports = {
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
       publicPath: 'https://d2pgf1t6llmies.cloudfront.net/',
+      crossOriginLoading: 'anonymous',
     },
     plugins: [
       vendor,
