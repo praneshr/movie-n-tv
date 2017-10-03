@@ -9,9 +9,11 @@ import styles from './styles'
 class Offline extends Component {
   render () {
     return (
-      <div styleName="offline">
-        <i styleName="nc-icon nc-wifi-off"></i>
-        <p>A working internet connection is required.</p>
+      <div>
+        <div styleName="offline">
+          <i styleName="nc-icon nc-wifi-off"></i>
+          <p>A working internet connection is required.</p>
+        </div>
       </div>
     )
   }
