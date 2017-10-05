@@ -84,9 +84,7 @@ app.get([
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
-    res.writeHead(200, {
-      'Content-Type': 'text/html',
-    })
+    res.writeHead(200)
     res.write(preBody)
     let data = {}
 

@@ -174,7 +174,14 @@ module.exports = {
             '*.js',
             '*.css',
           ],
+          additional: [
+            ':externals:',
+          ],
         },
+        externals: [
+          '/',
+          '/movies',
+        ],
         cacheMaps: [
           {
             match: /(d2pgf1t6llmies.cloudfront.net\/).*/g,
