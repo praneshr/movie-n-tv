@@ -8,6 +8,7 @@ const NameAllModulesPlugin = require('name-all-modules-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 const S3Plugin = require('webpack-s3-plugin')
 const mimeTypes = require('mime-types')
 const OfflinePlugin = require('offline-plugin')
@@ -109,15 +110,22 @@ module.exports = {
       vendor,
       main,
       new HTMLwebpackPlugin({
-        filename: '../index.hbs',
-        template: './app/views/index.hbs',
+        filename: '../head.hbs',
+        template: './app/views/head.hbs',
         inject: false,
-        minify: {
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          removeEmptyAttributes: true,
-          removeComments: true,
-        },
+        minify: false,
+      }),
+      new HTMLwebpackPlugin({
+        filename: '../body.hbs',
+        template: './app/views/body.hbs',
+        inject: false,
+        minify: false,
+      }),
+      new HTMLwebpackPlugin({
+        filename: '../tail.hbs',
+        template: './app/views/tail.hbs',
+        inject: false,
+        minify: false,
       }),
       new webpack.NamedModulesPlugin(),
       new webpack.NamedChunksPlugin((chunk) => {
@@ -142,25 +150,9 @@ module.exports = {
           NODE_ENV: JSON.stringify('production'),
         },
       }),
-      new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        comments: false,
-        compress: {
-          warnings: false,
-          drop_console: true,
-          sequences: true,
-          dead_code: true,
-          conditionals: true,
-          booleans: true,
-          unused: true,
-          if_return: true,
-          join_vars: true,
-        },
-        mangle: {
-          except: ['webpackJsonp'],
-          screw_ie8: true,
-          keep_fnames: false,
-        },
+      new MinifyPlugin({
+        removeConsole: true,
+        removeDebugger: true,
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
@@ -181,8 +173,6 @@ module.exports = {
           main: [
             '*.js',
             '*.css',
-            '/',
-            '/movies',
           ],
         },
         cacheMaps: [
@@ -290,6 +280,7 @@ module.exports = {
           context: path.resolve(__dirname, '../../'),
         },
       }),
+      new MinifyPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify('production'),

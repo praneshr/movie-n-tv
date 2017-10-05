@@ -1,0 +1,6 @@
+{{#each htmlWebpackPlugin.files.js}}
+    <script src={{this}} defer=defer crossorigin=anonymous></script>
+{{/each}}
+<script>window.init = \{{{init}}}</script>
+</body>
+</html>

@@ -6,8 +6,9 @@ import express from 'express'
 import path from 'path'
 import React from 'react'
 import Helmet from 'react-helmet'
-import exphbs from 'express-handlebars'
 import compression from 'compression'
+import handlebars from 'handlebars'
+import fs from 'fs'
 import thunk from 'redux-thunk'
 import { applyMiddleware, createStore } from 'redux'
 import { match, RouterContext } from 'react-router'
@@ -21,8 +22,16 @@ import latestMovies from './get-latest-movies'
 import initialStore from '../app/store/initial-store'
 import seo from './get-seo-data'
 
-let movies = {}
-let cssCache = {}
+const preBodyTemplate = fs.readFileSync(path.resolve('./build/head.hbs'), 'utf8')
+const bodyTemplate = fs.readFileSync(path.resolve('./build/body.hbs'), 'utf8')
+const postBodyTemplate = fs.readFileSync(path.resolve('./build/tail.hbs'), 'utf8')
+
+const preBody = handlebars.compile(preBodyTemplate)()
+const body = handlebars.compile(bodyTemplate)
+const postBody = handlebars.compile(postBodyTemplate)
+
+const movies = {}
+const cssCache = {}
 
 latestMovies(movies)
 
@@ -33,9 +42,6 @@ app.use(compression({
   threshold: 0,
   filter: () => true,
 }))
-app.engine('.hbs', exphbs({ extname: '.hbs' }))
-app.set('view engine', '.hbs')
-app.set('views', './build')
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
@@ -78,6 +84,10 @@ app.get([
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
+    res.writeHead(200, {
+      'Content-Type': 'text/html',
+    })
+    res.write(preBody)
     let data = {}
 
     try {
@@ -109,13 +119,18 @@ app.get([
       cssCache[reqpath] = [...css].join('')
     }
 
-    return res.render('index', {
+    const bodyHTML = body({
       criticalCSS: cssCache[reqpath],
       html: content,
-      init,
       helmetTitle: helmet.title,
       helmetMeta: helmet.meta,
     })
+
+    res.write(bodyHTML)
+    res.write(postBody({
+      init,
+    }))
+    res.end()
   })
 })
 
