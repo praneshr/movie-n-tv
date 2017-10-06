@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js" async onload="loadFont()"></script>
+    <script>
+      function loadFont() {
+        WebFont.load({
+          google: {
+            families: ['Nunito:400,700,800,900'],
+          },
+          custom: {
+            families: ['Nervis']
+          }
+        })
+      }
+    </script>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="preconnect" href="https://d2pgf1t6llmies.cloudfront.net">
@@ -13,8 +26,6 @@
     <meta name="msapplication-navbutton-color" content="#151515">
     <meta name="apple-mobile-web-app-status-bar-style" content="#151515">
     <link rel="manifest" href="/assets/app_manifest.json" />
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:400,700,800,900" as="style" onload="this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700,800,900" /></noscript>
     {{#each htmlWebpackPlugin.files.css}}
     <link rel=preload href={{this}} as=style onload="this.rel='stylesheet'" crossorigin=anonymous />
     <noscript><link rel=stylesheet href={{this}} crossorigin=anonymous /></noscript>

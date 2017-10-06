@@ -9,8 +9,6 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
-const S3Plugin = require('webpack-s3-plugin')
-const mimeTypes = require('mime-types')
 const OfflinePlugin = require('offline-plugin')
 
 const entries = [
@@ -103,7 +101,7 @@ module.exports = {
       path: path.resolve('./build/assets/'),
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
-      publicPath: 'https://d2pgf1t6llmies.cloudfront.net/',
+      publicPath: '/assets/',
       crossOriginLoading: 'anonymous',
     },
     plugins: [
@@ -168,40 +166,6 @@ module.exports = {
           context: path.resolve(__dirname, '../../'),
         },
       }),
-      new OfflinePlugin({
-        caches: {
-          main: [
-            '*.js',
-            '*.css',
-          ],
-          additional: [
-            ':externals:',
-          ],
-        },
-        externals: [
-          '/',
-          '/movies',
-        ],
-        cacheMaps: [
-          {
-            match: /(d2pgf1t6llmies.cloudfront.net\/).*/g,
-            to: function (url) {
-              return '/' + url.split('/')[1]
-            },
-            requestTypes: ['cross-origin', 'navigate'],
-          },
-        ],
-        version: () => { },
-        ServiceWorker: {
-          output: '../sw.js',
-          scope: '/',
-          cacheName: 'harlequin',
-          navigateFallbackURL: '/',
-          publicPath: '/sw.js',
-          minify: true,
-        },
-        AppCache: false,
-      }),
       new CopyWebpackPlugin([
         {
           from: './app/globals/assets/icons/',
@@ -216,18 +180,6 @@ module.exports = {
           to: './logo.png',
         },
       ]),
-      // new S3Plugin({
-      //   exclude: /.*\.(html|hbs|map|cache)|sw.js/,
-      //   s3Options: {
-      //     accessKeyId: process.env.ACCESS_KEY,
-      //     secretAccessKey: process.env.SECRET_KEY,
-      //   },
-      //   s3UploadOptions: {
-      //     Bucket: 'harlequin-prod',
-      //     CacheControl: 'max-age=31556952000, immutable',
-      //     ContentType: fileName => mimeTypes.lookup(fileName),
-      //   },
-      // }),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),
       }),

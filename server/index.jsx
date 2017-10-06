@@ -38,10 +38,7 @@ latestMovies(movies)
 const app = express()
 
 app.disable('x-powered-by')
-app.use(compression({
-  threshold: 0,
-  filter: () => true,
-}))
+// app.use(compression())
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
@@ -84,7 +81,10 @@ app.get([
     if (redirectLocation) {
       return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     }
-    res.writeHead(200)
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=UTF-8',
+      'Transfer-Encoding': 'chunked',
+    })
     res.write(preBody)
     let data = {}
 
