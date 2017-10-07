@@ -184,7 +184,7 @@ module.exports = {
         ],
         cacheMaps: [
           {
-            match: /(//cdn.themovientv.com\/).*/g,
+            match: /(\/\/cdn.themovientv.com\/).*/g,
             to: function (url) {
               return '/' + url.split('/')[1]
             },
