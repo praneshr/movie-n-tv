@@ -1,6 +1,13 @@
 {{#each htmlWebpackPlugin.files.js}}
-    <script src={{this}} defer=defer crossorigin=anonymous></script>
+    <script src={{this}}  crossorigin=anonymous></script>
 {{/each}}
 <script>window.init = \{{{init}}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53857863-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-53857863-5')
+</script>
 </body>
 </html>

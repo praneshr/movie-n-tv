@@ -103,7 +103,7 @@ module.exports = {
       path: path.resolve('./build/assets/'),
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
-      publicPath: 'https://d2pgf1t6llmies.cloudfront.net/',
+      publicPath: '//cdn.themovientv.com/',
       crossOriginLoading: 'anonymous',
     },
     plugins: [
@@ -184,7 +184,7 @@ module.exports = {
         ],
         cacheMaps: [
           {
-            match: /(d2pgf1t6llmies.cloudfront.net\/).*/g,
+            match: /(//cdn.themovientv.com\/).*/g,
             to: function (url) {
               return '/' + url.split('/')[1]
             },

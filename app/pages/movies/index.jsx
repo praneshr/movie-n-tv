@@ -61,7 +61,7 @@ export default class Movies extends Component {
           <meta name="author" content="Pranesh Ravi" />
           <meta name="description" content="New Movies In Theaters" />
 
-          <meta content="https://d2pgf1t6llmies.cloudfront.net/logo.png" property="og:image" />
+          <meta content="//cdn.themovientv.com/logo.png" property="og:image" />
           <meta content="Box Office" property="og:site_name" />
           <meta content="object" property="og:type" />
           <meta content="Movies" property="og:title" />
@@ -73,7 +73,7 @@ export default class Movies extends Component {
           <meta name="twitter:creator" value="@pranesh_ravi" />
           <meta name="twitter:title" content="Movies" />
           <meta name="twitter:description" content="New Movies In Theaters" />
-          <meta name="twitter:image" content="https://d2pgf1t6llmies.cloudfront.net/logo.png" />
+          <meta name="twitter:image" content="//cdn.themovientv.com/logo.png" />
         </Helmet>
         <div styleName="banner">
           <MovieBanner latest={banner} />
