@@ -216,18 +216,18 @@ module.exports = {
           to: './logo.png',
         },
       ]),
-      // new S3Plugin({
-      //   exclude: /.*\.(html|hbs|map|cache)|sw.js/,
-      //   s3Options: {
-      //     accessKeyId: process.env.ACCESS_KEY,
-      //     secretAccessKey: process.env.SECRET_KEY,
-      //   },
-      //   s3UploadOptions: {
-      //     Bucket: 'harlequin-prod',
-      //     CacheControl: 'max-age=31556952000, immutable',
-      //     ContentType: fileName => mimeTypes.lookup(fileName),
-      //   },
-      // }),
+      new S3Plugin({
+        exclude: /.*\.(html|hbs|map|cache)|sw.js/,
+        s3Options: {
+          accessKeyId: process.env.ACCESS_KEY,
+          secretAccessKey: process.env.SECRET_KEY,
+        },
+        s3UploadOptions: {
+          Bucket: 'harlequin-prod',
+          CacheControl: 'max-age=31556952000, immutable',
+          ContentType: fileName => mimeTypes.lookup(fileName),
+        },
+      }),
       new CWP(['build'], {
         root: path.resolve(__dirname, '../../'),
       }),
