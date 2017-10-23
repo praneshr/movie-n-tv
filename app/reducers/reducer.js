@@ -21,6 +21,8 @@ See './utils/createState.js'
 const reducer = handleActions({
   [actionTypes.NOW_PLAYING]: (state, { payload }) =>
     createState(state, payload, 'nowPlaying'),
+  [actionTypes.TV_LIST]: (state, { payload }) =>
+    createState(state, payload, 'tvList'),
   [actionTypes.MOVIES]: (state, { payload }) => {
     const existingMovies = { ...state.movies }
     const newMovies = { ...existingMovies, ...payload }

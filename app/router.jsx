@@ -1,4 +1,4 @@
-import { Redirect, Route, Router, browserHistory } from 'react-router'
+import { Route, Router, browserHistory } from 'react-router'
 import React from 'react'
 import Layout from './layout'
 import Movies from './pages/movies'
@@ -12,22 +12,21 @@ export default () => (
   <Router
     onUpdate={() => window.scrollTo(0, 0)}
     history={browserHistory}>
-    <Redirect from="/" to="/movies" />
-    <Route path="/" component={Layout}>
+    <Route component={Layout}>
       <Route
-        path="movies"
+        path="/"
         component={Movies}
       />
       <Route
-        path="movies/:id"
+        path="/movies/:id"
         component={Movie}
       />
       <Route
-        path="tv/:id"
+        path="/tv/:id"
         component={Tv}
       />
       <Route
-        path="tv/:id/seasons/:seasonId"
+        path="/tv/:id/seasons/:seasonId"
         component={Episodes}
       />
       <Route

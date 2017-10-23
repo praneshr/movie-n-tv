@@ -17,6 +17,9 @@ export const search = query =>
 export const nowPlaying = query =>
   `${baseUrl}/movie/now_playing?${qp(query)}`
 
+export const tvList = query =>
+  `${baseUrl}/tv/airing_today?${qp(query)}`
+
 export const movie = (id, query) =>
   `${baseUrl}/movie/${id}?${qp(query)}`
 

@@ -31,6 +31,15 @@ export default class Movies extends Component {
         this.props.actions.nowPlaying(data)
       })
     }
+
+    if (!this.props.ui.tvList) {
+      this.props.actions.getTvList({
+        region: 'US',
+      })
+      .then(({ data }) => {
+        this.props.actions.tvList(data)
+      })
+    }
   }
 
   renderbannerImage(src, cstyle) {
@@ -50,6 +59,9 @@ export default class Movies extends Component {
         banner,
         nowPlaying: {
           results = [],
+        } = {},
+        tvList: {
+          results: tvResults = [],
         } = {},
       },
     } = this.props
@@ -81,7 +93,7 @@ export default class Movies extends Component {
         <div styleName="container list">
           <div styleName="row">
             <div styleName="sub-heading-with-icon heading">
-              <i styleName="nc-icon nc-video-66"></i>
+              <i styleName="nc-icon nc-video-66" />
               <h2>In Cinemas</h2>
             </div>
             {
@@ -90,6 +102,18 @@ export default class Movies extends Component {
                 : <MovieCards
                   resolveLink={resolveUrl}
                   results={results} />
+            }
+            <div styleName="sub-heading-with-icon heading tv-section">
+              <i styleName="nc-icon nc-video-66" />
+              <h2>TV Shows Airing Today</h2>
+            </div>
+            {
+              tvResults.length === 0
+                ? new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
+                : <MovieCards
+                  force="tv"
+                  resolveLink={resolveUrl}
+                  results={tvResults} />
             }
           </div>
         </div>

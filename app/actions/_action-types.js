@@ -7,6 +7,7 @@ const actionTypes = [
   'TV',
   'SEASON',
   'OFFLINE',
+  'TV_LIST',
 ]
 
 export default actionTypes.reduce((obj, str) => {

@@ -80,9 +80,22 @@ module.exports = {
     plugins: [
       // Have the html-webpack-plugin as the first plugin else dev build will break
       new HTMLwebpackPlugin({
-        filename: '../index.hbs',
-        template: './app/views/index.hbs',
+        filename: '../head.hbs',
+        template: './app/views/head.hbs',
         inject: false,
+        minify: false,
+      }),
+      new HTMLwebpackPlugin({
+        filename: '../body.hbs',
+        template: './app/views/body.hbs',
+        inject: false,
+        minify: false,
+      }),
+      new HTMLwebpackPlugin({
+        filename: '../tail.hbs',
+        template: './app/views/tail.hbs',
+        inject: false,
+        minify: false,
       }),
       new ManifestPlugin(),
       new webpack.HotModuleReplacementPlugin(),
