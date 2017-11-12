@@ -163,7 +163,7 @@ input[type="password"] {
 }
 
 .skeleton-placeholder {
-  background-color: #0e0e0e;
+  background-color: #101010;
   position: relative;
   overflow: hidden;
   &:before {
@@ -171,7 +171,7 @@ input[type="password"] {
     width: 20px;
     height: 100%;
     position: absolute;
-    background-color: $brand-bg;
+    background-color: $black;
     filter: blur(20px);
     animation: load 1s linear infinite;
   }

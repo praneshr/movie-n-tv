@@ -84,9 +84,9 @@ class People extends Component {
       <div styleName="people">
         {
           personData
-          && <Helmet title={`${personData.name} - The Movie and TV`}>
+          && <Helmet title={`${personData.name} - The Movie & TV`}>
             <meta content={`${imageBase}/w500${personData.profile_path}`} property="og:image" />
-            <meta content="The Movie and TV" property="og:site_name" />
+            <meta content="The Movie & TV" property="og:site_name" />
             <meta content="object" property="og:type" />
             <meta content={personData.name} property="og:title" />
             <meta content={`https://themovientv.com/people/${id}`} property="og:url" />

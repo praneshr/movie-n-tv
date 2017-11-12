@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ReactCSS from 'react-css-modules'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
 import styles from './styles'
 
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 @reactEasyBind
 class Offline extends Component {

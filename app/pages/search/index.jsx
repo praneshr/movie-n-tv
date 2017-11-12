@@ -3,6 +3,7 @@ import ReactCSS from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import reactEasyBind from 'react-easy-bind'
 import React, { Component } from 'react'
+import cn from 'classnames'
 import { browserHistory, Link } from 'react-router'
 import { connect } from 'react-redux'
 import { resolveUrl } from '../../utils'
@@ -101,7 +102,7 @@ class Search extends Component {
             </div>
           </div>
           <div styleName="row">
-            <div styleName="col-sm-12 data">
+            <div styleName={cn('col-sm-12 data', { 'no-result': query === '' })}>
               {
                 query
                 ? data
@@ -113,10 +114,10 @@ class Search extends Component {
                         results={data.results}
                         resolveLink={resolveUrl} />
                       <div>
-                        <div styleName="button-container">
+                        <div styleName="row button-container">
                           {
                             page > 1
-                            && <div className="back">
+                            && <div styleName="back">
                               <Link to={`/search?query=${query}&page=${parseInt(page, 10) - 1}`}>
                                 <button styleName="button-primary">
                                   <i styleName="nc-icon nc-tail-triangle-left"></i>
@@ -127,7 +128,7 @@ class Search extends Component {
                           }
                           {
                             page < data.total_pages
-                            && <div className="next">
+                            && <div styleName="next">
                               <Link to={`/search?query=${query}&page=${parseInt(page, 10) + 1}`}>
                                 <button styleName="button-primary">
                                   <i styleName="nc-icon nc-tail-triangle-right"></i>
@@ -139,8 +140,10 @@ class Search extends Component {
                         </div>
                       </div>
                     </div>
-                  : new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
-                : ''
+                  : <div styleName="row">
+                  {new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i} />)}
+                  </div>
+                : <div styleName="empty" />
               }
             </div>
           </div>

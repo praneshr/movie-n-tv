@@ -54,7 +54,10 @@ module.exports = {
         },
         {
           test: /\.jpe?g$|\.gif$|\.png$|\.ico$|\.svg$/,
-          loader: 'file-loader',
+          loader: 'url-loader',
+          options: {
+            limit: 500000,
+          },
         },
         {
           test: /\.(woff|woff2|eot|ttf)$/,
@@ -144,10 +147,10 @@ module.exports = {
         },
         {
           test: /\.jpe?g$|\.gif$|\.png$|\.ico$|\.svg$/,
-          loader: 'file-loader',
+          loader: 'url-loader',
           options: {
-            publicPath: '/assets/',
-            emitFile: false,
+            limit: 500000,
+            fallback: 'file-loader?publicPath=/assets/&emitFile=false',
           },
         },
         {

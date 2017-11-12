@@ -69,22 +69,22 @@ export default class Movies extends Component {
     return (
       <div styleName="movies">
         <Helmet>
-          <title>The Movie and TV - Movies, Tv Shows, Celebrities and more</title>
+          <title>The Movie & TV - Movies, TV Shows, Celebrities and more</title>
           <meta name="author" content="Pranesh Ravi" />
-          <meta name="description" content="Get the latest information about your favorite movies, Tv shows, celebrites and more." />
+          <meta name="description" content="Get the latest information about your favorite movies, TV shows, celebrites and more." />
 
           <meta content="//cdn.themovientv.com/logo.png" property="og:image" />
-          <meta content="Movies" property="og:site_name" />
+          <meta content="The Movie & TV" property="og:site_name" />
           <meta content="object" property="og:type" />
-          <meta content="The Movie and Tv" property="og:title" />
+          <meta content="The Movie & TV" property="og:title" />
           <meta content="https://themovientv.com/" property="og:url" />
-          <meta content="Get the latest information about your favorite movies, Tv shows, celebrites and more." property="og:description" />
+          <meta content="Get the latest information about your favorite movies, TV shows, celebrites and more." property="og:description" />
 
           <meta name="twitter:card" value="summary_large_image" />
           <meta name="twitter:site" value="@pranesh_ravi" />
           <meta name="twitter:creator" value="@pranesh_ravi" />
-          <meta name="twitter:title" content="The Movie and Tv" />
-          <meta name="twitter:description" content="Get the latest information about your favorite movies, Tv shows, celebrites and more." />
+          <meta name="twitter:title" content="The Movie & TV" />
+          <meta name="twitter:description" content="Get the latest information about your favorite movies, TV shows, celebrites and more." />
           <meta name="twitter:image" content="//cdn.themovientv.com/logo.png" />
         </Helmet>
         <div styleName="banner">

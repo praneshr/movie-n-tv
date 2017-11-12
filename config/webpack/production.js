@@ -12,6 +12,7 @@ const MinifyPlugin = require('babel-minify-webpack-plugin')
 const S3Plugin = require('webpack-s3-plugin')
 const mimeTypes = require('mime-types')
 const OfflinePlugin = require('offline-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const entries = [
   './app/index.jsx',
@@ -142,7 +143,7 @@ module.exports = {
         name: 'manifest',
         minChunks: Infinity,
       }),
-      new FaviconsWebpackPlugin(path.join(process.cwd(), './app/globals/assets/logo.png')),
+      new FaviconsWebpackPlugin(path.join(process.cwd(), './app/globals/assets/logo-standalone.png')),
       new NameAllModulesPlugin(),
       new ManifestPlugin(),
       new webpack.DefinePlugin({
@@ -204,18 +205,27 @@ module.exports = {
       }),
       new CopyWebpackPlugin([
         {
-          from: './app/globals/assets/icons/',
-          to: './icons',
-        },
-        {
-          from: './app/app_manifest.json',
-          to: './',
-        },
-        {
-          from: './app/globals/assets/logo.png',
+          from: './app/globals/assets/logo-standalone.png',
           to: './logo.png',
         },
       ]),
+      new WebpackPwaManifest({
+        filename: 'app_manifest.json',
+        name: 'The Movie & TV',
+        orientation: 'portrait',
+        display: 'standalone',
+        start_url: '/',
+        short_name: 'TMnT',
+        fingerprints: false,
+        background_color: '#030303',
+        theme_color: '#212121',
+        icons: [
+          {
+            src: path.resolve('./app/globals/assets/logo-standalone.png'),
+            sizes: [96, 128, 192, 256, 384, 512, 1024],
+          },
+        ],
+      }),
       new S3Plugin({
         exclude: /.*\.(html|hbs|map|cache)|sw.js/,
         s3Options: {

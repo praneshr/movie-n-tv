@@ -4,6 +4,7 @@ import reactStyles from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
 import reactEasyBind from 'react-easy-bind'
+import logo from 'global-assets/logo.svg'
 import style from './style'
 
 @withStyles(style)
@@ -33,11 +34,11 @@ export default class Sample extends Component {
       <header styleName="row header" ref={(el) => { this.header = el }}>
         <div styleName="col-xs-6 logo">
           <Link to="/">
-            Box Office
+            <img src={logo} />
           </Link>
         </div>
         <div styleName="col-xs-6 search">
-          <span onClick={this.handleSearch}>
+          <span onClick={this.handleSearch} styleName="search-click-area">
             <i styleName="nc-icon nc-zoom-split" />
             <span styleName="hidden-xs search-text">Search</span>
           </span>

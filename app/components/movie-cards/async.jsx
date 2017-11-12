@@ -4,10 +4,10 @@ import CardSkeleton from '../card-skeleton'
 
 export default asyncComponent({
   resolve: () => import(/* webpackChunkName: "movie-card" */ './index'),
-  LoadingComponent: () => {
+  LoadingComponent: ({ type }) => {
     return <span>
       {
-        new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
+        new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i} type={type} />)
       }
     </span>
   }

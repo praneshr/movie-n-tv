@@ -118,9 +118,9 @@ class Movie extends Component {
         {
           tvDetails
           && seasonDetails
-          && <Helmet title={`${tvDetails.name}(${seasonDetails.name}) - The Movie and TV`}>
+          && <Helmet title={`${tvDetails.name}(${seasonDetails.name}) - The Movie & TV`}>
             <meta content={`${imageBase}/w500${seasonDetails.poster_path || tvDetails.poster_path}`} property="og:image" />
-            <meta content="The Movie and TV" property="og:site_name" />
+            <meta content="The Movie & TV" property="og:site_name" />
             <meta content="object" property="og:type" />
             <meta content={`${tvDetails.name} - ${seasonDetails.name}`} property="og:title" />
             <meta content={`https://themovientv.com/tv/${id}/season/${seasonId}`} property="og:url" />

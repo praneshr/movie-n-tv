@@ -39,7 +39,7 @@ export default class Root extends Component {
         <div styleName="page">
           { this.props.children }
         </div>
-        <Footer />
+        <Footer quote={this.props.ui.quote}/>
       </div>
     )
   }

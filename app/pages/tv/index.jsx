@@ -84,9 +84,9 @@ class Movie extends Component {
         {
           tvDetails
           && <Helmet>
-            <title>{tvDetails.name} - The Movie and TV</title>
+            <title>{tvDetails.name} - The Movie & TV</title>
             <meta content={`${imageBase}/w500${tvDetails.poster_path}`} property="og:image" />
-            <meta content="The Movie and TV" property="og:site_name" />
+            <meta content="The Movie & TV" property="og:site_name" />
             <meta content="object" property="og:type" />
             <meta content={tvDetails.name} property="og:title" />
             <meta content={`https://themovientv.com/tv/${id}`} property="og:url" />

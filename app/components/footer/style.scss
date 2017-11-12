@@ -1,12 +1,29 @@
 .footer {
-  padding: 20px 0;
-  background-color: $brand-bg-placeholder;
-  margin-top: 30px;
+  padding: 60px 0;
+  border-top: 1px solid #191919;
+  margin-top: 50px;
+  .quote-container {
+    text-align: center;
+    padding: 60px 0;
+    .quote {
+      font-size: 30px;
+    }
+    .info {
+      font-size: 18px;
+      margin-top: 20px;
+      opacity: 0.5;
+    }
+  }
+  .logo {
+    width: 130px;
+  }
   .content {
     @include flex-align-center;
   }
   .copy {
-    font-weight: 600;
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.3;
   }
   .powered-by {
     width: 100px;
@@ -16,5 +33,8 @@
     width: 100px;
     height: 40px;
     float: right;
+  }
+  img {
+    width: 100px;
   }
 }

@@ -22,6 +22,13 @@ import latestMovies from './get-latest-movies'
 import initialStore from '../app/store/initial-store'
 import seo from './get-seo-data'
 
+const quotes = JSON.parse(fs.readFileSync(path.resolve('./data/movie-quotes.json'), 'utf8'))
+
+const getQuotes = () => {
+  const index = Math.floor(Math.random() * (((quotes.length - 1) - 0) + 1)) + 0
+  return quotes[index]
+}
+
 const preBodyTemplate = fs.readFileSync(path.resolve('./build/head.hbs'), 'utf8')
 const bodyTemplate = fs.readFileSync(path.resolve('./build/body.hbs'), 'utf8')
 const postBodyTemplate = fs.readFileSync(path.resolve('./build/tail.hbs'), 'utf8')
@@ -38,7 +45,7 @@ latestMovies(movies)
 const app = express()
 
 app.disable('x-powered-by')
-// app.use(compression())
+app.use(compression())
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
@@ -99,7 +106,7 @@ app.get([
     const cssCached = cssCache[reqpath] !== undefined
 
     const css = new Set()
-    const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] }, ...data }
+    const runTimeStore = { ...initialStore, ...{ banner: movies.results[0] }, ...data, ...{ quote: getQuotes() } }
     const init = JSON.stringify(runTimeStore)
     const store = createStore(reducers, runTimeStore, applyMiddleware(thunk))
 

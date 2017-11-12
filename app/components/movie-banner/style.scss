@@ -15,6 +15,9 @@
     margin-bottom: 10px;
     display: inline-block;
   }
+  .flex-fix {
+    display: inline-block;
+  }
   .title {
     font-size: 7vh;
     color: $white;
@@ -39,6 +42,6 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 1%, #181818 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 1%, $brand-bg 100%);
   position: absolute;
 }

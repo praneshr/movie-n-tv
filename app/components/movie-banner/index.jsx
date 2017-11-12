@@ -30,7 +30,7 @@ class MovieBanner extends Component {
     const {
       latest,
     } = this.props
-    console.log(this.state.rendered);
+
     return (
       <div>
         <div styleName="text-content">
@@ -39,15 +39,17 @@ class MovieBanner extends Component {
               {latest.title}
             </div>
             <div styleName="row">
-              <div styleName="description hidden-xs col-sm-12 col-lg-6">
+              <div styleName="description col-sm-12 col-lg-6">
                 {latest.overview}
               </div>
             </div>
             <Link to={resolveUrl(latest)}>
-              <button styleName="button-primary play">
-                <span>Check it out</span>
-                <i styleName="nc-icon nc-tail-triangle-right"></i>
-              </button>
+              <span styleName="flex-fix">
+                <button styleName="button-primary play">
+                  <span>Check it out</span>
+                  <i styleName="nc-icon nc-tail-triangle-right" />
+                </button>
+              </span>
             </Link>
           </div>
         </div>
