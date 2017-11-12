@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import ReactCSS from 'react-css-modules'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import ImageProgressive from 'react-progressive-bg-image'
+import Helmet from 'react-helmet'
 import globalStyles from 'global-styles'
 import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
 import { imageBase } from '../../APIs/config/'
 import styles from './styles'
-import Details from '../../components/season-details/async'
+import Details from '../../components/season-details'
 import DetailsSkeleton from '../../components/season-details-skeleton'
 
 
@@ -15,6 +16,13 @@ import DetailsSkeleton from '../../components/season-details-skeleton'
 @withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Movie extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      mounted: false,
+    }
+  }
 
   fetchData(props) {
     const {
@@ -49,7 +57,10 @@ class Movie extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
+    this.setState({
+      mounted: true,
+    })
     this.fetchData(this.props)
   }
 
@@ -104,9 +115,29 @@ class Movie extends Component {
     const seasonDetails = season[`${id}__${seasonId}`]
     return (
       <div styleName="tv-detail">
+        {
+          tvDetails
+          && seasonDetails
+          && <Helmet title={`${tvDetails.name}(${seasonDetails.name}) - The Movie and TV`}>
+            <meta content={`${imageBase}/w500${seasonDetails.poster_path || tvDetails.poster_path}`} property="og:image" />
+            <meta content="The Movie and TV" property="og:site_name" />
+            <meta content="object" property="og:type" />
+            <meta content={`${tvDetails.name}(${seasonDetails.name})`} property="og:title" />
+            <meta content={`https://themovientv.com/tv/${id}/season/${seasonId}`} property="og:url" />
+            <meta content={seasonDetails.overview || tvDetails.overview} property="og:description" />
+
+            <meta name="twitter:card" value="summary_large_image" />
+            <meta name="twitter:site" value="@pranesh_ravi" />
+            <meta name="twitter:creator" value="@pranesh_ravi" />
+            <meta name="twitter:title" content={`${tvDetails.name}(${seasonDetails.name})`} />
+            <meta name="twitter:description" content={seasonDetails.overview || tvDetails.overview} />
+            <meta name="twitter:image" content={`${imageBase}/w500${seasonDetails.poster_path || tvDetails.poster_path}`} />
+          </Helmet>
+        }
         <div styleName="banner">
           {
-            seasonDetails
+            this.state.mounted
+            && seasonDetails
             && tvDetails
             && (
               seasonDetails.episodes.length > 0
@@ -125,7 +156,7 @@ class Movie extends Component {
             <div styleName="col-md-4 col-xs-8">
               <div styleName="poster">
                 {
-                  seasonDetails
+                  (seasonDetails && this.state.mounted)
                   ? this.getleftPane(seasonDetails)
                   : <div styleName="skeleton-placeholder poster-img placeholder" />
                 }

@@ -4,5 +4,5 @@ import CastSkeleton from '../cast-skeleton'
 
 export default asyncComponent({
   resolve: () => import(/* webpackChunkName: "season-list" */ './index'),
-  LoadingComponent: () => <CastSkeleton />,
+  LoadingComponent: () => <CastSkeleton count={4} />,
 })

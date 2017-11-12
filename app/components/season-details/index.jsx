@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import ReactCSS from 'react-css-modules'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import globalStyles from 'global-styles'
 import styles from './styles'
 import { resolveUrl } from '../../utils'
-import Episodes from '../episodes-list'
-import Seasons from '../seasons-list'
+import Episodes from '../episodes-list/async'
+import Seasons from '../seasons-list/async'
 import Genres from '../genres'
 
-
+@withStyles(styles)
 @ReactCSS({ ...globalStyles, ...styles }, { allowMultiple: true })
 class Details extends Component {
 

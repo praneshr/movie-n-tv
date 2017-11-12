@@ -1,6 +1,6 @@
 import { APIs } from '../app/APIs'
 
-const getData = async (url, { id }) => {
+const getData = async (url, { id, seasonId }) => {
   const type = url.split('/')[1]
   if (id === undefined) {
     return {}
@@ -19,6 +19,19 @@ const getData = async (url, { id }) => {
       const { data: tvData } = await APIs.getTv(id, {
         append_to_response: 'content_ratings,videos,images,credits,recommendations',
       })()
+      if (seasonId) {
+        const { data: seasonData } = await APIs.getSeason(id, seasonId, {
+          append_to_response: 'content_ratings,videos,images,credits,similar',
+        })()
+        return {
+          tv: {
+            [id]: tvData,
+          },
+          season: {
+            [`${id}__${seasonId}`]: seasonData,
+          },
+        }
+      }
       return {
         tv: {
           [id]: tvData,

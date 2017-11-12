@@ -36,11 +36,11 @@
       "type": "image/png"
     }
   ],
-  "name": "Box Office",
+  "name": "The Movie and Tv",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "/",
-  "short_name": "Box Office",
+  "short_name": "TMnT",
   "background_color": "#171717",
   "theme_color": "#212121"
 }
