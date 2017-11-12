@@ -35,22 +35,9 @@
     @include flex-align-center;
   }
   .star-container {
-    position: relative;
-    width: 20px;
-    height: 46px;
     margin-right: 10px;
     .star-icon {
-      font-size: 30px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      &.below {
-        z-index: 0;
-      }
-      &.above {
-        z-index: 1;
-        overflow: hidden;
-      }
+      font-size: 20px;
     }
   }
   .year {

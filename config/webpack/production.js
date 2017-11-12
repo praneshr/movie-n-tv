@@ -103,7 +103,7 @@ module.exports = {
       path: path.resolve('./build/assets/'),
       filename: '[name].[chunkhash].min.js',
       chunkFilename: '[name].[chunkhash].min.js',
-      publicPath: '//cdn.themovientv.com/',
+      publicPath: '//d2pgf1t6llmies.cloudfront.net/',
       crossOriginLoading: 'anonymous',
     },
     plugins: [
@@ -180,17 +180,17 @@ module.exports = {
         },
         externals: [
           '/',
-          '/movies',
         ],
         cacheMaps: [
           {
-            match: /(\/\/cdn.themovientv.com\/).*/g,
+            match: /(\/\/d2pgf1t6llmies.cloudfront.net\/).*/g,
             to: function (url) {
               return '/' + url.split('/')[1]
             },
             requestTypes: ['cross-origin', 'navigate'],
           },
         ],
+        autoUpdate: true,
         version: () => { },
         ServiceWorker: {
           output: '../sw.js',

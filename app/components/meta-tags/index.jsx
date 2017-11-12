@@ -11,7 +11,7 @@ class MetaTags extends Component {
       <meta content="Box Office" property="og:site_name" />,
       <meta content="object" property="og:type" />,
       <meta content={data.title || data.name} property="og:title" />,
-      <meta content={`https://bx.now.sh/${type}/${data.id}`} property="og:url" />,
+      <meta content={`https://themovientv.com/${type}/${data.id}`} property="og:url" />,
       <meta content={data.overview || data.biography} property="og:description" />,
       <meta name="twitter:card" value="summary_large_image" />,
       <meta name="twitter:site" value="@pranesh_ravi" />,

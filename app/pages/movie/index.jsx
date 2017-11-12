@@ -84,13 +84,13 @@ class Movie extends Component {
       <div styleName="movie-detail">
         {
           movieDetails
-          && <Helmet title={`${movieDetails.title} - Box Office`}>
+          && <Helmet title={`${movieDetails.title} - The Movie and TV`}>
             <meta name="description" content={movieDetails.overview} />
             <meta content={`${imageBase}/w500${movieDetails.poster_path}`} property="og:image" />
-            <meta content="Box Office" property="og:site_name" />
+            <meta content="The Movie and TV" property="og:site_name" />
             <meta content="object" property="og:type" />
             <meta content={movieDetails.title} property="og:title" />
-            <meta content={`https://bx.now.sh/movies/${id}`} property="og:url" />
+            <meta content={`https://themovientv.com/movies/${id}`} property="og:url" />
             <meta content={movieDetails.overview} property="og:description" />
 
             <meta name="twitter:card" value="summary_large_image" />
@@ -112,7 +112,7 @@ class Movie extends Component {
             && <ImageProgressive
               className={styles['movie-banner']}
               placeholder={`${imageBase}/w45${movieDetails.backdrop_path}`}
-              src={`${imageBase}/${window.innerWidth < 700 ? 'w780' : 'original'}${movieDetails.backdrop_path}`}
+              src={`${imageBase}/${window.innerWidth < 800 ? 'w780' : 'original'}${movieDetails.backdrop_path}`}
             />
           }
           <div styleName="fade-out" />

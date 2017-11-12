@@ -96,8 +96,7 @@ class MovieCards extends Component {
                 result.media_type !== 'person'
                 && <div styleName={cn('rating', 'with-star', rate(rating))}>
                   <div styleName="star-container">
-                    <span styleName="star-icon below">☆</span>
-                    <span styleName="star-icon above" style={{ width: `${rating * 10}%` }}>★</span>
+                    <span styleName="star-icon" style={{ width: `${rating * 10}%` }}>★</span>
                   </div>
                   <span styleName="rating-number">
                     {rating.toFixed(1)}

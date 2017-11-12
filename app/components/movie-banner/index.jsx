@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { resolveUrl } from '../../utils'
 import { imageBase } from '../../APIs/config/'
 import styles from './style'
+import { win32 } from 'path';
 
 
 @withStyles(styles)
@@ -19,7 +20,7 @@ class MovieBanner extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({
       rendered: true,
     })
@@ -29,6 +30,7 @@ class MovieBanner extends Component {
     const {
       latest,
     } = this.props
+    console.log(this.state.rendered);
     return (
       <div>
         <div styleName="text-content">
@@ -53,7 +55,7 @@ class MovieBanner extends Component {
           this.state.rendered
           && <ImageProgressive
             placeholder={`${imageBase}/w45${latest.backdrop_path}`}
-            src={`${imageBase}/${window.innerWidth < 700 ? 'w780' : 'original'}${latest.backdrop_path}`}
+            src={`${imageBase}/${window.innerWidth < 800 ? 'w780' : 'original'}${latest.backdrop_path}`}
             style={{
               height: '100vh',
               backgroundSize: 'cover',

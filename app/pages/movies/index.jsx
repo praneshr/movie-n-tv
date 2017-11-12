@@ -69,15 +69,15 @@ export default class Movies extends Component {
     return (
       <div styleName="movies">
         <Helmet>
-          <title>Box Office - Movies, Tv Shows, Celebrities and more</title>
+          <title>The Movie and TV - Movies, Tv Shows, Celebrities and more</title>
           <meta name="author" content="Pranesh Ravi" />
           <meta name="description" content="New Movies In Theaters" />
 
-          <meta content="//cdn.themovientv.com/logo.png" property="og:image" />
-          <meta content="Box Office" property="og:site_name" />
+          <meta content="//d2pgf1t6llmies.cloudfront.net/logo.png" property="og:image" />
+          <meta content="The Movie and TV" property="og:site_name" />
           <meta content="object" property="og:type" />
           <meta content="Movies" property="og:title" />
-          <meta content="https://bx.now.sh/movies" property="og:url" />
+          <meta content="https://themovientv.com/" property="og:url" />
           <meta content="New Movies In Theaters" property="og:description" />
 
           <meta name="twitter:card" value="summary_large_image" />
@@ -85,36 +85,48 @@ export default class Movies extends Component {
           <meta name="twitter:creator" value="@pranesh_ravi" />
           <meta name="twitter:title" content="Movies" />
           <meta name="twitter:description" content="New Movies In Theaters" />
-          <meta name="twitter:image" content="//cdn.themovientv.com/logo.png" />
+          <meta name="twitter:image" content="//d2pgf1t6llmies.cloudfront.net/logo.png" />
         </Helmet>
         <div styleName="banner">
           <MovieBanner latest={banner} />
         </div>
         <div styleName="container list">
           <div styleName="row">
-            <div styleName="sub-heading-with-icon heading">
-              <i styleName="nc-icon nc-video-66" />
-              <h2>In Cinemas</h2>
+            <div>
+              <div styleName="sub-heading-with-icon heading">
+                <i styleName="nc-icon nc-video-66" />
+                <h2>In Cinemas</h2>
+              </div>
+              <div>
+                {
+                  latest === undefined
+                    ? <div styleName="row">
+                      {new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i} />)}
+                    </div>
+                    : <MovieCards
+                      resolveLink={resolveUrl}
+                      results={results} />
+                }
+              </div>
             </div>
-            {
-              latest === undefined
-                ? new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
-                : <MovieCards
-                  resolveLink={resolveUrl}
-                  results={results} />
-            }
-            <div styleName="sub-heading-with-icon heading tv-section">
-              <i styleName="nc-icon nc-video-66" />
-              <h2>TV Shows Airing Today</h2>
+            <div>
+              <div styleName="sub-heading-with-icon heading tv-section">
+                <i styleName="nc-icon nc-video-66" />
+                <h2>TV Shows Airing Today</h2>
+              </div>
+              <div>
+                {
+                  tvResults.length === 0
+                    ? <div styleName="row">
+                      {new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i} />)}
+                    </div>
+                    : <MovieCards
+                      force="tv"
+                      resolveLink={resolveUrl}
+                      results={tvResults} />
+                }
+              </div>
             </div>
-            {
-              tvResults.length === 0
-                ? new Array(20).fill(undefined).map((el, i) => <CardSkeleton key={i}/>)
-                : <MovieCards
-                  force="tv"
-                  resolveLink={resolveUrl}
-                  results={tvResults} />
-            }
           </div>
         </div>
       </div>
