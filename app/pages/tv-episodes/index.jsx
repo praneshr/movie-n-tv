@@ -122,14 +122,14 @@ class Movie extends Component {
             <meta content={`${imageBase}/w500${seasonDetails.poster_path || tvDetails.poster_path}`} property="og:image" />
             <meta content="The Movie and TV" property="og:site_name" />
             <meta content="object" property="og:type" />
-            <meta content={`${tvDetails.name}(${seasonDetails.name})`} property="og:title" />
+            <meta content={`${tvDetails.name} - ${seasonDetails.name}`} property="og:title" />
             <meta content={`https://themovientv.com/tv/${id}/season/${seasonId}`} property="og:url" />
             <meta content={seasonDetails.overview || tvDetails.overview} property="og:description" />
 
             <meta name="twitter:card" value="summary_large_image" />
             <meta name="twitter:site" value="@pranesh_ravi" />
             <meta name="twitter:creator" value="@pranesh_ravi" />
-            <meta name="twitter:title" content={`${tvDetails.name}(${seasonDetails.name})`} />
+            <meta name="twitter:title" content={`${tvDetails.name} - ${seasonDetails.name}`} />
             <meta name="twitter:description" content={seasonDetails.overview || tvDetails.overview} />
             <meta name="twitter:image" content={`${imageBase}/w500${seasonDetails.poster_path || tvDetails.poster_path}`} />
           </Helmet>
