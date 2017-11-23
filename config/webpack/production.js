@@ -175,9 +175,6 @@ module.exports = {
             '*.js',
             '*.css',
           ],
-          additional: [
-            ':externals:',
-          ],
         },
         externals: [
           '/',
