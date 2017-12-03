@@ -214,8 +214,9 @@ module.exports = {
         start_url: '/',
         short_name: 'TMnT',
         fingerprints: false,
-        background_color: '#030303',
-        theme_color: '#212121',
+        background_color: '#151515',
+        theme_color: '#151515',
+        publicPath: 'https://cdn.themovientv.com/',
         icons: [
           {
             src: path.resolve('./app/globals/assets/logo-standalone.png'),
