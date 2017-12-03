@@ -45,3 +45,12 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 1%, $brand-bg 100%);
   position: absolute;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .text-content {
+    padding: 15px;
+    .title {
+      font-size: 40px !important;
+    }
+  }
+}

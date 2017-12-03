@@ -23,6 +23,7 @@ export default class Movies extends Component {
   }
 
   componentDidMount() {
+    this.banner.style.height = `${window.innerHeight}px`
     if (!this.props.ui.nowPlaying) {
       this.props.actions.getNowPlaying({
         region: 'US',
@@ -87,7 +88,7 @@ export default class Movies extends Component {
           <meta name="twitter:description" content="Get the latest information about your favorite movies, TV shows, celebrites and more." />
           <meta name="twitter:image" content="//cdn.themovientv.com/logo.png" />
         </Helmet>
-        <div styleName="banner">
+        <div styleName="banner" ref={(el) => { this.banner = el }}>
           <MovieBanner latest={banner} />
         </div>
         <div styleName="container list">

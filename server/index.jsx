@@ -52,7 +52,6 @@ if (process.env.NODE_ENV !== 'production') {
   const wds = require('webpack-dev-middleware')
   const whm = require('webpack-hot-middleware')
   const wconfig = require('../config/webpack/default.js')
-  app.use(express.static(path.join(__dirname, 'build')))
   const webpackConfig = _.omit(wconfig, 'watch')
   webpackConfig.browser.plugins.reverse().pop()
   const compiler = webpack(webpackConfig.browser)
@@ -62,6 +61,8 @@ if (process.env.NODE_ENV !== 'production') {
   }))
 
   app.use(whm(compiler))
+
+  app.use(express.static(path.join(__dirname, 'build')))
 } else {
   app.use(express.static(path.join(__dirname, 'build'), {
     maxAge: Infinity,

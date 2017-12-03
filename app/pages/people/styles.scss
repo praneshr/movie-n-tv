@@ -25,7 +25,6 @@
     margin-top: 0px;
   }
   .poster {
-    margin-top: 0;
     overflow: hidden;
     margin-top: -250px;
   }
@@ -43,6 +42,9 @@
     }
     .poster-img {
       height: 400px;
+    }
+    .poster {
+      margin-top: -380px;
     }
   }
 }

@@ -13,5 +13,11 @@
 .sub-section {
   margin-top: 100px;
   padding-top: 20px;
-  border-top: 1px solid $grey900;
+  border-top: 1px solid #151515;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .sub-section {
+    margin-top: 50px;
+  }
 }

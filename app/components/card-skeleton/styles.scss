@@ -19,4 +19,8 @@
     height: 10px;
     margin-top: 40px;
   }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    height: 250px;
+    padding: 5px;
+  }
 }

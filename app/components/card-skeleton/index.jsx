@@ -14,7 +14,7 @@ class CardSketeon extends Component {
       type = 'default',
     } = this.props
     return (
-      <div styleName={cn('col-xs-12 col-sm-6 col-md-4', type === 'thumbnail' ? 'col-lg-4' : 'col-lg-3')}>
+      <div styleName={cn('col-xs-6 col-md-4', type === 'thumbnail' ? 'col-lg-4' : 'col-lg-3')}>
         <div styleName="card">
           <div styleName="skeleton-placeholder image" />
           <div styleName="skeleton-placeholder name" />
