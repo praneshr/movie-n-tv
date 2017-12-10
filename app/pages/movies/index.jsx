@@ -112,7 +112,7 @@ export default class Movies extends Component {
             </div>
             <div>
               <div styleName="sub-heading-with-icon heading tv-section">
-                <i styleName="nc-icon nc-video-66" />
+                <i styleName="nc-icon nc-tv-old" />
                 <h2>TV Shows Airing Today</h2>
               </div>
               <div>

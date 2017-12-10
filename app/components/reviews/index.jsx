@@ -25,7 +25,7 @@ class Reviews extends Component {
           {
             reviews.length > 0
               ? reviews
-              : <div styleName="col-xs-12">
+              : <div styleName="col-xs-12 placeholder">
                 No reviews yet!
               </div>
           }

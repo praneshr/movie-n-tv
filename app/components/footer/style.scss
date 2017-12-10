@@ -1,5 +1,5 @@
 .footer {
-  padding: 60px 0;
+  padding: 60px 0 0;
   border-top: 1px solid #191919;
   margin-top: 50px;
   .quote-container {
@@ -34,11 +34,16 @@
     height: 40px;
     float: right;
   }
+  .copyright {
+    margin-top: 60px;
+    padding: 10px;
+    text-align: center;
+  }
   img {
     width: 100px;
   }
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    padding: 30px 0;
+    padding: 30px 0 0;
     .quote-container {
       padding: 40px 20px;
       .quote {

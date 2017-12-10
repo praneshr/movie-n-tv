@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { uiStates, uiActions } from '../../redux-connect'
 import { imageBase } from '../../APIs/config/'
 import styles from './styles'
-import Details from '../../components/season-details'
+import Details from '../../components/season-details/async'
 import DetailsSkeleton from '../../components/season-details-skeleton'
 
 

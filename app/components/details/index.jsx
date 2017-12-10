@@ -19,13 +19,16 @@ class Details extends Component {
     const {
       data,
     } = this.props
-    const video = data.videos.results
-      .filter(x => ['trailer', 'teaser'].indexOf(x.type.toLowerCase()) > -1 )[0]
+    const trailers = data.videos.results
+      .filter(x => ['trailer', 'teaser'].indexOf(x.type.toLowerCase()) > -1 )
+    const teasers = data.videos.results
+      .filter(x => ['trailer', 'teaser'].indexOf(x.type.toLowerCase()) > -1)
+    const video = trailers.length > 0 ? trailers[0] : teasers[0]
     const certificatefiltered = data
       .releases
       .countries
       .filter(x => x.iso_3166_1 === 'US')[0]
-    const certificates = certificatefiltered ? certificatefiltered : {}
+    const certificates = certificatefiltered || {}
     const upcoming = data.status.toLowerCase() !== 'released'
     return (
       <div styleName="details">
@@ -74,7 +77,6 @@ class Details extends Component {
               href={`https://youtube.com/watch?v=${video.key}`}
               target="_blank">
               <button styleName="button-primary">
-                <i styleName="nc-icon nc-small-triangle-right" />
                 <span>{video.type}</span>
               </button>
             </a>
@@ -83,7 +85,6 @@ class Details extends Component {
             target="_blank"
             href={`http://imdb.com/title/${data.imdb_id}`}>
             <button styleName="button-primary imdb">
-              <i styleName="nc-icon nc-small-triangle-right" />
               <span>IMDB</span>
             </button>
           </a>
