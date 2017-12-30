@@ -23,15 +23,16 @@ This is my pet project to understand _"Progressive Web App"_ and _"Server Side R
 
 ## Concepts
 
-- Single Page App
+- Progressive Web App
 - App Shell
 - Component Skeleton
+- Progressive Image Loading
 - Server Side Rendering
 - Client Response Caching
 - Cached CSS from Server
 - Service Worker Caching
 - Long-Term Caching(fallback)
-- Progressive Web App
+- Single Page App
 
 ## Data Provider
 
