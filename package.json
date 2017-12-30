@@ -99,7 +99,7 @@
     "build:watch": "webpack --progress --colors --watch",
     "deploy": "now --public --docker --alias bx-test.now.sh",
     "start": "node server.js",
-    "start:dev": "node server.js",
+    "start:dev": "yarn build && yarn start",
     "start:dev:watch": "nodemon -w server.js server.js",
     "test": "echo"
   }
