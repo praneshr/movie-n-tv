@@ -72,20 +72,20 @@ export default class Movies extends Component {
         <Helmet>
           <title>The Movie & TV - Movies, TV Shows, Celebrities and more</title>
           <meta name="author" content="Pranesh Ravi" />
-          <meta name="description" content="Get the latest information about your favorite movies, TV shows, celebrites and more." />
+          <meta name="description" content="Get the latest information about your favorite movies, TV shows, celebrities and more." />
 
           <meta content="//cdn.themovientv.com/logo.png" property="og:image" />
           <meta content="The Movie & TV" property="og:site_name" />
           <meta content="object" property="og:type" />
           <meta content="The Movie & TV" property="og:title" />
           <meta content="https://themovientv.com/" property="og:url" />
-          <meta content="Get the latest information about your favorite movies, TV shows, celebrites and more." property="og:description" />
+          <meta content="Get the latest information about your favorite movies, TV shows, celebrities and more." property="og:description" />
 
           <meta name="twitter:card" value="summary_large_image" />
           <meta name="twitter:site" value="@pranesh_ravi" />
           <meta name="twitter:creator" value="@pranesh_ravi" />
           <meta name="twitter:title" content="The Movie & TV" />
-          <meta name="twitter:description" content="Get the latest information about your favorite movies, TV shows, celebrites and more." />
+          <meta name="twitter:description" content="Get the latest information about your favorite movies, TV shows, celebrities and more." />
           <meta name="twitter:image" content="//cdn.themovientv.com/logo.png" />
         </Helmet>
         <div styleName="banner" ref={(el) => { this.banner = el }}>
