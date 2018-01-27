@@ -87,7 +87,7 @@
     "webpack-s3-plugin": "^1.0.0-rc.0"
   },
   "homepage": "https://github.com/praneshr/movie-app#readme",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "main": "index.js",
   "repository": {
     "type": "git",
