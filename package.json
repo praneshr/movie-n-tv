@@ -7,7 +7,7 @@
     "url": "https://github.com/praneshr/movie-app/issues"
   },
   "dependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.21.1",
     "babel-core": "^6.18.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-webpack-alias": "^2.1.2",
