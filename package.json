@@ -28,7 +28,7 @@
     "lodash": "^4.17.2",
     "lodash-es": "^4.17.4",
     "prop-types": "^15.6.0",
-    "qs": "^6.5.0",
+    "qs": "^6.5.3",
     "react": "^16.0.0",
     "react-async-component": "^1.0.2",
     "react-css-modules": "^4.0.3",
